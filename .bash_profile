@@ -3,6 +3,13 @@
 PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/perl5.12/sitebin:$PATH
 
 
+# Change the screenshot directory
+SCREENSHOT_DIR=~/Screenshots
+mkdir -p $SCREENSHOT_DIR
+defaults write com.apple.screencapture location $SCREENSHOT_DIR
+killall SystemUIServer
+
+
 alias edit='open -a BBEdit'
 
 ebh='/Users/steve/Code/Ebates'
