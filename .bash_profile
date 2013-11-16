@@ -14,7 +14,6 @@ alias edit='open -a BBEdit'
 
 ebh='/Users/steve/Code/Ebates'
 alias ebh='cd $ebh'
-
 alias exo='cd ~/Code/Exosphere/'
 
 
@@ -40,10 +39,7 @@ alias stagingdb='mysql -usmj10j -pw5hanBF4jzS2cEA4ndKX97at -h db-staging1.extrab
 alias mt='mytop -uextrabux -p'lookaway\!@#4' -h '
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 
-
 alias s='~/Code/Extrabux/DevTools/scripts/short-ssh.sh'
-
-alias vhosts='sudo vi /opt/local/etc/nginx/sites-available/extrabux && sudo vi /etc/hosts && nginx_restart'
 
 #git aliases from http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes
 alias ad='git add'
@@ -62,9 +58,6 @@ git config --global color.ui true
 git config --global color.branch auto
 git config --global color.diff auto
 git config --global color.status auto
-
-source ~/.git-completion.bash
-
 
 lso() {
 	ls -lA $1 | awk '{print $9}' | grep -v "^$" | xargs -n 1 -I FILE stat -f '%Sp %p %N' $1'FILE' | rev | sed -E 's/^([^[:space:]]+)[[:space:]]([[:digit:]]{4})[^[:space:]]*[[:space:]]([^[:space:]]+)/\1 \2 \3/' | rev
