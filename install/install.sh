@@ -72,9 +72,8 @@ echo "Now reloading your shell so the changes take effect immediately..."
 echo ""
 
 echo "source $BASH_PROFILE_FILE"
+exit 0
 
 ) | tee $SMJDE_LOGFILE
-
-exit 0
 
 
