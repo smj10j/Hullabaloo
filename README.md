@@ -46,8 +46,7 @@ All my various settings
 
 - ## Git ##
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
-		```bash
-		alias ad='git add'
+```bash alias ad='git add'
 		alias pl='git pull'
 		alias ph='git push'
 		alias cm='git commit -m'
