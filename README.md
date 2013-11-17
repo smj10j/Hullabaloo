@@ -16,15 +16,15 @@ Run the following in your shell the installation directory can be changed if des
 - ## Files ##
 	1. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	2. `lso [file|directory]` - ls with permissions in octal
-```console
-		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
-		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
-		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
-		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
-		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
-		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
-		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
-		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
+``` console
+				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
+				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
+				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
+				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
+				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
+				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
+				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
+				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 ```
 	
 	
@@ -46,18 +46,18 @@ Run the following in your shell the installation directory can be changed if des
 
 - ## Git ##
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
-``` console
-		alias ad='git add'
-		alias pl='git pull'
-		alias ph='git push'
-		alias cm='git commit -m'
-		alias sl='git status -uall'
-		alias lg='git log'
-		alias gp='git grep'
-		alias de='git diff --ignore-space-change'
-		alias me='git merge'
-		alias bh='git branch'
-		alias ct='git checkout'
+``` bash
+				alias ad='git add'
+				alias pl='git pull'
+				alias ph='git push'
+				alias cm='git commit -m'
+				alias sl='git status -uall'
+				alias lg='git log'
+				alias gp='git grep'
+				alias de='git diff --ignore-space-change'
+				alias me='git merge'
+				alias bh='git branch'
+				alias ct='git checkout'
 ```
 
 - ## Vim ##
