@@ -7,8 +7,13 @@ echo "######## https://bitbucket.org/smj10j/devenvironment ###########"
 echo "################################################################"
 echo ""
 
-INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
+echo "Installing bash-completion..."
+exit 0
+port install bash-completion
 su $IAM
+echo ""
+
+INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
 if [ -e ~/.bash_profile ]; then
 	echo "It looks like you already have something in $INSTALL_DIR"
@@ -23,8 +28,6 @@ else
 fi
 echo ""
 
-
-
 echo "Checking out submodules..."
 git submodule init && git submodule update
 echo ""
@@ -32,13 +35,6 @@ echo ""
 echo "Installing vimrc from https://github.com/amix/vimrc..."
 sh editors/vim/amix-vimrc/install_awesome_vimrc.sh
 echo ""
-
-echo "Installing bash-completion..."
-exit 0
-port install bash-completion
-su $IAM
-echo ""
-
 
 echo "Determining bash profile script..."
 if [ -e ~/.bash_profile ]; then
