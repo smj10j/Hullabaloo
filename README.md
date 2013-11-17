@@ -10,11 +10,6 @@ Run the following in your shell the installation directory can be changed if des
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
 ```
 
-While this repos is public, authentication will be required and the above will not work. Instead replace your Bitbucket username and use:
-``` .bash 
-	USERNAME=smj10j; export INSTALL_DIR=; curl -u $USERNAME -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
-```
-
 # What's Included #
 
 - ## Files ##
