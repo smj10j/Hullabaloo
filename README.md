@@ -18,6 +18,7 @@ export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e68
 ``` .bash
 -rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
 ```
+
 	2. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	
 	
