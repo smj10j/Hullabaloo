@@ -68,7 +68,11 @@ While this repos is public, authentication will be required and the above will n
 	1. [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
 		
 		
-		
+# Screenshots #
+
+![Pretty Terminal](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
+
+![Pretty Vim](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Vim.png "Pretty Vim")
 		
 		
 		
