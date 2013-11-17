@@ -7,12 +7,12 @@ All my various settings
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
-	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
+	sudo bash && export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
 ```
 
 While this repos is public, authentication will be required and the above will not work. Instead replace your Bitbucket username and use:
 ``` .bash 
-	USERNAME=smj10j; export INSTALL_DIR=; curl -u $USERNAME -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
+	sudo bash && USERNAME=smj10j; export INSTALL_DIR=; curl -u $USERNAME -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
 ```
 
 # What's Included #
