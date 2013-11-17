@@ -68,8 +68,8 @@ Run the following in your shell the installation directory can be changed if des
 ## Pretty Terminal Profile ##
 ![Pretty Terminal](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
 
-# To install - Set new windows to open with the 'smj10j' profile in Terminal #
-![Pretty Vim](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Vim.png "Pretty Vim")
+	### To install - Set new windows to open with the 'smj10j' profile in Terminal ###
+	![Pretty Vim](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Vim.png "Pretty Vim")
 
 ## Pretty Vim ##
 ![Pretty Vim](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Vim.png "Pretty Vim")
