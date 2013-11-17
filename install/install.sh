@@ -1,6 +1,5 @@
 #!/bin/bash
 
-(
 echo ""
 echo "################################################################"
 echo "################ DevEnvironment Installation ###################"
@@ -62,15 +61,12 @@ else
 	echo "#######################################################" >> $BASH_PROFILE_FILE
 fi
 
+# Can also change default shell with: chsh -s /opt/local/bin/bash
 
 echo ""
 echo "Install complete!"
-echo "Now reloading your shell so the changes take effect immediately..."
+echo "Now installing a new Terminal profile and opening a new shell so the changes take effect immediately..."
 echo ""
 
-echo "source $BASH_PROFILE_FILE"
-
-) | tee log
-
-exit 0
+open osx/smj10j.terminal & exit 0
 
