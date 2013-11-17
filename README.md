@@ -7,7 +7,7 @@ All my various settings
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
-	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
+export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
 ```
 
 
@@ -15,7 +15,9 @@ Run the following in your shell the installation directory can be changed if des
 
 - ## Files ##
 	1. `lso [file|directory]` - ls with permissions in octal
-
+``` .bash
+-rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
+```
 	2. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	
 	
@@ -38,17 +40,17 @@ Run the following in your shell the installation directory can be changed if des
 - ## Git ##
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
 ``` .bash
-		alias ad='git add'
-		alias pl='git pull'
-		alias ph='git push'
-		alias cm='git commit -m'
-		alias sl='git status -uall'
-		alias lg='git log'
-		alias gp='git grep'
-		alias de='git diff --ignore-space-change'
-		alias me='git merge'
-		alias bh='git branch'
-		alias ct='git checkout'
+alias ad='git add'
+alias pl='git pull'
+alias ph='git push'
+alias cm='git commit -m'
+alias sl='git status -uall'
+alias lg='git log'
+alias gp='git grep'
+alias de='git diff --ignore-space-change'
+alias me='git merge'
+alias bh='git branch'
+alias ct='git checkout'
 ```
 
 - ## Vim ##
