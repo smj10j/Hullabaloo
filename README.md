@@ -14,7 +14,7 @@ All my various settings
 # What's Included #
 
 - ## Files ##
-	1. ```lso [file|directory]``` - ls with permissions in octal
+	1. `lso [file|directory]` - ls with permissions in octal
 ``` .bash
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
@@ -25,23 +25,23 @@ All my various settings
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 ```
-	2. ```edit <file|directory>``` - quickly open files in BBEdit from Terminal
+	2. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	
 	
 - ## Paths ##
-	1. ```pathsadd <path string>``` - gracefully manages appending a string of paths to the $PATH variable
-	2. ```pathadd <directory>``` - adds a single directory (if not present) to the $PATH variable
+	1. `pathsadd <path string>` - gracefully manages appending a string of paths to the $PATH variable
+	2. `pathadd <directory>` - adds a single directory (if not present) to the $PATH variable
 		
 		
 - ## SSH ##
 	1. Automatically starts ssh-agent and adds private keys
-	2. ```s <host> <user>``` - attempts to use bash completion for hosts and users
+	2. `s <host> <user>` - attempts to use bash completion for hosts and users
 
 
 - ## OSX ##
 	1. Sets the screenshot directory to  ~/Screenshots
 	2. Sets Finder to always show hidden files
-	3. ```listRegisteredURLSchemes``` - lists the currently registered URL schemes
+	3. `listRegisteredURLSchemes` - lists the currently registered URL schemes
 
 
 - ## Git ##
