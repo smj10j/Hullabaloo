@@ -24,7 +24,8 @@ All my various settings
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
-```		
+```	
+
 	2. ```edit <file|directory>``` - quickly open files in BBEdit from Terminal
 	
 	
