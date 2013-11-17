@@ -15,7 +15,7 @@ BASH_PROFILE_FILES+=("include/osx")
 for profileFile in "${BASH_PROFILE_FILES[@]}"; do 
 	profileFilePath="$SCRIPT_DIR/$profileFile.bashrc"
 	echo "Loading bash profile at '$profileFilePath'"
-	#source $profileFilePath
+	source $profileFilePath
 done
 
 
