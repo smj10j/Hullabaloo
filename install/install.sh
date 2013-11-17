@@ -8,7 +8,6 @@ echo "################################################################"
 echo ""
 
 echo "Installing bash-completion..."
-exit 0
 port install bash-completion
 su $IAM
 echo ""
