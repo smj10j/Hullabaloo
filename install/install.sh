@@ -64,7 +64,7 @@ fi
 
 echo ""
 echo "Install complete!"
-echo "Now reloading your shell so the changes take effect immediately..."
+echo "Now close and reopen this window so the changes take effect..."
 echo ""
 
 source $BASH_PROFILE_FILE
