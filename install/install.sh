@@ -36,6 +36,11 @@ echo "Installing bash-completion..."
 port install bash-completion
 echo ""
 
+echo "Installations complete... downgrading to user $IAM"
+su $IAM
+echo ""
+
+
 echo "Determining bash profile script..."
 if [ -e ~/.bash_profile ]; then
 	BASH_PROFILE_FILE=~/.bash_profile
