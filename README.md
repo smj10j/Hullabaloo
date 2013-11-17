@@ -5,12 +5,10 @@ All my various settings
 
 # Installation #
 
-1. Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
+	Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
-export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
+	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
 ```
-2. That's it!
-
 
 
 # What's Included #
@@ -26,7 +24,7 @@ export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e68
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
-```		
+```
 	2. ```edit <file|directory>``` - quickly open files in BBEdit from Terminal
 	
 	
