@@ -1,7 +1,11 @@
 #!/bin/bash
 
 FILENAME=${BASH_SOURCE[0]}
-echo "loading "
+echo "loading $FILENAME"
+
+
+return
+echo "not here"
 
 # Nginx
 alias nginx_start='sudo nginx'
