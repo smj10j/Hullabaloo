@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Enhance the path (mostly for MacPorts)
-PATH=/opt/local/bin:/opt/local/sbin:/opt/local/libexec/perl5.12/sitebin:$PATH
-
 # Change the screenshot directory
 SCREENSHOT_DIR=~/Screenshots
 mkdir -p $SCREENSHOT_DIR

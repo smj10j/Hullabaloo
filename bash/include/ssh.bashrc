@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Short-hand function for ssh connections
+#TODO: add some auto-completion for users and hosts
 function s {
 
 	if [ $# -eq 1 ]; then
@@ -10,12 +11,12 @@ function s {
 		USER=$1
 		HOST=$2
 	else 
-		echo "Usage: $0 <user> HOST"
+		echo "Usage: s <user> HOST"
 		return
 	fi
 	
 	echo "HOST: $HOST, USER: $USER";
-#	ssh -i ~/.ssh/id_rsa-extrabux-keypair ubuntu@$1
+	ssh $USER@$HOST
 }
 
 # SSH Agent

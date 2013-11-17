@@ -5,6 +5,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "smj10j DevEnvironment tools will be loaded from $SCRIPT_DIR"
 
 BASH_PROFILE_FILES=()
+BASH_PROFILE_FILES+=("include/path")
 BASH_PROFILE_FILES+=("include/git")
 BASH_PROFILE_FILES+=("include/file")
 BASH_PROFILE_FILES+=("include/daemons")
