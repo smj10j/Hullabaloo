@@ -7,11 +7,6 @@ echo "######## https://bitbucket.org/smj10j/devenvironment ###########"
 echo "################################################################"
 echo ""
 
-echo "Installing bash-completion..."
-port install bash-completion
-su $IAM
-echo ""
-
 INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
 if [ -e ~/.bash_profile ]; then
