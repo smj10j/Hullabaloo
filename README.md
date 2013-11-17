@@ -46,7 +46,7 @@ While this repos is public, authentication will be required and the above will n
 	1. Sets the screenshot directory to  ~/Screenshots
 	2. Sets Finder to always show hidden files
 	3. `listRegisteredURLSchemes` - lists the currently registered URL schemes
-
+	4. [Bash-completion](http://trac.macports.org/wiki/howto/bash-completion)
 
 - ## Git ##
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
