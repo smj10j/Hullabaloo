@@ -36,5 +36,4 @@ function listRegisteredURLSchemes {
 	LS_REGISTER_CMD='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister'
 	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
 }
-listRegisteredURLSchemes
 

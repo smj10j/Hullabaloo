@@ -40,6 +40,7 @@ elif [ -e ~/.bashrc ]; then
 else
 	echo "No existing bash profile files found, creating one"
 	BASH_PROFILE_FILE=~/.bash_profile
+	touch $BASH_PROFILE_FILE
 fi
 echo "Will install in $BASH_PROFILE_FILE...";
 echo ""
