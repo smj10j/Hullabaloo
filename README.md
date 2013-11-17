@@ -14,7 +14,8 @@ Run the following in your shell the installation directory can be changed if des
 # What's Included #
 
 - ## Files ##
-	1. `lso [file|directory]` - ls with permissions in octal
+	1. `edit <file|directory>` - quickly open files in BBEdit from Terminal
+	2. `lso [file|directory]` - ls with permissions in octal
 ```console
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
@@ -25,7 +26,6 @@ Run the following in your shell the installation directory can be changed if des
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 ```
-	2. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	
 	
 - ## Paths ##
