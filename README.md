@@ -16,7 +16,7 @@ Run the following in your shell the installation directory can be changed if des
 - ## Files ##
 	1. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	2. `lso [file|directory]` - ls with permissions in octal
-``` console
+``` bash
 				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
