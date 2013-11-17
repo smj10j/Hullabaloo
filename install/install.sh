@@ -8,6 +8,7 @@ echo "################################################################"
 echo ""
 
 INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
+su $IAM
 
 if [ -e ~/.bash_profile ]; then
 	echo "It looks like you already have something in $INSTALL_DIR"
@@ -33,10 +34,8 @@ sh editors/vim/amix-vimrc/install_awesome_vimrc.sh
 echo ""
 
 echo "Installing bash-completion..."
+exit 0
 port install bash-completion
-echo ""
-
-echo "Installations complete... downgrading to user $IAM"
 su $IAM
 echo ""
 
