@@ -6,9 +6,7 @@ All my various settings
 # Installation #
 
 1. Run the following in your shell - INSTALL_DIR can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
-	<code>
-	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
-	</code>
+	```export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash```
 2. That's it!
 
 
@@ -17,7 +15,7 @@ All my various settings
 
 - ## Files ##
 	1. ```lso [file|directory]``` - ls with permissions in octal
-		<code>
+		```bash
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
@@ -26,7 +24,6 @@ All my various settings
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
-		</code>
 		
 	2. ```edit <file|directory>``` - quickly open files in BBEdit from Terminal
 	
@@ -49,7 +46,7 @@ All my various settings
 
 - ## Git ##
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
-		<code>
+		```bash
 		alias ad='git add'
 		alias pl='git pull'
 		alias ph='git push'
@@ -61,7 +58,7 @@ All my various settings
 		alias me='git merge'
 		alias bh='git branch'
 		alias ct='git checkout'
-		</code>
+
 
 - ## Vim ##
 	1. [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
