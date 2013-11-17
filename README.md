@@ -5,7 +5,7 @@ All my various settings
 
 # Installation #
 
-	Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
+Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/e6829c9aeea0ef987ab78c406d19d0dd1deb1df2/install/install.sh | /bin/bash
 ```
@@ -15,7 +15,7 @@ All my various settings
 
 - ## Files ##
 	1. `lso [file|directory]` - ls with permissions in octal
-``` .bash
+``` 
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
