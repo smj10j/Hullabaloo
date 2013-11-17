@@ -15,4 +15,4 @@ pathsadd() {
 }
 
 # Enhance the path (mostly for MacPorts)
-pathsadd "/opt/local/bin:/opt/local/sbin:/opt/local/libexec/perl5.12/sitebin"
+pathsadd $PATH_ADDITION

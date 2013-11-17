@@ -5,7 +5,7 @@
 function s {
 
 	if [ $# -eq 1 ]; then
-		USER='root'
+		USER=$DEFAULT_SSH_USER
 		HOST=$1
 	elif [ $# -eq 2 ]; then
 		USER=$1
@@ -15,7 +15,7 @@ function s {
 		return
 	fi
 	
-	echo "HOST: $HOST, USER: $USER";
+	# echo "HOST: $HOST, USER: $USER";
 	ssh $USER@$HOST
 }
 

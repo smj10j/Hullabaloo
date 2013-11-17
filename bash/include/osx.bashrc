@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Stop if we're not on OSX
+if [ `uname` != 'Darwin' ]; then
+	return
+fi
+
 # Change the screenshot directory
 function setScreenshotDirectory {
 	if [ `defaults read com.apple.screencapture location` != "$1" ]; then
@@ -9,7 +14,7 @@ function setScreenshotDirectory {
 		sudo killall SystemUIServer
 	fi
 }
-setScreenshotDirectory ~/Screenshots
+setScreenshotDirectory $SCREENSHOT_DIR
 
 # Always show hidden files in Finder
 function setFinderToAlwaysShowHiddenFiles {
