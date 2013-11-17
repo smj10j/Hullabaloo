@@ -32,6 +32,10 @@ echo "Installing vimrc from https://github.com/amix/vimrc..."
 sh editors/vim/amix-vimrc/install_awesome_vimrc.sh
 echo ""
 
+echo "Installing bash-completion..."
+sudo port install bash-completion
+echo ""
+
 echo "Determining bash profile script..."
 if [ -e ~/.bash_profile ]; then
 	BASH_PROFILE_FILE=~/.bash_profile
@@ -55,6 +59,10 @@ else
 	# Nope! Full steam ahead
 	echo "############## Custom Bash Profile from  ##############" >> $BASH_PROFILE_FILE
 	echo "## Docs: https://bitbucket.org/smj10j/devenvironment ##" >> $BASH_PROFILE_FILE
+	echo "if [ `ps -p $$ | grep -c '/opt/local/bin/bash'` -eq 0 ]; then" >> $BASH_PROFILE_FILE
+	echo "	/opt/local/bin/bash -l" >> $BASH_PROFILE_FILE
+	echo "	exit 0" >> $BASH_PROFILE_FILE
+	echo "fi" >> $BASH_PROFILE_FILE
 	echo "source $INSTALL_DIR/bash/main.bashrc" >> $BASH_PROFILE_FILE
 	echo "#######################################################" >> $BASH_PROFILE_FILE
 fi

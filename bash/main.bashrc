@@ -2,7 +2,7 @@
 
 # Get a reference to the directory this script is in
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "smj10j DevEnvironment tools will be loaded from $SCRIPT_DIR"
+echo "DevEnvironment tools will be loaded from $SCRIPT_DIR"
 
 BASH_PROFILE_FILES=()
 

@@ -37,3 +37,8 @@ function listRegisteredURLSchemes {
 	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
 }
 
+
+# Enable Bash Completion (http://trac.macports.org/wiki/howto/bash-completion)
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
