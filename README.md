@@ -7,12 +7,12 @@ All my various settings
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
-	sudo port install bash-completion && export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
+	sudo port install bash-completion && export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && $(tail -n 1 $SMJDE_LOGFILE)
 ```
 
 While this repos is public, authentication will be required and the above will not work. Instead replace your Bitbucket username and use:
 ``` .bash 
-	sudo port install bash-completion && USERNAME=smj10j; export INSTALL_DIR=; curl -u $USERNAME -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash
+	sudo port install bash-completion && USERNAME=smj10j; export INSTALL_DIR=; curl -u $USERNAME -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && $(tail -n 1 $SMJDE_LOGFILE)
 ```
 
 # What's Included #

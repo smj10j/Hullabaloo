@@ -1,11 +1,15 @@
 #!/bin/bash
 
+export SMJDE_LOGFILE=".smj10j.devenvironment.install.sh.log"
+(
 echo ""
 echo "################################################################"
 echo "################ DevEnvironment Installation ###################"
 echo "######## https://bitbucket.org/smj10j/devenvironment ###########"
 echo "################################################################"
 echo ""
+
+# echo "Logging to $SMJDE_LOGFILE"
 
 INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
@@ -64,11 +68,13 @@ fi
 
 echo ""
 echo "Install complete!"
-echo "Now close and reopen this window so the changes take effect..."
+echo "Now reloading your shell so the changes take effect immediately..."
 echo ""
 
-source $BASH_PROFILE_FILE
-echo ""
+echo "source $BASH_PROFILE_FILE"
+
+) | tee $SMJDE_LOGFILE
+
 exit 0
 
 

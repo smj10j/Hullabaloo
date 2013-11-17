@@ -39,6 +39,11 @@ function listRegisteredURLSchemes {
 
 
 # Enable Bash Completion (http://trac.macports.org/wiki/howto/bash-completion)
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-    . /opt/local/etc/profile.d/bash_completion.sh
+if [ -e /opt/local/bin/bash ]; then 
+	if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+		. /opt/local/etc/profile.d/bash_completion.sh
+	fi
+else
+	echo "Not enabling bash-completion because the bash shell for it is not installed"
+	echo "Install it with 'sudo port install bash-completion'" 
 fi
