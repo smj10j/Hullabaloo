@@ -3,6 +3,8 @@ DevEnvironment
 
 All my various settings
 
+
+
 Installation
 ------------
 
@@ -10,6 +12,8 @@ Run the following in your shell the installation directory can be changed if des
 ```bash 
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
 ```
+
+
 
 What's Included
 ---------------
@@ -63,7 +67,9 @@ alias ct='git checkout'
 ### Vim ###
 - [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
 		
-		
+
+
+
 Screenshots
 -----------
 
