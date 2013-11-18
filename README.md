@@ -17,7 +17,6 @@ Run the following in your shell the installation directory can be changed if des
 	2. `lso [file|directory]` - ls with permissions in octal
 ```bash
 -rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
-
 drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 -rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
 -rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
