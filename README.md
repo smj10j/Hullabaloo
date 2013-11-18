@@ -3,16 +3,16 @@ DevEnvironment
 
 All my various settings
 
-# Installation #
+## Installation ##
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ``` .bash 
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
 ```
 
-# What's Included #
+## What's Included ##
 
-- ## Files ##
+1. ### Files ###
 	1. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	2. `lso [file|directory]` - ls with permissions in octal
 ``` bash
@@ -27,23 +27,23 @@ Run the following in your shell the installation directory can be changed if des
 ```
 	
 	
-- ## Paths ##
+2. ### Paths ###
 	1. `pathsadd <path string>` - gracefully manages appending a string of paths to the $PATH variable
 	2. `pathadd <directory>` - adds a single directory (if not present) to the $PATH variable
 		
 		
-- ## SSH ##
+3. ### SSH ###
 	1. Automatically starts ssh-agent and adds private keys
 	2. `s <host> <user>` - attempts to use bash completion for hosts and users
 
 
-- ## OSX ##
+4. ### OSX ###
 	1. Sets the screenshot directory to  ~/Screenshots
 	2. Sets Finder to always show hidden files
 	3. `listRegisteredURLSchemes` - lists the currently registered URL schemes
 	4. [Bash-completion](http://trac.macports.org/wiki/howto/bash-completion)
 
-- ## Git ##
+5. ### Git ###
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
 ``` bash
 				alias ad='git add'
@@ -59,19 +59,16 @@ Run the following in your shell the installation directory can be changed if des
 				alias ct='git checkout'
 ```
 
-- ## Vim ##
+6. ### Vim ###
 	1. [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
 		
 		
-# Screenshots #
+## Screenshots ##
 
-## Pretty Terminal Profile ##
-![Pretty Terminal](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
+![Pretty Terminal Profile](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
 
-### To install - Set new windows to open with the 'smj10j' profile in Terminal ###
-![Set Terminal Profile](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
+![To install - Set new windows to open with the 'smj10j' profile in Terminal](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
 
-## Pretty Vim ##
 ![Pretty Vim](https://bitbucket.org/smj10j/devenvironment/raw/master/screenshots/Pretty-Vim.png "Pretty Vim")
 		
 
