@@ -6,7 +6,7 @@ All my various settings
 ## Installation ##
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
-``` .bash 
+```bash 
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
 ```
 
@@ -15,7 +15,7 @@ Run the following in your shell the installation directory can be changed if des
 1. ### Files ###
 	1. `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	2. `lso [file|directory]` - ls with permissions in octal
-``` bash
+```bash
 				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 				drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 				-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
@@ -45,7 +45,7 @@ Run the following in your shell the installation directory can be changed if des
 
 5. ### Git ###
 	1. [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
-``` bash
+```bash
 				alias ad='git add'
 				alias pl='git pull'
 				alias ph='git push'
