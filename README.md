@@ -16,7 +16,6 @@ Run the following in your shell the installation directory can be changed if des
 	- `edit <file|directory>` - quickly open files in BBEdit from Terminal
 	- `lso [file|directory]` - ls with permissions in octal
 		<pre>
-		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.DS_Store
 		drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
 		-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
@@ -45,6 +44,7 @@ Run the following in your shell the installation directory can be changed if des
 
 - ### Git ###
 	- [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
+<pre>
 ```bash
 alias ad='git add'
 alias pl='git pull'
@@ -58,6 +58,7 @@ alias me='git merge'
 alias bh='git branch'
 alias ct='git checkout'
 ```
+</pre>
 
 - ### Vim ###
 	- [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
