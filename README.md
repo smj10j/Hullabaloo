@@ -65,11 +65,11 @@ Run the following in your shell the installation directory can be changed if des
 		
 ## Screenshots ##
 
-![Pretty Terminal Profile](https://github.com/smj10j/DevEnvironment/blob/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
+![Pretty Terminal Profile](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
 
-![To install - Set new windows to open with the 'smj10j' profile in Terminal](https://github.com/smj10j/DevEnvironment/blob/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
+![To install - Set new windows to open with the 'smj10j' profile in Terminal](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
 
-![Pretty Vim](https://github.com/smj10j/DevEnvironment/blob/master/screenshots/Pretty-Vim.png "Pretty Vim")
+![Pretty Vim](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Vim.png "Pretty Vim")
 		
 
 		
