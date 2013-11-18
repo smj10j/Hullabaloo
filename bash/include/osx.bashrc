@@ -47,3 +47,6 @@ else
 	echo "Not enabling bash-completion because the bash shell for it is not installed"
 	echo "Install it with 'sudo port install bash-completion'" 
 fi
+
+# Ignore case when doing bash completion
+bind "set completion-ignore-case"
