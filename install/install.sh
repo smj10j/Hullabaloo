@@ -3,7 +3,7 @@
 echo ""
 echo "################################################################"
 echo "################ DevEnvironment Installation ###################"
-echo "######## https://bitbucket.org/smj10j/devenvironment ###########"
+echo "######## https://github.com/smj10j/DevEnvironment ###########"
 echo "################################################################"
 echo ""
 
@@ -25,9 +25,9 @@ if [ -e $INSTALL_DIR ]; then
 	git pull
 	confirmCmdSuccess
 else
-	echo "Cloning git@bitbucket.org:smj10j/devenvironment.git into $INSTALL_DIR..."
+	echo "Cloning git@github.com:smj10j/DevEnvironment.git into $INSTALL_DIR..."
 	mkdir -p $INSTALL_DIR
-	git clone git@bitbucket.org:smj10j/devenvironment.git $INSTALL_DIR
+	git clone git@github.com:smj10j/DevEnvironment.git $INSTALL_DIR
 	confirmCmdSuccess
 	cd $INSTALL_DIR
 fi
@@ -74,8 +74,8 @@ if [ `grep "source $INSTALL_DIR/bash/main.bashrc" -c $BASH_PROFILE_FILE` -gt 0 ]
 	echo ""
 else
 	# Nope! Full steam ahead
-	echo "############## Custom Bash Profile from  ##############" >> $BASH_PROFILE_FILE
-	echo "## Docs: https://bitbucket.org/smj10j/devenvironment ##" >> $BASH_PROFILE_FILE
+	echo "############## Custom Bash Profile  ##############" >> $BASH_PROFILE_FILE
+	echo "## Docs: https://github.com/smj10j/DevEnvironment ##" >> $BASH_PROFILE_FILE
 	echo 'if [ `ps -p $$ | grep -c "/opt/local/bin/bash"` -eq 0 ]; then' >> $BASH_PROFILE_FILE
 	echo "	if [ -e /opt/local/bin/bash ]; then " >> $BASH_PROFILE_FILE
 	echo "		/opt/local/bin/bash -l" >> $BASH_PROFILE_FILE
