@@ -9,21 +9,35 @@ echo ""
 
 INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
-if [ -e ~/.bash_profile ]; then
+function confirmCmdSuccess {
+	if [ ! $? -eq 0 ]; then
+		echo ""
+		echo "Aborting installation of DevEnvironment"
+		echo ""
+		exit 1
+	fi
+}
+
+if [ -e $INSTALL_DIR ]; then
 	echo "It looks like you already have something in $INSTALL_DIR"
 	echo "Attempting to do a git pull and continue"
 	cd $INSTALL_DIR
 	git pull
+	confirmCmdSuccess
 else
 	echo "Cloning git@bitbucket.org:smj10j/devenvironment.git into $INSTALL_DIR..."
 	mkdir -p $INSTALL_DIR
 	git clone git@bitbucket.org:smj10j/devenvironment.git $INSTALL_DIR
+	confirmCmdSuccess
 	cd $INSTALL_DIR
 fi
 echo ""
 
 echo "Checking out submodules..."
-git submodule init && git submodule update
+git submodule init
+confirmCmdSuccess
+git submodule update
+confirmCmdSuccess
 echo ""
 
 # OSX-Specific installs
@@ -31,6 +45,7 @@ if [ `uname` == 'Darwin' ]; then
 	echo "Installing required macports (your root password may be requested)..."
 	echo ""
 	sudo install/install-macports.sh
+	confirmCmdSuccess
 	echo ""
 fi
 
@@ -78,5 +93,5 @@ echo "Install complete!"
 echo "Now installing a new Terminal profile and opening a new shell so the changes take effect immediately..."
 echo ""
 
-open osx/smj10j.terminal & exit 0
+open osx/smj10j.terminal && exit 0
 
