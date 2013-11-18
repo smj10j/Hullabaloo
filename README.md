@@ -3,14 +3,16 @@ DevEnvironment
 
 All my various settings
 
-## Installation ##
+Installation
+------------
 
 Run the following in your shell the installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ```bash 
 	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
 ```
 
-## What's Included ##
+What's Included
+---------------
 
 ### Files ###
 - `edit <file|directory>` - quickly open files in BBEdit from Terminal
@@ -62,7 +64,8 @@ alias ct='git checkout'
 - [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
 		
 		
-## Screenshots ##
+Screenshots
+-----------
 
 #### Pretty Terminal Profile ####
 ![Pretty Terminal Profile](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
