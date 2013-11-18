@@ -69,6 +69,14 @@ alias ct='git checkout'
 
 
 
+Customization
+---------------
+
+In `DevEnvironment/bash/includes`
+	- `shortcuts.bashrc` - Custom aliases go here
+	- `variables.bashrc` - Configurable variables used in the other .bashrc scripts go here
+
+
 Screenshots
 -----------
 
