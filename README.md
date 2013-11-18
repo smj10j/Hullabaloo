@@ -11,7 +11,7 @@ Installation
 Run the following in your shell
 The installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
 ```bash 
-	export INSTALL_DIR=; curl -s https://bitbucket.org/smj10j/devenvironment/raw/master/install/install.sh | /bin/bash && exit 0
+	export INSTALL_DIR=; curl -s https://raw.github.com/smj10j/DevEnvironment/master/install/install.sh | /bin/bash && exit 0
 ```
 
 
