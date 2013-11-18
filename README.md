@@ -47,7 +47,7 @@ drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 
 ##### Git
 - [Git Aliases](http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes)
-```bash
+<pre>
 alias ad='git add'
 alias pl='git pull'
 alias ph='git push'
@@ -59,7 +59,7 @@ alias de='git diff --ignore-space-change'
 alias me='git merge'
 alias bh='git branch'
 alias ct='git checkout'
-```
+</pre>
 
 ##### OSX 
 - Sets the screenshot directory to  ~/Screenshots
