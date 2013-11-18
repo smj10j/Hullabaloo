@@ -76,6 +76,19 @@ alias ct='git checkout'
 ![Pretty Vim](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Vim.png "Pretty Vim")
 		
 
+```bash
+alias ad='git add'
+alias pl='git pull'
+alias ph='git push'
+alias cm='git commit -m'
+alias sl='git status -uall'
+alias lg='git log'
+alias gp='git grep'
+alias de='git diff --ignore-space-change'
+alias me='git merge'
+alias bh='git branch'
+alias ct='git checkout'
+```
 		
 		
 		
