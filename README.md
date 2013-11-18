@@ -60,7 +60,7 @@ alias bh='git branch'
 alias ct='git checkout'
 ```
 
-- ### Vim ###
+### Vim ###
 - [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
 		
 		
