@@ -1,0 +1,12 @@
+{
+    Name = RevertDefault;
+    AppleEventCode = "Rvdf";
+
+    Commands = {
+        "GetURL" = {
+            CommandClass = RevertDefaultURLHandlerCommand;
+            AppleEventCode = GURL;
+            AppleEventClassCode = GURL;
+         };
+    };
+}

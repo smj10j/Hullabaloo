@@ -1,0 +1,12 @@
+{
+    Name = DoNothing;
+    AppleEventCode = "Dnth";
+
+    Commands = {
+        "GetURL" = {
+            CommandClass = DoNothingURLHandlerCommand;
+            AppleEventCode = GURL;
+            AppleEventClassCode = GURL;
+         };
+    };
+}

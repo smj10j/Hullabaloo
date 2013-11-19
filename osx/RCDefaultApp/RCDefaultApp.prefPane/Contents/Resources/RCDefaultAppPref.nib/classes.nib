@@ -1,0 +1,106 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = NSPreferencePane; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_firstKeyView" = id; 
+                "_initialKeyView" = id; 
+                "_lastKeyView" = id; 
+                "_window" = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {endInfo = id; showReadme = id; showWebsite = id; }; 
+            CLASS = RCAboutPaneController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                aboutText = NSTextView; 
+                okButton = NSButton; 
+                readmeButton = NSButton; 
+                rubiButton = NSButton; 
+                versionField = NSTextField; 
+            }; 
+            SUPERCLASS = RCDefaultAppPaneController; 
+        }, 
+        {
+            ACTIONS = {chooseNewApp = id; makeAssigned = id; }; 
+            CLASS = RCAppsPaneController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                appIconView = NSImageView; 
+                appInfoField = NSTextField; 
+                appNameField = NSTextField; 
+                assignButton = NSButton; 
+                outlineView = NSOutlineView; 
+                pathField = NSTextField; 
+            }; 
+            SUPERCLASS = RCDefaultAppPaneController; 
+        }, 
+        {
+            CLASS = RCDefaultAppPaneController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {browser = NSBrowser; infoButton = NSButton; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {showInfo = id; }; 
+            CLASS = RCDefaultAppPref; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                aboutController = id; 
+                appController = id; 
+                infoSheet = NSWindow; 
+                mediaController = id; 
+                progressText = NSTextField; 
+                progressView = NSProgressIndicator; 
+                schemeController = id; 
+                tabView = NSTabView; 
+            }; 
+            SUPERCLASS = NSPreferencePane; 
+        }, 
+        {
+            ACTIONS = {
+                addCustomType = id; 
+                addTypeTextFieldAction = id; 
+                changeOverrideCreator = id; 
+                chooseNewApp = id; 
+                chooseNewType = id; 
+                removeCustomType = id; 
+            }; 
+            CLASS = RCLSSchemePaneController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                addButton = NSButton; 
+                addTypeField = NSTextField; 
+                appPopup = NSPopUpButton; 
+                defaultLabelField = NSTextField; 
+                descField = NSTextField; 
+                infoField = NSTextField; 
+                overrideCreatorSwitch = NSButton; 
+                pathField = NSTextField; 
+                removeButton = NSButton; 
+                typeField = NSTextField; 
+            }; 
+            SUPERCLASS = RCDefaultAppPaneController; 
+        }, 
+        {
+            ACTIONS = {changePerformAtLogin = id; chooseNewApp = id; chooseNewScheme = id; }; 
+            CLASS = RCMediaPaneController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                appPopup = NSPopUpButton; 
+                defaultLabelField = NSTextField; 
+                loginSwitch = NSButton; 
+                pathField = NSTextField; 
+                schemeIconView = NSImageView; 
+                typeField = NSTextField; 
+            }; 
+            SUPERCLASS = RCDefaultAppPaneController; 
+        }, 
+        {CLASS = RCNoDimTitleButtonCell; LANGUAGE = ObjC; SUPERCLASS = NSButtonCell; }
+    ); 
+    IBVersion = 1; 
+}

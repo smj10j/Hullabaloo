@@ -52,15 +52,21 @@ if [ `uname` == 'Darwin' ]; then
 	sudo install/install-macports.sh
 	confirmCmdSuccess
 	echo ""
+	
+	echo "Installing the RCDefault Preference Pane to view Registered URL Schemes..." #(http://www.rubicode.com/Software/Bundles.html)
+	mkdir -p ~/Library/PreferencePanes
+	cp -rf osx/RCDefaultApp/RCDefaultApp.prefPane ~/Library/PreferencePanes/
+	confirmCmdSuccess
+	echo ""
 fi
 
 echo "Installing vimrc from https://github.com/amix/vimrc..."
 rm -rf ~/.vim_runtime
 ln -s $_SMJ_DEVENV_INSTALL_DIR/editors/vim/amix-vimrc ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
+confirmCmdSuccess
 echo ""
 
-echo ""
 echo "Creating user-editable versions of template files..."
 for TPL_FILE in bash/user/.*.tpl; do 
 	TPL_FILE_COPY=`echo "${TPL_FILE%\.tpl}" | sed 's/\/\./\//g'`

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Internet</key>
+		<dict>
+			<key>localizableStrings</key>
+			<array>
+				<dict>
+					<key>title</key>
+					<string>Programmzuordnungen</string>
+					<key>index</key>
+					<string>Web Browser, E-Mail Programm, RSS Leseprogramm, News Programm, FTP, URLs, UTIs, Erweiterungen, MIME-Types, Dateitypen, CD, DVD, Kamera, Webcam</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</plist>

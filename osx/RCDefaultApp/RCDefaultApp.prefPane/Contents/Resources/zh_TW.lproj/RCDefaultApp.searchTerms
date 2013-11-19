@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Internet</key>
+		<dict>
+			<key>localizableStrings</key>
+			<array>
+				<dict>
+					<key>title</key>
+					<string>預設應用程式</string>
+					<key>index</key>
+					<string>Web, 網頁瀏覽器, 電子郵件, 電子郵件閱讀器, RSS 閱讀器, 新聞閱讀器, FTP, URLs, UTIs, 副檔名, MIME 類型, 檔案類型</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</plist>
