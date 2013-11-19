@@ -58,7 +58,7 @@ drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 		
 ##### SSH
 - Automatically starts ssh-agent and adds private keys
-- `s <host> <user>` - attempts to use bash completion for hosts and users
+- `ssh` bash completion - users your ~/.ssh/known_hosts file to auto-complete hostnames as you type
 
 ##### Vim
 - [Custom vimrc](https://github.com/amix/vimrc) - in Amix's words, "The Ultimate vimrc"
