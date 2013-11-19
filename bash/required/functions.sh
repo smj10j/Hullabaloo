@@ -1,36 +1,9 @@
 #!/bin/bash
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-_SMJ_DEVENV_BASH_PROFILE_FILES=()
-
-function _smj_devenv_appendprofile {
-	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <file>"; return; fi
-	_SMJ_DEVENV_BASH_PROFILE_FILES+=($1)
-}
-
-function _smj_devenv_prependprofile {
-	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <file>"; return; fi
-
-}
-
-function _smj_devenv_loadprofiles {
-	if [ -z "$_SMJ_DEVENV_BASH_PROFILE_FILES" ]; then echo "Usage: $FUNCNAME <array of files>"; return; fi
-	for profileFile in "${_SMJ_DEVENV_BASH_PROFILE_FILES[@]}"; do 
-		_smj_devenv_loadprofile $profileFile
-	done
-}
-
-function _smj_devenv_loadprofile {
-	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <file>"; return; fi
-	PROFILE_PATH="$SCRIPT_DIR/$1.bashrc"
-	echo "Loading '$PROFILE_PATH'"
-	source $PROFILE_PATH
-}
-
 #TODO: make _smj_devenv_notify use pretty printing
 function _smj_devenv_notify {
 	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <message>"; return; fi
-	SCRIPT_NAME=${BASH_SOURCE#*\./}
+	local SCRIPT_NAME=${BASH_SOURCE#*\./}
 	echo ""
 	echo "#######################################################"
 	echo "$SCRIPT_NAME: $1"
@@ -41,7 +14,8 @@ function _smj_devenv_notify {
 function _smj_devenv_log {
 	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <message>"; return; fi
 	if [ -n "$VERBOSE" ]; then
-		SCRIPT_NAME=${BASH_SOURCE#*\./}
+		local SCRIPT_NAME=${BASH_SOURCE#*\./}
+		SCRIPT_NAME=${SCRIPT_NAME#$SCRIPT_BASE_DIR/}
 		echo "$SCRIPT_NAME: $1"
 	fi
 }
@@ -50,9 +24,9 @@ function _smj_devenv_log {
 function _smj_devenv_bash_profile_file {
 	
 	if [ `uname` == 'Darwin' ]; then
-		BASH_PROFILE_FILE=~/.bash_profile
+		local BASH_PROFILE_FILE=~/.bash_profile
 	else
-		BASH_PROFILE_FILE=~/.bashrc
+		local BASH_PROFILE_FILE=~/.bashrc
 	fi
 	
 	if [ ! -e $BASH_PROFILE_FILE ]; then
@@ -94,7 +68,7 @@ function _smj_devenv_reload {
 function _smj_devenv_uninstall {
 
 	if [ -z "$_SMJ_DEVENV_INSTALL_DIR" ]; then 
-		MSG="Installation directory unknown... automatic uninstall aborted!\n"
+		local MSG="Installation directory unknown... automatic uninstall aborted!\n"
 		MSG+="My best guess to the location of this installation is: $SCRIPT_DIR"
 		
 		_smj_devenv_notify "$MSG"
@@ -114,9 +88,9 @@ function _smj_devenv_uninstall {
 	
 	echo ""
 	echo "Removing entry from $BASH_PROFILE_FILE..."
-	BASH_PROFILE_FILE=`_smj_devenv_bash_profile_file`
-	BASH_PROFILE_INCLUDE_START='############## Begin smj10j Bash Profile.*'
-	BASH_PROFILE_INCLUDE_END='################ End smj10j Bash Profile.*'
+	local BASH_PROFILE_FILE=`_smj_devenv_bash_profile_file`
+	local BASH_PROFILE_INCLUDE_START='############## Begin smj10j Bash Profile.*'
+	local BASH_PROFILE_INCLUDE_END='################ End smj10j Bash Profile.*'
 	sed "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
 	echo ""
 

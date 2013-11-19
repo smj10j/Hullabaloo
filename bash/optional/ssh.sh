@@ -5,11 +5,11 @@
 function s {
 
 	if [ $# -eq 1 ]; then
-		USER=$DEFAULT_SSH_USER
-		HOST=$1
+		local USER=$DEFAULT_SSH_USER
+		local HOST=$1
 	elif [ $# -eq 2 ]; then
-		USER=$1
-		HOST=$2
+		local USER=$1
+		local HOST=$2
 	else 
 		echo "Usage: s <user> HOST"
 		return

@@ -12,7 +12,13 @@ while getopts ":v" o; do
 done
 shift $(($OPTIND - 1))
 
+##########################################
+############ Script Globals ##############
+##########################################
+
 VERBOSE=${VERBOSE:-''}
+SCRIPT_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+INSTALL_BASE_DIR=`dirname $SCRIPT_BASE_DIR`
 
 
 
@@ -20,29 +26,18 @@ VERBOSE=${VERBOSE:-''}
 ##### Required by this installation ######
 ##########################################
 
-# Catches script errors and outputs them
-_smj_devenv_loadprofile 'required/traps'
-
-# Array convenience methods like push, pop, shift, and unshift
-_smj_devenv_loadprofile 'required/arrays'
-
-# _smj_devenv_* functions used throughout
-_smj_devenv_loadprofile 'required/functions'
-
-# Pretty printing
-_smj_devenv_loadprofile 'required/pretty'
-
-
+# Loads all of our required libraries
+source "$SCRIPT_BASE_DIR/required/all.sh"
 
 ##########################################
 ############## Configurable ##############
 ##########################################
 
 # Variables used throughout the optional profiles
-_smj_devenv_appendprofile "user/variables"
+_smj_devenv_append_profile "user/variables"
 
 # Any custom extensions can go here to keep things clean
-_smj_devenv_appendprofile "user/custom"
+_smj_devenv_append_profile "user/custom"
 
 
 
@@ -51,19 +46,19 @@ _smj_devenv_appendprofile "user/custom"
 ##########################################
 
 # Adds PATH modification functions
-_smj_devenv_appendprofile "optional/path"
+_smj_devenv_append_profile "optional/path"
 
 # Add functions that make working with files within the shell easier
-_smj_devenv_appendprofile "optional/file"
+_smj_devenv_append_profile "optional/file"
 
 # Tools for making work within the shell easier (cd enhancements, bash completion, etc.)
-_smj_devenv_appendprofile "optional/shell"
+_smj_devenv_append_profile "optional/shell"
 
 # SSH enhancements and shortcuts
-_smj_devenv_appendprofile "optional/ssh"
+_smj_devenv_append_profile "optional/ssh"
 
 # Git tools and aliases
-_smj_devenv_appendprofile "optional/git"
+_smj_devenv_append_profile "optional/git"
 
 
 
@@ -72,10 +67,10 @@ _smj_devenv_appendprofile "optional/git"
 ##########################################
 
 # Nginx, MySQL, PHP-FPM, and other daemons
-_smj_devenv_appendprofile "optional/daemons"
+_smj_devenv_append_profile "optional/daemons"
 
 # OSX-specific configurations
-_smj_devenv_appendprofile "optional/osx"
+_smj_devenv_append_profile "optional/osx"
 
 
 
@@ -83,8 +78,5 @@ _smj_devenv_appendprofile "optional/osx"
 ############### Execution! ###############
 ##########################################
 
-# Debug 
-_smj_devenv_log "DevEnvironment tools will be loaded from $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 # Load 'em in!
-_smj_devenv_loadprofiles
+_smj_devenv_load_profiles

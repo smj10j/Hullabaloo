@@ -95,9 +95,9 @@ fi
 
 echo ""
 echo "Creating user-editable versions of template files..."
-for TPL_FILE in bash/user/*.tpl; do 
-	TPL_FILE_COPY=${TPL_FILE%\.tpl}
-	echo "Copying template file $TPL_FILE to $TPL_FILE_COPY"
+for TPL_FILE in bash/user/.*.tpl; do 
+	TPL_FILE_COPY=`echo "${TPL_FILE%\.tpl}" | sed 's/\/\./\//g'`
+	echo "Copying template file $TPL_FILE to $TPL_FILE_COPY";
 	cp $TPL_FILE $TPL_FILE_COPY; 
 done
 echo ""

@@ -36,7 +36,16 @@ drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
 ##### Paths
 - `pathsadd <path string>` - gracefully manages appending a string of paths to the $PATH variable
 - `pathadd <directory>` - adds a single directory (if not present) to the $PATH variable
-		
+
+##### Arrays
+- Array functions including:
+	- `array_push <arr> <el>` - push an element onto the end of the array
+	- `array_pop <arr> [<el>]` - pops an element off the end of an array into [optionally supplied] variable $el
+	- `array_shift <arr> <el>` - push an element onto the front of the array
+	- `array_unshift <arr> [<el>]` - pops an element off the front of the array into [optionally supplied] variable $el
+	
+##### Pretty Printing
+- #TODO
 		
 ##### SSH
 - Automatically starts ssh-agent and adds private keys

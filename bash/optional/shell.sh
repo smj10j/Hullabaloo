@@ -8,7 +8,7 @@ if [ `uname` == 'Darwin' ]; then
 			. /opt/local/etc/profile.d/bash_completion.sh
 		fi
 	else
-		MSG="Not enabling bash-completion because the bash shell for it is not installed\n"
+		local MSG="Not enabling bash-completion because the bash shell for it is not installed\n"
 		MSG+="Install bash-completion with 'sudo port install bash-completion'" 
 		_smj_devenv_notify "$MSG"
 	fi
