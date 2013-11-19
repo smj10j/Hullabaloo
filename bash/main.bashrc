@@ -36,3 +36,18 @@ done
 
 
 
+function updateDevEnvironment {
+	echo ""
+	echo "Updating DevEnvironment..."
+	echo ""
+	
+	cd $DEV_ENVIRONMENT_INSTALL_DIR
+	git pull
+	
+	echo ""
+	echo "Update complete!"
+	echo "Now installing a new Terminal profile and opening a new shell so the changes take effect immediately..."
+	echo ""
+
+	open osx/smj10j.terminal && exit 0
+}

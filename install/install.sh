@@ -7,7 +7,7 @@ echo "######## https://github.com/smj10j/DevEnvironment ###########"
 echo "################################################################"
 echo ""
 
-INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
+DEV_ENVIRONMENT_INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
 function confirmCmdSuccess {
 	if [ ! $? -eq 0 ]; then
@@ -18,18 +18,18 @@ function confirmCmdSuccess {
 	fi
 }
 
-if [ -e $INSTALL_DIR ]; then
-	echo "It looks like you already have something in $INSTALL_DIR"
+if [ -e $DEV_ENVIRONMENT_INSTALL_DIR ]; then
+	echo "It looks like you already have something in $DEV_ENVIRONMENT_INSTALL_DIR"
 	echo "Attempting to do a git pull and continue"
-	cd $INSTALL_DIR
+	cd $DEV_ENVIRONMENT_INSTALL_DIR
 	git pull
 	confirmCmdSuccess
 else
-	echo "Cloning git@github.com:smj10j/DevEnvironment.git into $INSTALL_DIR..."
-	mkdir -p $INSTALL_DIR
-	git clone git@github.com:smj10j/DevEnvironment.git $INSTALL_DIR
+	echo "Cloning git@github.com:smj10j/DevEnvironment.git into $DEV_ENVIRONMENT_INSTALL_DIR..."
+	mkdir -p $DEV_ENVIRONMENT_INSTALL_DIR
+	git clone git@github.com:smj10j/DevEnvironment.git $DEV_ENVIRONMENT_INSTALL_DIR
 	confirmCmdSuccess
-	cd $INSTALL_DIR
+	cd $DEV_ENVIRONMENT_INSTALL_DIR
 fi
 echo ""
 
@@ -67,7 +67,7 @@ echo "Will install in $BASH_PROFILE_FILE...";
 echo ""
 
 # Check if it's already installed...
-if [ `grep "source $INSTALL_DIR/bash/main.bashrc" -c $BASH_PROFILE_FILE` -gt 0 ]; then
+if [ `grep "source $DEV_ENVIRONMENT_INSTALL_DIR/bash/main.bashrc" -c $BASH_PROFILE_FILE` -gt 0 ]; then
 	echo "It appears these tools are already installed"
 	echo "You're all up to date!"
 	echo "Not adding duplicate 'source' line to $BASH_PROFILE_FILE"
@@ -82,7 +82,8 @@ else
 	echo "		exit 0" >> $BASH_PROFILE_FILE
 	echo "	fi" >> $BASH_PROFILE_FILE
 	echo "fi" >> $BASH_PROFILE_FILE
-	echo "source $INSTALL_DIR/bash/main.bashrc" >> $BASH_PROFILE_FILE
+	echo "export DEV_ENVIRONMENT_INSTALL_DIR=$DEV_ENVIRONMENT_INSTALL_DIR" >> $BASH_PROFILE_FILE
+	echo "source $DEV_ENVIRONMENT_INSTALL_DIR/bash/main.bashrc" >> $BASH_PROFILE_FILE
 	echo "#######################################################" >> $BASH_PROFILE_FILE
 fi
 
