@@ -50,7 +50,8 @@ if [ `uname` == 'Darwin' ]; then
 fi
 
 echo "Installing vimrc from https://github.com/amix/vimrc..."
-sh editors/vim/amix-vimrc/install_awesome_vimrc.sh
+ln -s $DEV_ENVIRONMENT_INSTALL_DIR/editors/vim/amix-vimrc ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
 echo ""
 
 echo "Determining bash profile script..."
