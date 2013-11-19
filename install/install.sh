@@ -60,6 +60,15 @@ ln -s $_SMJ_DEVENV_INSTALL_DIR/editors/vim/amix-vimrc ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 echo ""
 
+echo ""
+echo "Creating user-editable versions of template files..."
+for TPL_FILE in bash/user/.*.tpl; do 
+	TPL_FILE_COPY=`echo "${TPL_FILE%\.tpl}" | sed 's/\/\./\//g'`
+	echo "Copying template file $TPL_FILE to $TPL_FILE_COPY";
+	cp $TPL_FILE $TPL_FILE_COPY; 
+done
+echo ""
+
 echo "Loading in our newly added profiles..."
 source bash/main.bashrc -v
 echo ""
@@ -92,15 +101,6 @@ else
 fi
 
 #NOTE: Can also change default shell with: chsh -s /opt/local/bin/bash
-
-echo ""
-echo "Creating user-editable versions of template files..."
-for TPL_FILE in bash/user/.*.tpl; do 
-	TPL_FILE_COPY=`echo "${TPL_FILE%\.tpl}" | sed 's/\/\./\//g'`
-	echo "Copying template file $TPL_FILE to $TPL_FILE_COPY";
-	cp $TPL_FILE $TPL_FILE_COPY; 
-done
-echo ""
 
 echo ""
 echo "Install complete!"
