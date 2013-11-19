@@ -54,13 +54,14 @@ sh editors/vim/amix-vimrc/install_awesome_vimrc.sh
 echo ""
 
 echo "Determining bash profile script..."
-if [ -e ~/.bash_profile ]; then
+if [ `uname` == 'Darwin' ]; then
 	BASH_PROFILE_FILE=~/.bash_profile
-elif [ -e ~/.bashrc ]; then
-	BASH_PROFILE_FILE=~/.bashrc
 else
-	echo "No existing bash profile files found, creating one"
-	BASH_PROFILE_FILE=~/.bash_profile
+	BASH_PROFILE_FILE=~/.bashrc
+fi
+
+if [ ! -e $BASH_PROFILE_FILE ]; then
+	echo "No existing bash profile files found, creating $BASH_PROFILE_FILE"
 	touch $BASH_PROFILE_FILE
 fi
 echo "Will install in $BASH_PROFILE_FILE...";
