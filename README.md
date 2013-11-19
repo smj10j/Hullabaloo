@@ -15,6 +15,15 @@ The installation directory can be changed if desired (defaults to ~/.smj10j/DevE
 ```
 
 
+TODO
+----
+
+1. ssh
+2. cd pushing/popping
+3. periodic backups
+4. enhanced text-editor selection/install
+5. daemon installation
+
 
 What's Included
 ---------------
