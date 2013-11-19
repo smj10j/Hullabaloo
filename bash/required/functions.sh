@@ -61,21 +61,27 @@ function _smj_devenv_uninstall {
 	rm -rf $_SMJ_DEVENV_INSTALL_DIR
 	echo ""
 	
-	echo ""
 	echo "Removing ~/.vim_runtime symlink"
 	rm -rf ~/.vim_runtime
 	echo ""
 	
-	
-	echo ""
-	echo "Removing entry from $BASH_PROFILE_FILE..."
 	local BASH_PROFILE_FILE=`_smj_devenv_bash_profile_file`
 	local BASH_PROFILE_INCLUDE_START='############## Begin smj10j Bash Profile.*'
 	local BASH_PROFILE_INCLUDE_END='################ End smj10j Bash Profile.*'
-	sed "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
+
+	if [ -n "$BASH_PROFILE_FILE" ]; then 
+		echo "Removing entry from $BASH_PROFILE_FILE..."
+	
+		if [ `uname` == 'Darwin' ]; then
+			sed -i '' "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
+		else
+			sed -i "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
+		fi
+	else
+		echo "Unable to location your bash profile - not modifying"	
+	fi
 	echo ""
 
-	echo ""
 	echo "Uninstall complete!"
 	echo ""
 
