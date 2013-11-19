@@ -19,7 +19,7 @@ setScreenshotDirectory $SCREENSHOT_DIR
 # Always show hidden files in Finder
 function setFinderToAlwaysShowHiddenFiles {
 	
-	local FINDER_NAME='Finder'
+	FINDER_NAME='Finder'
 	if [ "`ps -e | grep $FINDER_NAME -c`" == "1" ]; then FINDER_NAME='finder'; fi
 	# echo "Finder name is $FINDER_NAME"
 	
@@ -33,7 +33,7 @@ setFinderToAlwaysShowHiddenFiles
 
 # Alias to show registered URL schemes
 function listRegisteredURLSchemes {
-	local LS_REGISTER_CMD='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister'
+	LS_REGISTER_CMD='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister'
 	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
 }
 

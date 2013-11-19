@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ##########################################
 ############# Parse Options ##############
 ##########################################
@@ -22,6 +23,8 @@ VERBOSE=${VERBOSE:-''}
 SCRIPT_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 INSTALL_BASE_DIR=`dirname $SCRIPT_BASE_DIR`
 
+mkdir -p "$INSTALL_BASE_DIR/tmp"
+( set -o posix ; set ) > "$INSTALL_BASE_DIR/tmp/variables.before"
 
 
 ##########################################
@@ -78,17 +81,22 @@ _smj_devenv_append_profile "optional/osx"
 
 
 
+
 ##########################################
-############### Execution! ###############
+################# Cleanup ################
 ##########################################
 
 # Do any final maintenance tasks
 _smj_devenv_append_profile 'required/cleanup'
 
-# Load 'em in!
+
+
+##########################################
+############### Execution! ###############
+##########################################
+
+# Load in our optional and user profiles
 _smj_devenv_load_profiles
-
-
 
 
 

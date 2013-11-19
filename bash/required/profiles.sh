@@ -14,7 +14,7 @@ function _smj_devenv_prepend_profile {
 
 function _smj_devenv_load_profile {
 	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <file>"; return; fi
-	local PROFILE_PATH="$SCRIPT_BASE_DIR/$1.sh"
+	PROFILE_PATH="$SCRIPT_BASE_DIR/$1.sh"
 	_smj_devenv_log "Loading '$PROFILE_PATH'"
 	source $PROFILE_PATH
 }

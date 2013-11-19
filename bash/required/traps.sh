@@ -47,7 +47,7 @@ function _smj_devenv_trap_error_handler {
 	local LASTLINE="$2"				# argument 2: last line of error occurrence
 	local LASTERR="$3"				# argument 3: error code of last command
 	
-	local HEADER="#################### ERROR $MYSELF ####################"
+	local HEADER=`_smj_devenv_bold "#################### ERROR $MYSELF ####################"`
 	local FOOTER=`for i in $(seq 1 ${#HEADER}); do echo -n "#"; done`
 	
 	echo ""
@@ -67,7 +67,7 @@ function _smj_devenv_trap_error_handler {
 	echo "${SCRIPT_NAME} [line ${LASTLINE}]: exit status of last command: ${LASTERR}"
 	
 	echo ""
-	echo $FOOTER
+	echo `_smj_devenv_bold "$FOOTER"`
 	echo ""
 }
 
@@ -76,3 +76,4 @@ trap ERR
 
 # Add our new one
 trap '_smj_devenv_trap_error_handler "${BASH_SOURCE#*\./}" ${LINENO} $?' ERR
+

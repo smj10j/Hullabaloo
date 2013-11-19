@@ -49,8 +49,8 @@ function _smj_devenv_reload {
 function _smj_devenv_uninstall {
 
 	if [ -z "$_SMJ_DEVENV_INSTALL_DIR" ]; then 
-		local MSG="Installation directory unknown... automatic uninstall aborted!\n"
-		MSG+="My best guess to the location of this installation is: $SCRIPT_DIR"
+		local MSG=$'\nInstallation directory unknown... automatic uninstall aborted!\n'
+		MSG+="My best guess to the location of this installation is: $INSTALL_BASE_DIR"
 		
 		_smj_devenv_notify "$MSG"
 		return
