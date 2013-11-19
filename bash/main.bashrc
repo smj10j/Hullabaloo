@@ -23,9 +23,6 @@ VERBOSE=${VERBOSE:-''}
 SCRIPT_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 INSTALL_BASE_DIR=`dirname $SCRIPT_BASE_DIR`
 
-mkdir -p "$INSTALL_BASE_DIR/tmp"
-( set -o posix ; set ) > "$INSTALL_BASE_DIR/tmp/variables.before"
-
 
 ##########################################
 ##### Required by this installation ######

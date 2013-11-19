@@ -7,7 +7,6 @@ echo "######## https://github.com/smj10j/DevEnvironment ###########"
 echo "################################################################"
 echo ""
 
-set -e
 export _SMJ_DEVENV_INSTALL_DIR=${INSTALL_DIR:-~/.smj10j/DevEnvironment}
 
 function confirmCmdSuccess {
