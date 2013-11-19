@@ -12,7 +12,7 @@ DEFAULT_SSH_USER='root'
 # This is the editor that will be launched by 'edit'
 TEXT_EDITOR_CMD='vi'
 if [ `uname` == 'Darwin' ]; then
-	if [ -n `ls -la /Applications/ | grep 'BBEdit'` ]; then
+	if [ -n "`ls -la /Applications/ | grep 'BBEdit'`" ]; then
 		TEXT_EDITOR_CMD='open -a BBEdit'
 	else
 		TEXT_EDITOR_CMD='open -a TextEdit'
