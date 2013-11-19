@@ -108,6 +108,7 @@ echo "Opening $_SMJ_DEVENV_INSTALL_DIR/bash/config/variables.bashrc so you can m
 echo ""
 
 read -n1 -r -p "Press any key to open $_SMJ_DEVENV_INSTALL_DIR/bash/config/variables.bashrc..." key
+echo ""
 edit bash/config/variables.bashrc
 
 echo ""

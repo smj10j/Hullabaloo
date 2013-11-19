@@ -39,7 +39,11 @@ function _smj_devenv_update {
 function _smj_devenv_reload {
 	if [ `uname` == 'Darwin' ]; then
 		read -n1 -r -p "Press any key to open the new terminal..." key
-		open osx/smj10j.terminal && exit 0
+		if [ -e osx/smj10j.terminal ]; then
+			open osx/smj10j.terminal && exit 0
+		else
+			/bin/bash -l && exit 0	
+		fi
 	else 
 		read -n1 -r -p "Press any key to open the new shell..." key
 		/bin/bash -l && exit 0
