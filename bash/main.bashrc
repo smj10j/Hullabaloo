@@ -12,6 +12,8 @@ while getopts ":v" o; do
 done
 shift $(($OPTIND - 1))
 
+
+
 ##########################################
 ############ Script Globals ##############
 ##########################################
@@ -28,6 +30,8 @@ INSTALL_BASE_DIR=`dirname $SCRIPT_BASE_DIR`
 
 # Loads all of our required libraries
 source "$SCRIPT_BASE_DIR/required/all.sh"
+
+
 
 ##########################################
 ############## Configurable ##############
@@ -78,5 +82,13 @@ _smj_devenv_append_profile "optional/osx"
 ############### Execution! ###############
 ##########################################
 
+# Do any final maintenance tasks
+_smj_devenv_append_profile 'required/cleanup'
+
 # Load 'em in!
 _smj_devenv_load_profiles
+
+
+
+
+
