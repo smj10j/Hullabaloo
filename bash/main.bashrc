@@ -1,53 +1,90 @@
 #!/bin/bash
 
-# Get a reference to the directory this script is in
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "DevEnvironment tools will be loaded from $SCRIPT_DIR"
+##########################################
+############# Parse Options ##############
+##########################################
 
-BASH_PROFILE_FILES=()
+while getopts ":v" o; do
+	case "${o}" in
+		v) VERBOSE='-v'; ;;
+		*) ;;
+	esac
+done
+shift $(($OPTIND - 1))
 
-# Very specific
-BASH_PROFILE_FILES+=("include/variables")
-
-# Likely helpful for all
-BASH_PROFILE_FILES+=("include/path")
-BASH_PROFILE_FILES+=("include/file")
-BASH_PROFILE_FILES+=("include/git")
-BASH_PROFILE_FILES+=("include/ssh")
-
-# More specific
-BASH_PROFILE_FILES+=("include/daemons")
-BASH_PROFILE_FILES+=("include/osx")
-
-# Very specific
-BASH_PROFILE_FILES+=("include/shortcuts")
+VERBOSE=${VERBOSE:-''}
 
 
 
+##########################################
+##### Required by this installation ######
+##########################################
 
+# Catches script errors and outputs them
+_smj_devenv_loadprofile 'required/traps'
+
+# Array convenience methods like push, pop, shift, and unshift
+_smj_devenv_loadprofile 'required/arrays'
+
+# _smj_devenv_* functions used throughout
+_smj_devenv_loadprofile 'required/functions'
+
+# Pretty printing
+_smj_devenv_loadprofile 'required/pretty'
+
+
+
+##########################################
+############## Configurable ##############
+##########################################
+
+# Variables used throughout the optional profiles
+_smj_devenv_appendprofile "user/variables"
+
+# Any custom extensions can go here to keep things clean
+_smj_devenv_appendprofile "user/custom"
+
+
+
+##########################################
+############# Globally Useful ############
+##########################################
+
+# Adds PATH modification functions
+_smj_devenv_appendprofile "optional/path"
+
+# Add functions that make working with files within the shell easier
+_smj_devenv_appendprofile "optional/file"
+
+# Tools for making work within the shell easier (cd enhancements, bash completion, etc.)
+_smj_devenv_appendprofile "optional/shell"
+
+# SSH enhancements and shortcuts
+_smj_devenv_appendprofile "optional/ssh"
+
+# Git tools and aliases
+_smj_devenv_appendprofile "optional/git"
+
+
+
+##########################################
+########### Use-case dependent ###########
+##########################################
+
+# Nginx, MySQL, PHP-FPM, and other daemons
+_smj_devenv_appendprofile "optional/daemons"
+
+# OSX-specific configurations
+_smj_devenv_appendprofile "optional/osx"
+
+
+
+##########################################
+############### Execution! ###############
+##########################################
+
+# Debug 
+_smj_devenv_log "DevEnvironment tools will be loaded from $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Load 'em in!
-for profileFile in "${BASH_PROFILE_FILES[@]}"; do 
-	profileFilePath="$SCRIPT_DIR/$profileFile.bashrc"
-	echo "Loading '$profileFilePath'"
-	source $profileFilePath
-done
-
-
-
-
-function updateDevEnvironment {
-	echo ""
-	echo "Updating DevEnvironment..."
-	echo ""
-	
-	cd $DEV_ENVIRONMENT_INSTALL_DIR
-	git pull
-	
-	echo ""
-	echo "Update complete!"
-	echo "Now installing a new Terminal profile and opening a new shell so the changes take effect immediately..."
-	echo ""
-
-	open osx/smj10j.terminal && exit 0
-}
+_smj_devenv_loadprofiles

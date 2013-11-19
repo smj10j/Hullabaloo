@@ -1,5 +1,7 @@
 #!/bin/bash
 
+####TODO: install these daemons
+
 # Nginx
 alias nginx_start='sudo nginx'
 alias nginx_stop='sudo nginx -s stop'

@@ -37,16 +37,13 @@ function listRegisteredURLSchemes {
 	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
 }
 
+# Disable writing .DS_Store to network drives (http://support.apple.com/kb/HT1629)
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
-# Enable Bash Completion (http://trac.macports.org/wiki/howto/bash-completion)
-if [ -e /opt/local/bin/bash ]; then 
-	if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-		. /opt/local/etc/profile.d/bash_completion.sh
-	fi
-else
-	echo "Not enabling bash-completion because the bash shell for it is not installed"
-	echo "Install it with 'sudo port install bash-completion'" 
-fi
+#TODO: Periodically backup all configuration all settings
+# defaults read > 
 
-# Ignore case when doing bash completion
-bind "set completion-ignore-case"
+
+
+
+

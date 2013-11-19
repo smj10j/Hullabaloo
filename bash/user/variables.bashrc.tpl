@@ -10,6 +10,7 @@ PATH_ADDITION="/opt/local/bin:/opt/local/sbin:/opt/local/libexec/perl5.12/sitebi
 DEFAULT_SSH_USER='root'
 
 # This is the editor that will be launched by 'edit'
+#TODO: install a better default text editor if BBEdit not available
 TEXT_EDITOR_CMD='vi'
 if [ `uname` == 'Darwin' ]; then
 	if [ -n "`ls -la /Applications/ | grep 'BBEdit'`" ]; then
@@ -19,6 +20,12 @@ if [ `uname` == 'Darwin' ]; then
 	fi
 fi
 
-
 # Screenshots will be placed in this directory instead of the Desktop
 SCREENSHOT_DIR=~/Screenshots
+
+#TODO: sensiblel defaults
+# Any periodic backups will be written here
+BACKUPS_DIR=~/Dropbox
+if [ ! -e $BACKUPS_DIR ]; then
+	return _smj_devenv_notify "Backup directory '$BACKUPS_DIR' does not exist"
+fi
