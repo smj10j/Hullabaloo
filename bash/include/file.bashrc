@@ -11,5 +11,5 @@ function edit {
     if [ ! -e $1 ]; then 
         touch $1
     fi
-    open -a $TEXT_EDITOR $1
+    $TEXT_EDITOR_CMD $1
 }
