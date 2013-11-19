@@ -106,8 +106,10 @@ Screenshots
 
 #### Pretty Vim
 ![Pretty Vim](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Vim.png "Pretty Vim")
+	
+#### View Registered URL Schemes with [RCDefaultApp](http://www.rubicode.com/Software/RCDefaultApp/)
+![RCDefaultApp - View Registered URL Schemes](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/RCDefaultApp.png "RCDefaultApp - View Registered URL Schemes")
 		
-
 		
 		
 		
