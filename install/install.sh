@@ -56,6 +56,7 @@ if [ `uname` == 'Darwin' ]; then
 fi
 
 echo "Installing vimrc from https://github.com/amix/vimrc..."
+rm -rf ~/.vim_runtime
 ln -s $_SMJ_DEVENV_INSTALL_DIR/editors/vim/amix-vimrc ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 echo ""
