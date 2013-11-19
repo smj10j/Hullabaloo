@@ -72,8 +72,8 @@ function _smj_devenv_trap_error_handler {
 }
 
 # Clear error traps
-trap ERR
+# trap ERR
 
 # Add our new one
-trap '_smj_devenv_trap_error_handler "${BASH_SOURCE#*\./}" ${LINENO} $?' ERR
+# trap '_smj_devenv_trap_error_handler "${BASH_SOURCE#*\./}" ${LINENO} $?' ERR
 
