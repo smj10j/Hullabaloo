@@ -7,9 +7,7 @@ if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
 	lso ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{print $3}' | xargs -L 1 ssh-add 
 fi
 
-# /etc/profile.d/complete-hosts.sh
 # Autocomplete Hostnames for SSH etc.
-# by Jean-Sebastien Morisset (http://surniaulula.com/)
 _complete_ssh () {
 	COMPREPLY=()
 	local cur="${COMP_WORDS[COMP_CWORD]}"
