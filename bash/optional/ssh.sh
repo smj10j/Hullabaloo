@@ -4,16 +4,26 @@
 # SSH Agent
 if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
 	eval $(ssh-agent)
-	lso ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{print $3}' | xargs -L 1 ssh-add 
 fi
+lso ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{print $3}' | xargs -L 1 ssh-add > /dev/null 2>&1 
 
 # Autocomplete Hostnames for SSH etc.
 _complete_ssh () {
 	COMPREPLY=()
-	local cur="${COMP_WORDS[COMP_CWORD]}"
-		
+
+	local cur=`_get_cword`
+    local prev=${COMP_WORDS[COMP_CWORD-1]}
+    	
 	local user_host_list=""
 	local user_arr=('admin' 'ec2-user' 'root' 'ubuntu')
+
+	case "$prev" in
+    -@(i))
+    	local file_list=`ls ~/.ssh/ | awk '{print "~/.ssh/"$1}'`
+        COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
+        return 0
+        ;;
+    esac
 
 	if [[ $cur == *@* ]]; then
 		local host_list=`{ 
