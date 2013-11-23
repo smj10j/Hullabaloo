@@ -29,7 +29,7 @@ function setFinderToAlwaysShowHiddenFiles {
 		sudo killall $FINDER_NAME
 	fi
 }
-setFinderToAlwaysShowHiddenFiles 
+#setFinderToAlwaysShowHiddenFiles 
 
 # Alias to show registered URL schemes
 function listRegisteredURLSchemes {
