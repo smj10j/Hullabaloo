@@ -54,6 +54,7 @@ _complete_ssh () {
 	COMPREPLY=( $(compgen -W "${user_host_list}" -- "${cur}"))
 	return 0
 }
+complete -o nospace -F _complete_ssh mosh
 complete -o nospace -F _complete_ssh ssh
 
 
