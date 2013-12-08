@@ -97,6 +97,7 @@ else
 	echo "## Docs: https://github.com/smj10j/DevEnvironment ##" >> $BASH_PROFILE_FILE
 	echo 'if [ `ps -p $$ | grep -c "/opt/local/bin/bash"` -eq 0 ]; then' >> $BASH_PROFILE_FILE
 	echo "	if [ -e /opt/local/bin/bash ]; then " >> $BASH_PROFILE_FILE
+	echo "		echo \"Switching to updated bash shell...\"" >> $BASH_PROFILE_FILE
 	echo "		echo \"$@\" | /opt/local/bin/bash -l -s" >> $BASH_PROFILE_FILE
 	echo "		exit 0" >> $BASH_PROFILE_FILE
 	echo "	fi" >> $BASH_PROFILE_FILE
