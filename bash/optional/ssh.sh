@@ -12,18 +12,18 @@ _complete_ssh () {
 	COMPREPLY=()
 
 	local cur=`_get_cword`
-    local prev=${COMP_WORDS[COMP_CWORD-1]}
+	local prev=${COMP_WORDS[COMP_CWORD-1]}
     	
 	local user_host_list=""
 	local user_arr=('admin' 'ec2-user' 'root' 'ubuntu')
 
 	case "$prev" in
-    -@(i))
-    	local file_list=`ls ~/.ssh/ | awk '{print "~/.ssh/"$1}'`
-        COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
-        return 0
-        ;;
-    esac
+		-@(i))
+			local file_list=`ls ~/.ssh/ | awk '{print "~/.ssh/"$1}'`
+			COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
+			return 0
+			;;
+	esac
 
 	if [[ $cur == *@* ]]; then
 		local host_list=`{ 

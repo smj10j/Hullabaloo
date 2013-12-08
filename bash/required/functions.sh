@@ -36,6 +36,20 @@ function _smj_devenv_update {
 	fi
 }
 
+function _smj_devenv_repair {
+
+	echo ""
+	echo "Repairing your DevEnvironment installation..."
+	echo "You may be asked for your computer password"
+	echo ""
+	
+	sudo chown -R steve:staff ~/.smj10j/
+	
+	echo ""
+	echo "Repair complete!"
+	echo ""
+}
+
 function _smj_devenv_reload {
 	if [ `uname` == 'Darwin' ]; then
 		read -n1 -r -p "Press any key to open the new terminal..." key
