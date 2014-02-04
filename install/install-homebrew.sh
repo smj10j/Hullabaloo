@@ -81,12 +81,17 @@ if [ -z `which brew` ]; then
 
 
 	######### Launching Initial Installs ##########
-	nginx
-	mysql.server start
-	php55-fpm
-	memcached
+	launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist 
+	launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
+	launchctl load -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist
 
 
+
+	### Potential brew doctor error 
+	### 	Error: Failed to import: abstract-php-versions
+	### 	uninitialized constant AbstractPhpVersions
+	### can be fixed with:
+	### https://github.com/josegonzalez/homebrew-php/issues/768#issuecomment-30846449
 
 
 	############## Done ###################
