@@ -70,9 +70,6 @@ _smj_devenv_append_profile "optional/git"
 ########### Use-case dependent ###########
 ##########################################
 
-# Nginx, MySQL, PHP-FPM, and other daemons
-_smj_devenv_append_profile "optional/daemons"
-
 # OSX-specific configurations
 _smj_devenv_append_profile "optional/osx"
 
