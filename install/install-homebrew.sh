@@ -33,8 +33,6 @@ if [ -z `which brew` ]; then
 
 	######### Installing Development Brews ##########
 
-	echo "Installing required PHP libraries..."
-
 	echo "Installing Nginx..."
 	brew install nginx
 
@@ -81,7 +79,8 @@ if [ -z `which brew` ]; then
 	######### Launching Initial Installs ##########
 	nginx
 	mysql
-	
+	php55-fpm
+	memcached
 
 
 

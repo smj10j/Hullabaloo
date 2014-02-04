@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# Bash Completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+# Enable Bash Completion
+if [ `uname` == 'Darwin' ]; then
+	# Bash Completion
+	if [ -f `brew --prefix`/etc/bash_completion ]; then
+		. `brew --prefix`/etc/bash_completion
+	fi
 fi
 
 # SSH Agent
@@ -19,7 +22,7 @@ _complete_ssh () {
 	local prev=${COMP_WORDS[COMP_CWORD-1]}
     	
 	local user_host_list=""
-	local user_arr=('admin' 'ec2-user' 'root' 'ubuntu')
+	local user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
 
 	case "$prev" in
 		-@(i))

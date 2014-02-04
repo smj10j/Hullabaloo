@@ -3,14 +3,9 @@
 
 # Enable Bash Completion
 if [ `uname` == 'Darwin' ]; then
-	if [ -e /opt/local/bin/bash ]; then 
-		if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-			. /opt/local/etc/profile.d/bash_completion.sh
-		fi
-	else
-		local MSG=$'Not enabling bash-completion because the bash shell for it is not installed\n'
-		MSG+="Install bash-completion with 'sudo port install bash-completion'" 
-		_smj_devenv_notify "$MSG"
+	# Bash Completion
+	if [ -f `brew --prefix`/etc/bash_completion ]; then
+		. `brew --prefix`/etc/bash_completion
 	fi
 fi
 
