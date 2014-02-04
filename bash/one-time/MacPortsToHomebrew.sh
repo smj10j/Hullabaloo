@@ -4,7 +4,7 @@ BACKUP_PORT_FILE=`echo ~`"/Installed-MacPorts-"`date +"%Y-%m-%d"`".backup.txt"
 BACKUP_PORTS_OPT_LOCAL_DIR="/opt/macports_backup_local"
 
 echo "Backing up list of installed MacPorts to $BACKUP_PORT_FILE..."
-port installed > $BACKUP_PORT_FILE
+sudo port installed > $BACKUP_PORT_FILE
 
 echo "Uninstalling all MacPorts..."
 sudo port -f uninstall installed
@@ -32,3 +32,6 @@ brew doctor
 
 echo "Update your .bash_profile HOMEBREW_GITHUB_API_TOKEN with a personal Github token created here: https://github.com/settings/applications"
 echo "export HOMEBREW_GITHUB_API_TOKEN=" >> ~/.bash_profile
+
+
+echo "Now install all your old MacPorts..."
