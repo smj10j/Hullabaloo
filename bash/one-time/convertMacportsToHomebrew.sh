@@ -24,14 +24,7 @@ sudo rm -rf /Library/Tcl/darwinports1.0
 sudo rm -rf /Library/Tcl/macports1.0
 sudo rm -rf ~/.macports
 
-echo "Installing Homebrew..."
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-
-echo "Running Brew Doctor..."
-brew doctor
-
-echo "Update your .bash_profile HOMEBREW_GITHUB_API_TOKEN with a personal Github token created here: https://github.com/settings/applications"
-echo "export HOMEBREW_GITHUB_API_TOKEN=" >> ~/.bash_profile
+source install/install-macports.sh
 
 
 echo "Now install all your old MacPorts..."
