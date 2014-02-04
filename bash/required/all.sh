@@ -5,7 +5,8 @@
 ############# Global Variables ###########
 ##########################################
 
-echo export PATH='/usr/local/bin:$PATH' >> ~/.bash_profile
+export PATH=/usr/local/bin:$PATH
+
 
 
 
@@ -23,6 +24,7 @@ source "$SCRIPT_BASE_DIR/required/profiles.sh"
 
 # Logging functions
 source "$SCRIPT_BASE_DIR/required/logging.sh"
+
 
 
 
