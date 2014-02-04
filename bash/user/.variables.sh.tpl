@@ -4,7 +4,7 @@
 
 
 # These paths will be appended if they don't already exist to the PATH variable
-PATH_ADDITION="/usr/local/bin"
+PATH_ADDITION=""
 
 # If no user is provided to 's', this user will be used
 DEFAULT_SSH_USER='root'

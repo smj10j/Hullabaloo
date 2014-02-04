@@ -46,7 +46,7 @@ OSX-Specific installs
 if [ `uname` == 'Darwin' ]; then
 	echo ""
 	echo "#######################################################"
-	echo "Installing required brews"
+	echo "Installing Homebrew"
 	echo ""
 	echo "Your root password may be requested"
 	echo "#######################################################"

@@ -24,7 +24,7 @@ sudo rm -rf /Library/Tcl/darwinports1.0
 sudo rm -rf /Library/Tcl/macports1.0
 sudo rm -rf ~/.macports
 
-source install/install-macports.sh
+source install/install-homebrew.sh
 
 
 echo "Now install all your old MacPorts..."
