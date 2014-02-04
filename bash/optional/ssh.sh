@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Bash Completion
+brew install git bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 
 # SSH Agent
 if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then

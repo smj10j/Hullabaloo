@@ -40,25 +40,27 @@ git submodule update
 confirmCmdSuccess
 echo ""
 
+
+
 # OSX-Specific installs
-if [ `uname` == 'Darwin' ]; then
-	echo ""
-	echo "#######################################################"
-	echo "Installing required macports"
-	echo ""
-	echo "Your root password may be requested"
-	echo "#######################################################"
-	echo ""
-	sudo install/install-macports.sh
-	confirmCmdSuccess
-	echo ""
-	
-	echo "Installing the RCDefault Preference Pane to view Registered URL Schemes..." #(http://www.rubicode.com/Software/Bundles.html)
-	mkdir -p ~/Library/PreferencePanes
-	cp -rf osx/RCDefaultApp/RCDefaultApp.prefPane ~/Library/PreferencePanes/
-	confirmCmdSuccess
-	echo ""
-fi
+# if [ `uname` == 'Darwin' ]; then
+# 	echo ""
+# 	echo "#######################################################"
+# 	echo "Installing required macports"
+# 	echo ""
+# 	echo "Your root password may be requested"
+# 	echo "#######################################################"
+# 	echo ""
+# 	sudo install/install-macports.sh
+# 	confirmCmdSuccess
+# 	echo ""
+# 	
+# 	echo "Installing the RCDefault Preference Pane to view Registered URL Schemes..." #(http://www.rubicode.com/Software/Bundles.html)
+# 	mkdir -p ~/Library/PreferencePanes
+# 	cp -rf osx/RCDefaultApp/RCDefaultApp.prefPane ~/Library/PreferencePanes/
+# 	confirmCmdSuccess
+# 	echo ""
+# fi
 
 echo "Installing vimrc from https://github.com/amix/vimrc..."
 rm -rf ~/.vim_runtime
@@ -95,7 +97,7 @@ else
 	# Nope! Full steam ahead
 	echo "############## Begin smj10j Bash Profile #################" >> $BASH_PROFILE_FILE
 	echo "## Docs: https://github.com/smj10j/DevEnvironment ##" >> $BASH_PROFILE_FILE
-	echo 'if [ `ps -ap $$ | grep -v "grep" | grep -c "/opt/local/bin/bash"` -eq 0 ]; then' >> $BASH_PROFILE_FILE
+	echo 'if [ `ps -p $$ | grep -v "grep" | grep -c "/opt/local/bin/bash"` -eq 0 ]; then' >> $BASH_PROFILE_FILE
 	echo "	if [ -e /opt/local/bin/bash ]; then " >> $BASH_PROFILE_FILE
 	echo "		echo \"Switching to updated bash shell...\"" >> $BASH_PROFILE_FILE
 	echo "		/opt/local/bin/bash -l" >> $BASH_PROFILE_FILE
