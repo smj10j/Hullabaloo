@@ -10,6 +10,11 @@ if [ -z `which brew` ]; then
 	brew doctor
 	confirmCmdSuccess
 
+	
+	echo "Adding common Brew taps..."
+	brew tap homebrew/dupes
+	brew tap josegonzalez/homebrew-php
+
 	######### Installing Global Brews ##########
 
 	echo "Installing git..."
@@ -17,14 +22,11 @@ if [ -z `which brew` ]; then
 
 	echo "Installing wget..."
 	brew install wget --enable-iri
-
-	echo "Installing npm..."
-	brew install npm
-
+	
 	echo "Updating existing Mac coreutils ones..."
 	brew install coreutils
 
-	echo "Installing findutils (find, locate, etc.)
+	echo "Installing findutils (find, locate, etc.)..."
 	brew install findutils
 
 	echo "Installing bash-completion..."
@@ -51,10 +53,11 @@ if [ -z `which brew` ]; then
 	brew install php55 --without-apache --with-intl --with-fpm --with-mysql
 	
 	echo "Installing PHP libraries..."
-	brew install php55-apc
+	brew install php55-apcu
 	brew install php55-xdebug
 	brew install php55-mongo
 	brew install php55-mcrypt
+	brew install php55-intl
 	brew install php55-memcache
 	brew install php55-memcached
 	
@@ -70,15 +73,16 @@ if [ -z `which brew` ]; then
 	ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
 	ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents
 
-	echo "Configuring MySQL via mysqladmin..."
-	mysqladmin -u root 
+	echo "Configuring MySQL via mysql_secure_installation..."
+	mysql.server start
+	mysql_secure_installation
 
 
 
 
 	######### Launching Initial Installs ##########
 	nginx
-	mysql
+	mysql.server start
 	php55-fpm
 	memcached
 
