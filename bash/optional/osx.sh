@@ -5,6 +5,9 @@ if [ `uname` != 'Darwin' ]; then
 	return
 fi
 
+# Set JAVA_HOME
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # Change the screenshot directory
 function setScreenshotDirectory {
 	if [ `defaults read com.apple.screencapture location` != "$1" ]; then
