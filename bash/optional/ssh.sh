@@ -12,7 +12,7 @@ fi
 if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
 	eval $(ssh-agent)
 fi
-ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add > /dev/null 2>&1 
+ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
 
 # Autocomplete Hostnames for SSH etc.
 _complete_ssh () {
