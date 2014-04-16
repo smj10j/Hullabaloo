@@ -14,7 +14,7 @@ if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
 fi
 
 for p in ${PREFERRED_SSH_KEYS[@]}; do 
-	ssh-add $p -K > /dev/null 2>&1 
+	ssh-add -K `echo $p` > /dev/null 2>&1 
 done
 ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
 
