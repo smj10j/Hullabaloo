@@ -6,8 +6,8 @@
 # These paths will be appended if they don't already exist to the PATH variable
 PATH_ADDITION=""
 
-# this will be added first to ssh-add. eg. "~/.ssh/my-special-place.pem"
-PREFERRED_SSH_KEY=""
+# these will be added first to ssh-add. eg. ( "~/.ssh/my-special-place.pem" "work-place.pem" )
+PREFERRED_SSH_KEYS=()
 
 # If no user is provided to 's', this user will be used
 DEFAULT_SSH_USER='root'
