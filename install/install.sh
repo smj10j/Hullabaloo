@@ -44,22 +44,19 @@ echo ""
 
 OSX-Specific installs
 if [ `uname` == 'Darwin' ]; then
-	echo ""
-	echo "#######################################################"
-	echo "Installing Homebrew"
-	echo ""
-	echo "Your root password may be requested"
-	echo "#######################################################"
-	echo ""
-	sudo install/install-homebrew.sh
-	confirmCmdSuccess
-	echo ""
-	
-	echo "Installing the RCDefault Preference Pane to view Registered URL Schemes..." #(http://www.rubicode.com/Software/Bundles.html)
-	mkdir -p ~/Library/PreferencePanes
-	cp -rf osx/RCDefaultApp/RCDefaultApp.prefPane ~/Library/PreferencePanes/
-	confirmCmdSuccess
-	echo ""
+	if [ -z `which brew` ]; then
+
+		echo ""
+		echo "#######################################################"
+		echo "Installing Homebrew"
+		echo ""
+		echo "Your root password may be requested"
+		echo "#######################################################"
+		echo ""
+		sudo install/install-homebrew.sh
+		confirmCmdSuccess
+		echo ""
+	fi	
 fi
 
 echo "Installing vimrc from https://github.com/amix/vimrc..."
