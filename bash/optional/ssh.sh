@@ -12,6 +12,8 @@ fi
 if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
 	eval $(ssh-agent)
 fi
+ssh-add $PREFERRED_SSH_KEY -K > /dev/null 2>&1 
+ssh-add ~/.ssh/id_dsa -K > /dev/null 2>&1 
 ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
 
 # Autocomplete Hostnames for SSH etc.

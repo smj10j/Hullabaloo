@@ -6,6 +6,9 @@
 # These paths will be appended if they don't already exist to the PATH variable
 PATH_ADDITION=""
 
+# this will be added first to ssh-add
+PREFERRED_SSH_KEY="~/.ssh/id_rsa-extrabux-keypair"
+
 # If no user is provided to 's', this user will be used
 DEFAULT_SSH_USER='root'
 
