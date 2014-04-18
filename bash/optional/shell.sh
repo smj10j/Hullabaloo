@@ -12,5 +12,11 @@ fi
 # Ignore case when doing bash completion
 bind "set completion-ignore-case"
 
+# Store much more bash history (default is 500)
+HISTFILESIZE=5000
+
+
 #TODO: add push/pop for CD
+
+
 
