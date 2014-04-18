@@ -16,7 +16,7 @@ fi
 for p in ${PREFERRED_SSH_KEYS[@]}; do 
 	ssh-add -K `eval echo $p` > /dev/null 2>&1 
 done
-ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
+#ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
 
 # Autocomplete Hostnames for SSH etc.
 _complete_ssh () {
