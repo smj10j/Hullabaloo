@@ -1,7 +1,7 @@
 {
     "name": "devenvironment",
     "version": "0.0.1",
-    "private": false,
+    "private": true,
     "homepage": "https://github.com/smj10j/DevEnvironment",
     "description": "",
     "keywords": [ "development", "mac", "osx", "homebrew", "terminal", "tools", "utilities", "dev", "bash", "productivity", "vi", "shell" ],
