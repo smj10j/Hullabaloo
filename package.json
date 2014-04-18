@@ -1,0 +1,29 @@
+{
+    "name": "devenvironment",
+    "version": "0.0.1",
+    "private": false,
+    "homepage": "https://github.com/smj10j/DevEnvironment",
+    "description": "",
+    "keywords": [ "development", "mac", "osx", "homebrew", "terminal", "tools", "utilities", "dev", "bash", "productivity", "vi", "shell" ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:smj10j/DevEnvironment.git"
+    },
+    "scripts": {
+        "start": "/bin/bash install/install.sh"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+
+    },
+    "author": "Stephen Johnson <stevej@ucla.edu>",
+    "maintainers": [
+        {
+            "name": "Stephen Johnson",
+            "email": "stevej@ucla.edu",
+            "web": "http://www.smj10j.com"
+        }
+    ]
+}
