@@ -10,8 +10,8 @@
 	FFhOU09iamVjdF8QD05TS2V5ZWRBcmNoaXZlctEXGFRyb290gAEIERojLTI3O0FIUF1k
 	cnR2e4aPl5qjtbi9AAAAAAAAAQEAAAAAAAAAGQAAAAAAAAAAAAAAAAAAAL8=
 	</data>
-	<key>ConvertNewlinesOnPaste</key>
-	<true/>
+	<key>Bell</key>
+	<false/>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
@@ -25,6 +25,8 @@
 	</data>
 	<key>CursorType</key>
 	<integer>0</integer>
+	<key>EscapeNonASCIICharacters</key>
+	<false/>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -40,8 +42,6 @@
 	<real>0.98787172379032251</real>
 	<key>FontWidthSpacing</key>
 	<real>0.99593623991935476</real>
-	<key>Linewrap</key>
-	<true/>
 	<key>ProfileCurrentVersion</key>
 	<real>2.02</real>
 	<key>SelectionColor</key>
@@ -53,6 +53,8 @@
 	b3SAAQgRGiMtMjc7QUhOW2KDhYeMl6Coq7TGyc4AAAAAAAABAQAAAAAAAAAZAAAAAAAA
 	AAAAAAAAAAAA0A==
 	</data>
+	<key>ShouldLimitScrollback</key>
+	<integer>0</integer>
 	<key>ShowActiveProcessInTitle</key>
 	<true/>
 	<key>ShowCommandKeyInTitle</key>
@@ -60,7 +62,7 @@
 	<key>ShowDimensionsInTitle</key>
 	<false/>
 	<key>ShowShellCommandInTitle</key>
-	<false/>
+	<true/>
 	<key>ShowTTYNameInTitle</key>
 	<false/>
 	<key>ShowWindowSettingsNameInTitle</key>
@@ -87,51 +89,18 @@
 	<true/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBell</key>
+	<true/>
 	<key>WindowTitle</key>
-	<string>Terminal</string>
+	<string></string>
 	<key>columnCount</key>
 	<integer>140</integer>
 	<key>name</key>
 	<string>smj10j</string>
-	<key>noWarnProcesses</key>
-	<array>
-		<dict>
-			<key>ProcessName</key>
-			<string>rlogin</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>telnet</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>ssh</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>slogin</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>screen</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>tmux</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>bash</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>scp</string>
-		</dict>
-	</array>
 	<key>rowCount</key>
 	<integer>28</integer>
 	<key>shellExitAction</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>type</key>
 	<string>Window Settings</string>
 </dict>
