@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Hullabaloo : Making bash better for devs on OSX" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Hullabaloo</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/smj10j/DevEnvironment">View on GitHub</a>
+
+          <h1 id="project_title">Hullabaloo</h1>
+          <h2 id="project_tagline">Making bash better for devs on OSX</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/smj10j/DevEnvironment/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/smj10j/DevEnvironment/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Run the following in your shell
+The installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)</p>
+
+<div class="highlight highlight-bash"><pre>    <span class="nb">export </span><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="p">;</span> curl -s https://raw.github.com/smj10j/DevEnvironment/master/install/install.sh <span class="p">|</span> /bin/bash <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0
+</pre></div>
+
+<h3>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h3>
+
+<ol>
+<li>ssh</li>
+<li>cd pushing/popping</li>
+<li>periodic backups</li>
+<li>enhanced text-editor selection/install</li>
+<li>daemon installation</li>
+</ol><h3>
+<a name="whats-included" class="anchor" href="#whats-included"><span class="octicon octicon-link"></span></a>What's Included</h3>
+
+<h5>
+<a name="files" class="anchor" href="#files"><span class="octicon octicon-link"></span></a>Files</h5>
+
+<ul>
+<li>
+<code>edit &lt;file|directory&gt;</code> - quickly open files in BBEdit from Terminal</li>
+<li>
+<code>lso [file|directory]</code> - ls with permissions in octal
+<pre>
+drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
+-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
+-rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
+-rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
+drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
+drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
+drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
+</pre>
+</li>
+</ul><h5>
+<a name="paths" class="anchor" href="#paths"><span class="octicon octicon-link"></span></a>Paths</h5>
+
+<ul>
+<li>
+<code>pathsadd &lt;path string&gt;</code> - gracefully manages appending a string of paths to the $PATH variable</li>
+<li>
+<code>pathadd &lt;directory&gt;</code> - adds a single directory (if not present) to the $PATH variable</li>
+</ul><h5>
+<a name="arrays" class="anchor" href="#arrays"><span class="octicon octicon-link"></span></a>Arrays</h5>
+
+<ul>
+<li>Array functions including:
+
+<ul>
+<li>
+<code>array_push &lt;arr&gt; &lt;el&gt;</code> - push an element onto the end of the array</li>
+<li>
+<code>array_pop &lt;arr&gt; [&lt;el&gt;]</code> - pops an element off the end of an array into [optionally supplied] variable $el</li>
+<li>
+<code>array_shift &lt;arr&gt; &lt;el&gt;</code> - push an element onto the front of the array</li>
+<li>
+<code>array_unshift &lt;arr&gt; [&lt;el&gt;]</code> - pops an element off the front of the array into [optionally supplied] variable $el</li>
+</ul>
+</li>
+</ul><h5>
+<a name="pretty-printing" class="anchor" href="#pretty-printing"><span class="octicon octicon-link"></span></a>Pretty Printing</h5>
+
+<ul>
+<li>#TODO</li>
+</ul><h5>
+<a name="ssh" class="anchor" href="#ssh"><span class="octicon octicon-link"></span></a>SSH</h5>
+
+<ul>
+<li>Automatically starts ssh-agent and adds private keys</li>
+<li>
+<code>ssh</code> bash completion - users your ~/.ssh/known_hosts file to auto-complete hostnames as you type</li>
+</ul><h5>
+<a name="vim" class="anchor" href="#vim"><span class="octicon octicon-link"></span></a>Vim</h5>
+
+<ul>
+<li>
+<a href="https://github.com/amix/vimrc">Custom vimrc</a> - in Amix's words, "The Ultimate vimrc"</li>
+</ul><h5>
+<a name="git" class="anchor" href="#git"><span class="octicon octicon-link"></span></a>Git</h5>
+
+<ul>
+<li>
+<a href="http://www.jperla.com/blog/post/teach-yourself-git-in-2-minutes">Git Aliases</a>
+<pre>
+alias ad='git add'
+alias pl='git pull'
+alias ph='git push'
+alias cm='git commit -m'
+alias sl='git status -uall'
+alias lg='git log'
+alias gp='git grep'
+alias de='git diff --ignore-space-change'
+alias me='git merge'
+alias bh='git branch'
+alias ct='git checkout'
+</pre>
+</li>
+</ul><h5>
+<a name="osx" class="anchor" href="#osx"><span class="octicon octicon-link"></span></a>OSX</h5>
+
+<ul>
+<li>Sets the screenshot directory to  ~/Screenshots</li>
+<li>Sets Finder to always show hidden files</li>
+<li>
+<code>listRegisteredURLSchemes</code> - lists the currently registered URL schemes</li>
+<li><a href="http://trac.macports.org/wiki/howto/bash-completion">Bash-completion</a></li>
+</ul><h3>
+<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h3>
+
+<ul>
+<li>In <code>DevEnvironment/bash/includes</code>
+
+<ul>
+<li>
+<code>shortcuts.bashrc</code> - Custom aliases go here</li>
+<li>
+<code>variables.bashrc</code> - Configurable variables used in the other .bashrc scripts go here</li>
+</ul>
+</li>
+</ul><h3>
+<a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h3>
+
+<h4>
+<a name="pretty-terminal-profile" class="anchor" href="#pretty-terminal-profile"><span class="octicon octicon-link"></span></a>Pretty Terminal Profile</h4>
+
+<p><img src="https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Terminal.png" alt="Pretty Terminal Profile" title="Pretty Terminal"></p>
+
+<h4>
+<a name="to-install---set-new-windows-to-open-with-the-smj10j-profile-in-terminal" class="anchor" href="#to-install---set-new-windows-to-open-with-the-smj10j-profile-in-terminal"><span class="octicon octicon-link"></span></a>To install - Set new windows to open with the 'smj10j' profile in Terminal</h4>
+
+<p><img src="https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Set-Terminal-Profile.png" alt="To install - Set new windows to open with the 'smj10j' profile in Terminal" title="Set Terminal Profile"></p>
+
+<h4>
+<a name="pretty-vim" class="anchor" href="#pretty-vim"><span class="octicon octicon-link"></span></a>Pretty Vim</h4>
+
+<p><img src="https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Vim.png" alt="Pretty Vim" title="Pretty Vim"></p>
+
+<h4>
+<a name="view-registered-url-schemes-with-rcdefaultapp" class="anchor" href="#view-registered-url-schemes-with-rcdefaultapp"><span class="octicon octicon-link"></span></a>View Registered URL Schemes with <a href="http://www.rubicode.com/Software/RCDefaultApp/">RCDefaultApp</a>
+</h4>
+
+<p><img src="https://raw.github.com/smj10j/DevEnvironment/master/screenshots/RCDefaultApp.png" alt="RCDefaultApp - View Registered URL Schemes" title="RCDefaultApp - View Registered URL Schemes"></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Hullabaloo maintained by <a href="https://github.com/smj10j">smj10j</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-50192543-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
