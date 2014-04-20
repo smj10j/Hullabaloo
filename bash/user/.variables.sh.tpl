@@ -30,5 +30,5 @@ SCREENSHOT_DIR=~/Screenshots
 # Any periodic backups will be written here
 BACKUPS_DIR=~/Dropbox
 if [ ! -e $BACKUPS_DIR ]; then
-	return _smj_devenv_notify "Backup directory '$BACKUPS_DIR' does not exist"
+	return _hullabaloo_notify "Backup directory '$BACKUPS_DIR' does not exist"
 fi

@@ -16,7 +16,7 @@ bind "set completion-ignore-case"
 HISTFILESIZE=10000
 
 # Show the commands you use most (http://lifehacker.com/202712/review-your-most-oft-used-unix-commands)
-_smj_devenv_history_ranked() {
+_hullabaloo_history_ranked() {
     history | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort | uniq -c | sort -r
 }
 

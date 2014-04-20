@@ -2,12 +2,12 @@
     "name": "devenvironment",
     "version": "0.0.1",
     "private": true,
-    "homepage": "https://github.com/smj10j/DevEnvironment",
+    "homepage": "https://github.com/smj10j/Hullabaloo",
     "description": "",
     "keywords": [ "development", "mac", "osx", "homebrew", "terminal", "tools", "utilities", "dev", "bash", "productivity", "vi", "shell" ],
     "repository": {
         "type": "git",
-        "url": "git@github.com:smj10j/DevEnvironment.git"
+        "url": "git@github.com:smj10j/Hullabaloo.git"
     },
     "scripts": {
         "start": "/bin/bash install/install.sh"

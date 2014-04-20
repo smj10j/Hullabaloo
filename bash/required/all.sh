@@ -32,13 +32,13 @@ source "$SCRIPT_BASE_DIR/required/logging.sh"
 ##########################################
 
 # Allows function arguments to be passed by reference
-_smj_devenv_load_profile 'required/upvars'
+_hullabaloo_load_profile 'required/upvars'
 
 # Array convenience methods like push, pop, shift, and unshift
-_smj_devenv_load_profile 'required/arrays'
+_hullabaloo_load_profile 'required/arrays'
 
-# _smj_devenv_* functions used throughout
-_smj_devenv_load_profile 'required/functions'
+# _hullabaloo_* functions used throughout
+_hullabaloo_load_profile 'required/functions'
 
 # Pretty printing
-_smj_devenv_load_profile 'required/pretty'
+_hullabaloo_load_profile 'required/pretty'

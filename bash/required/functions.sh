@@ -2,7 +2,7 @@
 
 
 # Gets the location of the script that will bootstrap this whole installation
-function _smj_devenv_bash_profile_file {
+function _hullabaloo_bash_profile_file {
 	
 	if [ `uname` == 'Darwin' ]; then
 		local BASH_PROFILE_FILE=~/.bash_profile
@@ -17,11 +17,11 @@ function _smj_devenv_bash_profile_file {
 	echo $BASH_PROFILE_FILE
 }
 
-function _smj_devenv_update {
+function _hullabaloo_update {
 	
 	echo ""
-	echo "Updating DevEnvironment..."
-	cd $_SMJ_DEVENV_INSTALL_DIR
+	echo "Updating Hullabaloo..."
+	cd $_HULLABALOO_INSTALL_DIR
 	git pull --rebase
 	git submodule update
 	echo ""
@@ -32,14 +32,14 @@ function _smj_devenv_update {
 	echo ""
 
 	if [ `uname` == 'Darwin' ]; then
-		open $_SMJ_DEVENV_INSTALL_DIR/osx/smj10j.terminal && exit 0
+		open $_HULLABALOO_INSTALL_DIR/osx/smj10j.terminal && exit 0
 	fi
 }
 
-function _smj_devenv_repair {
+function _hullabaloo_repair {
 
 	echo ""
-	echo "Repairing your DevEnvironment installation..."
+	echo "Repairing your Hullabaloo installation..."
 	echo "You may be asked for your computer password"
 	echo ""
 	
@@ -50,7 +50,7 @@ function _smj_devenv_repair {
 	echo ""
 }
 
-function _smj_devenv_reload {
+function _hullabaloo_reload {
 	if [ `uname` == 'Darwin' ]; then
 		read -n1 -r -p "Press any key to open the new terminal..." key
 		if [ -e osx/smj10j.terminal ]; then
@@ -64,26 +64,26 @@ function _smj_devenv_reload {
 	fi
 }
 
-function _smj_devenv_uninstall {
+function _hullabaloo_uninstall {
 
-	if [ -z "$_SMJ_DEVENV_INSTALL_DIR" ]; then 
+	if [ -z "$_HULLABALOO_INSTALL_DIR" ]; then
 		local MSG=$'\nInstallation directory unknown... automatic uninstall aborted!\n'
 		MSG+="My best guess to the location of this installation is: $INSTALL_BASE_DIR"
 		
-		_smj_devenv_notify "$MSG"
+		_hullabaloo_notify "$MSG"
 		return
 	fi
 
 	echo ""
-	echo "Removing $_SMJ_DEVENV_INSTALL_DIR..."
-	rm -rf $_SMJ_DEVENV_INSTALL_DIR
+	echo "Removing $_HULLABALOO_INSTALL_DIR..."
+	rm -rf $_HULLABALOO_INSTALL_DIR
 	echo ""
 	
 	echo "Removing ~/.vim_runtime symlink"
 	rm -rf ~/.vim_runtime
 	echo ""
 	
-	local BASH_PROFILE_FILE=`_smj_devenv_bash_profile_file`
+	local BASH_PROFILE_FILE=`_hullabaloo_bash_profile_file`
 	local BASH_PROFILE_INCLUDE_START='############## Begin smj10j Bash Profile.*'
 	local BASH_PROFILE_INCLUDE_END='################ End smj10j Bash Profile.*'
 
@@ -103,7 +103,7 @@ function _smj_devenv_uninstall {
 	echo "Uninstall complete!"
 	echo ""
 
-	_smj_devenv_reload	
+	_hullabaloo_reload
 }
 
 

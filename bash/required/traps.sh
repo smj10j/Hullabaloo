@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Prints a nice stack trace (http://stackoverflow.com/a/17734099/1730485)
-function _smj_devenv_get_stack_trace () {
+function _hullabaloo_get_stack_trace () {
 	local STACK=()
 	local OFFSET=${1:-1}
 	local ROOT_DIR=${2:-}
@@ -40,14 +40,14 @@ function _smj_devenv_get_stack_trace () {
 }
 
 # Catches errors within bash and outputs them
-function _smj_devenv_trap_error_handler {
+function _hullabaloo_trap_error_handler {
 	
 	local MYSELF="$0"					# equals to my script name when in a file
 	local SCRIPT_NAME="$1"			# argument 1: script name
 	local LASTLINE="$2"				# argument 2: last line of error occurrence
 	local LASTERR="$3"				# argument 3: error code of last command
 	
-	local HEADER=`_smj_devenv_bold "#################### ERROR $MYSELF ####################"`
+	local HEADER=`_hullabaloo_bold "#################### ERROR $MYSELF ####################"`
 	local FOOTER=`for i in $(seq 1 ${#HEADER}); do echo -n "#"; done`
 	
 	echo ""
@@ -61,13 +61,13 @@ function _smj_devenv_trap_error_handler {
 # 	done
 	
 	echo "== Stacktrace =="
-	_smj_devenv_get_stack_trace 1 "$SCRIPT_BASE_DIR"
+	_hullabaloo_get_stack_trace 1 "$SCRIPT_BASE_DIR"
 	echo ""
 	
 	echo "${SCRIPT_NAME} [line ${LASTLINE}]: exit status of last command: ${LASTERR}"
 	
 	echo ""
-	echo `_smj_devenv_bold "$FOOTER"`
+	echo `_hullabaloo_bold "$FOOTER"`
 	echo ""
 }
 
@@ -75,5 +75,5 @@ function _smj_devenv_trap_error_handler {
 # trap ERR
 
 # Add our new one
-# trap '_smj_devenv_trap_error_handler "${BASH_SOURCE#*\./}" ${LINENO} $?' ERR
+# trap '_hullabaloo_trap_error_handler "${BASH_SOURCE#*\./}" ${LINENO} $?' ERR
 

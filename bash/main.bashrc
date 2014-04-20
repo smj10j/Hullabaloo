@@ -38,10 +38,10 @@ source "$SCRIPT_BASE_DIR/required/all.sh"
 ##########################################
 
 # Variables used throughout the optional profiles
-_smj_devenv_append_profile "user/variables"
+_hullabaloo_append_profile "user/variables"
 
 # Any custom extensions can go here to keep things clean
-_smj_devenv_append_profile "user/custom"
+_hullabaloo_append_profile "user/custom"
 
 
 
@@ -50,19 +50,19 @@ _smj_devenv_append_profile "user/custom"
 ##########################################
 
 # Adds PATH modification functions
-_smj_devenv_append_profile "optional/path"
+_hullabaloo_append_profile "optional/path"
 
 # Add functions that make working with files within the shell easier
-_smj_devenv_append_profile "optional/file"
+_hullabaloo_append_profile "optional/file"
 
 # Tools for making work within the shell easier (cd enhancements, bash completion, etc.)
-_smj_devenv_append_profile "optional/shell"
+_hullabaloo_append_profile "optional/shell"
 
 # SSH enhancements and shortcuts
-_smj_devenv_append_profile "optional/ssh"
+_hullabaloo_append_profile "optional/ssh"
 
 # Git tools and aliases
-_smj_devenv_append_profile "optional/git"
+_hullabaloo_append_profile "optional/git"
 
 
 
@@ -71,7 +71,7 @@ _smj_devenv_append_profile "optional/git"
 ##########################################
 
 # OSX-specific configurations
-_smj_devenv_append_profile "optional/osx"
+_hullabaloo_append_profile "optional/osx"
 
 
 
@@ -81,7 +81,7 @@ _smj_devenv_append_profile "optional/osx"
 ##########################################
 
 # Do any final maintenance tasks
-_smj_devenv_append_profile 'required/cleanup'
+_hullabaloo_append_profile 'required/cleanup'
 
 
 
@@ -90,7 +90,7 @@ _smj_devenv_append_profile 'required/cleanup'
 ##########################################
 
 # Load in our optional and user profiles
-_smj_devenv_load_profiles
+_hullabaloo_load_profiles
 
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function _smj_devenv_bold {
+function _hullabaloo_bold {
 	if [ -z "$1" ]; then echo "Usage: $FUNCNAME <msg>"; return; fi
 	
 	local BOLD=`tput bold`

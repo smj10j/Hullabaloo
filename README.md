@@ -1,5 +1,5 @@
-DevEnvironment
-==============
+Hullabaloo
+==========
 
 All my various settings
 
@@ -9,9 +9,9 @@ Installation
 ------------
 
 Run the following in your shell
-The installation directory can be changed if desired (defaults to ~/.smj10j/DevEnvironment)
+The installation directory can be changed if desired (defaults to ~/.smj10j/Hullabaloo)
 ```bash 
-	export INSTALL_DIR=; curl -s https://raw.github.com/smj10j/DevEnvironment/master/install/install.sh | /bin/bash && exit 0
+	export INSTALL_DIR=; curl -s https://raw.github.com/smj10j/Hullabaloo/master/install/install.sh | /bin/bash && exit 0
 ```
 
 
@@ -32,13 +32,13 @@ What's Included
 - `edit <file|directory>` - quickly open files in BBEdit from Terminal
 - `lso [file|directory]` - ls with permissions in octal
 <pre>
-drwxr-xr-x 0755 Code/smj10j/DevEnvironment/.git
--rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitignore
--rw-r--r-- 0644 Code/smj10j/DevEnvironment/.gitmodules
--rw-r--r-- 0644 Code/smj10j/DevEnvironment/README.md
-drwxr-xr-x 0755 Code/smj10j/DevEnvironment/bash
-drwxr-xr-x 0755 Code/smj10j/DevEnvironment/editors
-drwxr-xr-x 0755 Code/smj10j/DevEnvironment/install
+drwxr-xr-x 0755 Code/smj10j/Hullabaloo/.git
+-rw-r--r-- 0644 Code/smj10j/Hullabaloo/.gitignore
+-rw-r--r-- 0644 Code/smj10j/Hullabaloo/.gitmodules
+-rw-r--r-- 0644 Code/smj10j/Hullabaloo/README.md
+drwxr-xr-x 0755 Code/smj10j/Hullabaloo/bash
+drwxr-xr-x 0755 Code/smj10j/Hullabaloo/editors
+drwxr-xr-x 0755 Code/smj10j/Hullabaloo/install
 </pre>
 	
 	
@@ -90,7 +90,7 @@ alias ct='git checkout'
 Customization
 ---------------
 
-- In `DevEnvironment/bash/includes`
+- In `Hullabaloo/bash/includes`
 	- `shortcuts.bashrc` - Custom aliases go here
 	- `variables.bashrc` - Configurable variables used in the other .bashrc scripts go here
 
@@ -99,16 +99,16 @@ Screenshots
 -----------
 
 #### Pretty Terminal Profile
-![Pretty Terminal Profile](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
+![Pretty Terminal Profile](https://raw.github.com/smj10j/Hullabaloo/master/screenshots/Pretty-Terminal.png "Pretty Terminal")
 
 #### To install - Set new windows to open with the 'smj10j' profile in Terminal
-![To install - Set new windows to open with the 'smj10j' profile in Terminal](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
+![To install - Set new windows to open with the 'smj10j' profile in Terminal](https://raw.github.com/smj10j/Hullabaloo/master/screenshots/Set-Terminal-Profile.png "Set Terminal Profile")
 
 #### Pretty Vim
-![Pretty Vim](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/Pretty-Vim.png "Pretty Vim")
+![Pretty Vim](https://raw.github.com/smj10j/Hullabaloo/master/screenshots/Pretty-Vim.png "Pretty Vim")
 	
 #### View Registered URL Schemes with [RCDefaultApp](http://www.rubicode.com/Software/RCDefaultApp/)
-![RCDefaultApp - View Registered URL Schemes](https://raw.github.com/smj10j/DevEnvironment/master/screenshots/RCDefaultApp.png "RCDefaultApp - View Registered URL Schemes")
+![RCDefaultApp - View Registered URL Schemes](https://raw.github.com/smj10j/Hullabaloo/master/screenshots/RCDefaultApp.png "RCDefaultApp - View Registered URL Schemes")
 		
 		
 		
