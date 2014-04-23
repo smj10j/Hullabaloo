@@ -84,7 +84,6 @@ function _hullabaloo_add_on_exit_handler {
     _hullabaloo_on_exit_handlers[$n]="$*"
 	# If we were able to grab an index - set the trap
     if [[ $n -eq 0 ]]; then
-        echo "Setting onExit handler"
         trap _hullabaloo_on_exit_handler_executor EXIT
     fi
 }
@@ -95,8 +94,7 @@ function _hullabaloo_on_exit_handler_executor {
 	# Iterate over our handlers and call them in series in the order they were added
     for handler in "${_hullabaloo_on_exit_handlers[@]}"
     do
-        echo "on_exit: $handler"
-        $(${handler})
+        eval ${handler}
     done
 
 }
