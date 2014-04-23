@@ -80,20 +80,19 @@ function _hullabaloo_reload {
 	local TERMINAL_PROFILE_PATH="$_HULLABALOO_INSTALL_DIR/osx/hullabaloo.terminal"
 
 	read -e -p "Press enter to reload..." key
-	$BASH_PATH -l && exit 0
 
-#	if [ $(uname) == 'Darwin' ]; then
-#		if [ -e "$TERMINAL_PROFILE_PATH" ]; then
-#			echo ""
-#			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
-#			echo ""
-#			open "$TERMINAL_PROFILE_PATH" && exit 0
-#		else
-#			$BASH_PATH -l && exit 0
-#		fi
-#	else
-#		$BASH_PATH -l && exit 0
-#	fi
+	if [ $(uname) == 'Darwin' ]; then
+		if [ -e "$TERMINAL_PROFILE_PATH" ]; then
+			echo ""
+			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
+			echo ""
+			open "$TERMINAL_PROFILE_PATH" && exit 0
+		else
+			$BASH_PATH -l && exit 0
+		fi
+	else
+		$BASH_PATH -l && exit 0
+	fi
 }
 
 function _hullabaloo_uninstall {
