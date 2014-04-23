@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z `which brew` ]; then
+if [ -z $(which brew) ]; then
 
 	echo "Installing Homebrew..."
 	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -96,9 +96,11 @@ if [ -z `which brew` ]; then
 
 	############## Done ###################
 
+	BASH_PROFILE_FILE=$(_hullabaloo_bash_profile_file)
+
 	echo ""
 	echo "Update your .bash_profile HOMEBREW_GITHUB_API_TOKEN with a personal Github token created here: https://github.com/settings/applications"
-	echo "#export HOMEBREW_GITHUB_API_TOKEN=" >> ~/.bash_profile
+	echo "#export HOMEBREW_GITHUB_API_TOKEN=" >> $BASH_PROFILE_FILE
 	echo ""
 
 
@@ -107,7 +109,7 @@ else
     echo ""
 fi
 
-if [ -z `which brew` ]; then
+if [ -z $(which brew) ]; then
     echo "Homebrew installation was unsuccessful - aborting"
     exit 1
 fi

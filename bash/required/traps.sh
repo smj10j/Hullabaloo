@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+declare -a _hullabaloo_on_exit_handlers
+
+
 # Prints a nice stack trace (http://stackoverflow.com/a/17734099/1730485)
 function _hullabaloo_get_stack_trace () {
 	local STACK=()
@@ -70,6 +74,33 @@ function _hullabaloo_trap_error_handler {
 	echo `_hullabaloo_bold "$FOOTER"`
 	echo ""
 }
+
+
+# Adds an onExit handler
+function _hullabaloo_add_on_exit_handler {
+	# Get the index for this new handler
+    local n=${#_hullabaloo_on_exit_handlers[*]}
+    # Add our handler by value into the array
+    _hullabaloo_on_exit_handlers[$n]="$*"
+	# If we were able to grab an index - set the trap
+    if [[ $n -eq 0 ]]; then
+        echo "Setting onExit handler"
+        trap _hullabaloo_on_exit_handler_executor EXIT
+    fi
+}
+
+
+# Catches exit event within bash allows any cleanup
+function _hullabaloo_on_exit_handler_executor {
+	# Iterate over our handlers and call them in series in the order they were added
+    for handler in "${_hullabaloo_on_exit_handlers[@]}"
+    do
+        echo "on_exit: $handler"
+        $(${handler})
+    done
+
+}
+
 
 # Clear error traps
 # trap ERR

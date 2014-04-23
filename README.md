@@ -9,9 +9,9 @@ Installation
 ------------
 
 Run the following in your shell
-The installation directory can be changed if desired (defaults to ~/.smj10j/Hullabaloo)
+The installation directory can be changed if desired (defaults to ~/.hullabaloo)
 ```bash 
-	export INSTALL_DIR=; curl -s https://raw.github.com/smj10j/Hullabaloo/master/install/install.sh | /bin/bash && exit 0
+	curl -s https://raw.github.com/smj10j/Hullabaloo/master/install/install.sh | /bin/bash && exit 0
 ```
 
 
