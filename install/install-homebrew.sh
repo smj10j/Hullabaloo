@@ -20,14 +20,25 @@ if [ -z $(which brew) ]; then
 	echo "Installing git..."
 	brew install git
 
-	echo "Installing wget..."
-	brew install wget --enable-iri
-	
-	echo "Updating existing Mac coreutils ones..."
+	# http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+	echo "Updating existing Mac coreutils..."
 	brew install coreutils
-
-	echo "Installing findutils (find, locate, etc.)..."
-	brew install findutils
+	brew install binutils
+	brew install diffutils
+	brew install ed --default-names
+	brew install findutils --default-names
+	brew install gawk
+	brew install gnu-indent --default-names
+	brew install gnu-sed --default-names
+	brew install gnu-tar --default-names
+	brew install gnu-which --default-names
+	brew install gnutls --default-names
+	brew install grep --default-names
+	brew install gzip
+	brew install screen
+	brew install watch
+	brew install wdiff --with-gettext
+	brew install wget --enable-iri
 
 	echo "Installing bash-completion..."
 	brew install git bash-completion
@@ -100,7 +111,20 @@ if [ -z $(which brew) ]; then
 
 	echo ""
 	echo "Update your .bash_profile HOMEBREW_GITHUB_API_TOKEN with a personal Github token created here: https://github.com/settings/applications"
+	echo "" >> $BASH_PROFILE_FILE
 	echo "#export HOMEBREW_GITHUB_API_TOKEN=" >> $BASH_PROFILE_FILE
+	echo ""
+
+	echo ""
+	echo "Adding coreutils prefix to brew"
+	echo "" >> $BASH_PROFILE_FILE
+	echo "##### Coreutils with Homebrew #####" >> $BASH_PROFILE_FILE
+	echo "export PATH=\"\$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:\$PATH\"" >> $BASH_PROFILE_FILE
+	echo "# From: https://gist.github.com/quickshiftin/9130153" >> $BASH_PROFILE_FILE
+	echo "# Short of learning how to actually configure OSX, here's a hacky way to use" >> $BASH_PROFILE_FILE
+	echo "# GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise" >> $BASH_PROFILE_FILE
+	echo "alias man='_() { echo \$1; man -M \$(brew --prefix)/opt/coreutils/libexec/gnuman \$1 1>/dev/null 2>&1;  if [ \"\$?\" -eq 0 ]; then man -M \$(brew --prefix)/opt/coreutils/libexec/gnuman \$1; else man \$1; fi }; _'" >> $BASH_PROFILE_FILE
+	echo "#############" >> $BASH_PROFILE_FILE
 	echo ""
 
 
