@@ -32,7 +32,12 @@ shopt -s dirspell
 # Complete hostname when typing
 shopt -s hostcomplete
 
-
+# Follow symlinks
+ff() {
+	LINK=$(readlink -f $(which $1))
+	LINK_PWD=$(dirname $LINK)
+	pushd $LINK_PWD
+}
 
 # Show the commands you use most (http://lifehacker.com/202712/review-your-most-oft-used-unix-commands)
 _hullabaloo_history_ranked() {
