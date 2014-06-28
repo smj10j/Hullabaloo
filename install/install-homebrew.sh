@@ -18,59 +18,59 @@ if [ -z $(which brew) ]; then
 	######### Installing Global Brews ##########
 
 	echo "Installing git..."
-	brew install git
+	brew reinstall git
 
 	# http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 	echo "Updating existing Mac coreutils..."
-	brew install coreutils
-	brew install binutils
-	brew install diffutils
-	brew install ed --default-names
-	brew install findutils --default-names
-	brew install gawk
-	brew install gnu-indent --default-names
-	brew install gnu-sed --default-names
-	brew install gnu-tar --default-names
-	brew install gnu-which --default-names
-	brew install gnutls --default-names
-	brew install grep --default-names
-	brew install gzip
-	brew install screen
-	brew install watch
-	brew install wdiff --with-gettext
-	brew install wget --enable-iri
+	brew reinstall coreutils
+	brew reinstall binutils
+	brew reinstall diffutils
+	brew reinstall ed --default-names
+	brew reinstall findutils --default-names
+	brew reinstall gawk
+	brew reinstall gnu-indent --default-names
+	brew reinstall gnu-sed --default-names
+	brew reinstall gnu-tar --default-names
+	brew reinstall gnu-which --default-names
+	brew reinstall gnutls --default-names
+	brew reinstall grep --default-names
+	brew reinstall gzip
+	brew reinstall screen
+	brew reinstall watch
+	brew reinstall wdiff --with-gettext
+	brew reinstall wget --enable-iri
 
 	echo "Installing bash-completion..."
-	brew install git bash-completion
+	brew reinstall git bash-completion
 	
 
 	######### Installing Development Brews ##########
 
 	echo "Installing Nginx..."
-	brew install nginx
+	brew reinstall nginx
 
 	echo "Installing MySQL..."
-	brew install mysql
+	brew reinstall mysql
 	
 	echo "Installing Mongo..."
-	brew install mongodb
+	brew reinstall mongodb
 	
 	echo "Installing Memcached..."
-	brew install libevent
-	brew install memcached
-	brew install libmemcached
+	brew reinstall libevent
+	brew reinstall memcached
+	brew reinstall libmemcached
 	
 	echo "Installing PHP-FPM..."
-	brew install php55 --without-apache --with-intl --with-fpm --with-mysql
+	brew reinstall php55 --without-apache --with-intl --with-fpm --with-mysql
 	
 	echo "Installing PHP libraries..."
-	brew install php55-apcu
-	brew install php55-xdebug
-	brew install php55-mongo
-	brew install php55-mcrypt
-	brew install php55-intl
-	brew install php55-memcache
-	brew install php55-memcached
+	brew reinstall php55-apcu
+	brew reinstall php55-xdebug
+	brew reinstall php55-mongo
+	brew reinstall php55-mcrypt
+	brew reinstall php55-intl
+	brew reinstall php55-memcache
+	brew reinstall php55-memcached
 	
 	
 
@@ -134,7 +134,7 @@ else
 fi
 
 if [ -z $(which brew) ]; then
-    echo "Homebrew installation was unsuccessful - aborting"
+    echo "Homebrew reinstallation was unsuccessful - aborting"
     exit 1
 fi
 

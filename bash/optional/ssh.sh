@@ -30,7 +30,7 @@ _complete_ssh () {
 
 	case "$prev" in
 		-@(i))
-			local file_list=`ls ~/.ssh/ | awk '{print "~/.ssh/"$1}'`
+			local file_list=`find ~/.ssh/`
 			COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
 			return 0
 			;;
