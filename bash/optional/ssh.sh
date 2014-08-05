@@ -9,15 +9,10 @@ if [ `uname` == 'Darwin' ]; then
 fi
 
 # SSH Agent
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent -s`
-    ssh-add
-fi
-
-for p in ${PREFERRED_SSH_KEYS[@]}; do 
-	ssh-add -K `eval echo $p` > /dev/null 2>&1 
-done
-#ls -lat ~/.ssh/ | egrep "\-rw?\-\-\-\-" | awk '{ print "'`echo ~`'/.ssh/"$9 }' | xargs -L 1 ssh-add -K > /dev/null 2>&1 
+# http://www.gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/
+brew install keychain
+alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && ssh'
+alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && git'
 
 # Autocomplete Hostnames for SSH etc.
 _complete_ssh () {
