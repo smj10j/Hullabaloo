@@ -9,8 +9,9 @@ if [ `uname` == 'Darwin' ]; then
 fi
 
 # SSH Agent
-if [ `ps aux | grep ssh-agent -c` -eq 1 ]; then
-	eval $(ssh-agent)
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s`
+    ssh-add
 fi
 
 for p in ${PREFERRED_SSH_KEYS[@]}; do 
