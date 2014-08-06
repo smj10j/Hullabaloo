@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Enable Bash Completion
 if [ $(uname) == 'Darwin' ]; then
 	# Bash Completion

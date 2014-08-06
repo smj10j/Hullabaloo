@@ -16,3 +16,4 @@ pathsadd() {
 
 # Enhance the path (mostly for MacPorts)
 pathsadd $PATH_ADDITION
+

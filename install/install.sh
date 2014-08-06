@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function banner {
-	local STR=${1:+" $1 "}
-	local STR=${STR:-####}
-	local FILL_SIZE=$(( (70 - ${#STR}) / 2 ))
-	local FILLL=$(printf '#%.0s'  $(seq 1 $FILL_SIZE))
-	local FILLR=$(printf '#%.0s'  $(seq 1 $(( $FILL_SIZE + (${#STR} % 2) ))))
+	STR=${1:+" $1 "}
+	STR=${STR:-####}
+	FILL_SIZE=$(( (70 - ${#STR}) / 2 ))
+	FILLL=$(printf '#%.0s'  $(seq 1 $FILL_SIZE))
+	FILLR=$(printf '#%.0s'  $(seq 1 $(( $FILL_SIZE + (${#STR} % 2) ))))
 	echo "$FILLL$STR$FILLR"
 }
 
@@ -91,27 +91,27 @@ source "$_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -v
 echo ""
 
 echo "Determining bash profile script..."
-local BASH_PROFILE_FILE=$(_hullabaloo_bash_profile_file)
-local BASH_PROFILE_INCLUDE_START='############## Begin Hullabaloo Bash Profile ##############'
-local BASH_PROFILE_INCLUDE_END='############### End Hullabaloo Bash Profile ###############'
+BASHRC_FILE=$(_hullabaloo_bashrc_file)
+BASH_PROFILE_INCLUDE_START='############## Begin Hullabaloo Bash Profile ##############'
+BASH_PROFILE_INCLUDE_END='############### End Hullabaloo Bash Profile ###############'
 
 
 # Check if it's already installed...
-if [ $(grep "source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -c $BASH_PROFILE_FILE) -gt 0 ]; then
+if [ $(grep "source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -c $BASHRC_FILE) -gt 0 ]; then
 	echo "It appears Hullabaloo is already installed"
-	echo "Not adding duplicate 'source' line to $BASH_PROFILE_FILE"
+	echo "Not adding duplicate 'source' line to $BASHRC_FILE"
 	echo "You're all set!"
 	echo ""
 else
 	# Nope! Full steam ahead
 
-	echo "Will install Hullabaloo loader in $BASH_PROFILE_FILE...";
+	echo "Will install Hullabaloo loader in $BASHRC_FILE...";
 	echo ""
 
-	echo "$BASH_PROFILE_INCLUDE_START" >> $BASH_PROFILE_FILE
-	echo "export _HULLABALOO_INSTALL_DIR=$_HULLABALOO_INSTALL_DIR" >> $BASH_PROFILE_FILE
-	echo 'source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc' >> $BASH_PROFILE_FILE
-	echo "$BASH_PROFILE_INCLUDE_END" >> $BASH_PROFILE_FILE
+	echo "$BASH_PROFILE_INCLUDE_START" >> $BASHRC_FILE
+	echo "export _HULLABALOO_INSTALL_DIR=$_HULLABALOO_INSTALL_DIR" >> $BASHRC_FILE
+	echo 'source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc' >> $BASHRC_FILE
+	echo "$BASH_PROFILE_INCLUDE_END" >> $BASHRC_FILE
 fi
 
 #NOTE: Can also change default shell with: chsh -s /opt/local/bin/bash

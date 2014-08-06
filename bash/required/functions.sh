@@ -2,21 +2,16 @@
 
 
 # Gets the location of the script that will bootstrap this whole installation
-function _hullabaloo_bash_profile_file {
+function _hullabaloo_bashrc_file {
 
+	local BASHRC_FILE=~/.bashrc
 	local BASH_PROFILE_FILE=~/.bash_profile
 
-	if [ $(uname) == 'Darwin' ]; then
-		local BASH_PROFILE_FILE=~/.bash_profile
-	else
-		local BASH_PROFILE_FILE=~/.bashrc
-	fi
-	
 	if [ ! -e $BASH_PROFILE_FILE ]; then
-		touch $BASH_PROFILE_FILE
+		cp "$_HULLABALOO_INSTALL_DIR/bash/templates/.bash_profile" $BASH_PROFILE_FILE
 	fi
-	
-	echo $BASH_PROFILE_FILE
+
+	echo $BASHRC_FILE
 }
 
 function _hullabaloo_update {
@@ -75,7 +70,7 @@ function _hullabaloo_repair {
 
 function _hullabaloo_reload {
 
-	local BASH_PROFILE_FILE=$(_hullabaloo_bash_profile_file)
+	local BASHRC_FILE=$(_hullabaloo_bashrc_file)
 	local BASH_PATH=$(which bash)
 	local TERMINAL_PROFILE_PATH="$_HULLABALOO_INSTALL_DIR/osx/hullabaloo.terminal"
 
@@ -114,17 +109,17 @@ function _hullabaloo_uninstall {
 	rm -rf ~/.vim_runtime
 	echo ""
 	
-	local BASH_PROFILE_FILE=$(_hullabaloo_bash_profile_file)
-	local BASH_PROFILE_INCLUDE_START='############## Begin Hullabaloo Bash Profile.*'
-	local BASH_PROFILE_INCLUDE_END='################ End Hullabaloo Bash Profile.*'
+	local BASHRC_FILE=$(_hullabaloo_bashrc_file)
+	local BASHRC_INCLUDE_START='############## Begin Hullabaloo Bash Profile.*'
+	local BASHRC_INCLUDE_END='################ End Hullabaloo Bash Profile.*'
 
-	if [ -n "$BASH_PROFILE_FILE" ]; then 
-		echo "Removing entry from $BASH_PROFILE_FILE..."
+	if [ -n "$BASHRC_FILE" ]; then 
+		echo "Removing entry from $BASHRC_FILE..."
 	
 		if [ $(uname) == 'Darwin' ]; then
-			sed -i '' "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
+			sed -i '' "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" $BASHRC_FILE
 		else
-			sed -i "/$BASH_PROFILE_INCLUDE_START/,/$BASH_PROFILE_INCLUDE_END/d" $BASH_PROFILE_FILE
+			sed -i "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" $BASHRC_FILE
 		fi
 	else
 		echo "Unable to location your bash profile - not modifying"	

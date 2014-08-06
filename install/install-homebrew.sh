@@ -43,6 +43,9 @@ if [ -z $(which brew) ]; then
 	echo "Installing bash-completion..."
 	brew reinstall git bash-completion
 	
+	echo "Installing keychain..."
+	brew install keychain
+	
 
 	######### Installing Development Brews ##########
 
@@ -107,25 +110,15 @@ if [ -z $(which brew) ]; then
 
 	############## Done ###################
 
-	BASH_PROFILE_FILE=$(_hullabaloo_bash_profile_file)
+	BASH_PROFILE_FILE=$(_hullabaloo_bashrc_file)
 
 	echo ""
 	echo "Update your .bash_profile HOMEBREW_GITHUB_API_TOKEN with a personal Github token created here: https://github.com/settings/applications"
+	echo "Update with a personal Github token created here: https://github.com/settings/applications" >> $BASH_PROFILE_FILE
 	echo "" >> $BASH_PROFILE_FILE
 	echo "#export HOMEBREW_GITHUB_API_TOKEN=" >> $BASH_PROFILE_FILE
 	echo ""
 
-	echo ""
-	echo "Adding coreutils prefix to brew"
-	echo "" >> $BASH_PROFILE_FILE
-	echo "##### Coreutils with Homebrew #####" >> $BASH_PROFILE_FILE
-	echo "export PATH=\"\$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:\$PATH\"" >> $BASH_PROFILE_FILE
-	echo "# From: https://gist.github.com/quickshiftin/9130153" >> $BASH_PROFILE_FILE
-	echo "# Short of learning how to actually configure OSX, here's a hacky way to use" >> $BASH_PROFILE_FILE
-	echo "# GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise" >> $BASH_PROFILE_FILE
-	echo "alias man='_() { echo \$1; man -M \$(brew --prefix)/opt/coreutils/libexec/gnuman \$1 1>/dev/null 2>&1;  if [ \"\$?\" -eq 0 ]; then man -M \$(brew --prefix)/opt/coreutils/libexec/gnuman \$1; else man \$1; fi }; _'" >> $BASH_PROFILE_FILE
-	echo "#############" >> $BASH_PROFILE_FILE
-	echo ""
 
 
 else
