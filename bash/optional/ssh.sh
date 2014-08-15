@@ -4,8 +4,8 @@ SSH_ENV="$HOME/.ssh/environment"
 
 # SSH Agent
 # http://www.gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/
-#alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && ssh'
-#alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet ~/.ssh/*_rsa) && git'
+alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet  ls ~/.ssh/* | awk "/(pem)|(rsa)/") && ssh'
+alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet  ls ~/.ssh/* | awk "/(pem)|(rsa)/") && git'
 
 # Set the environment variables used by ssh-agent 
 function start_agent {

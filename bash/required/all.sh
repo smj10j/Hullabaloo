@@ -16,13 +16,13 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 ##########################################
 
 # Catches script errors and outputs them
-source "$SCRIPT_BASE_DIR/required/traps.sh"
+source "$_HULLABALOO_INSTALL_DIR/bash/required/traps.sh"
 
 # Bash profile loading functions
-source "$SCRIPT_BASE_DIR/required/profiles.sh"
+source "$_HULLABALOO_INSTALL_DIR/bash/required/profiles.sh"
 
 # Logging functions
-source "$SCRIPT_BASE_DIR/required/logging.sh"
+source "$_HULLABALOO_INSTALL_DIR/bash/required/logging.sh"
 
 
 
@@ -32,7 +32,7 @@ source "$SCRIPT_BASE_DIR/required/logging.sh"
 ##########################################
 
 # Allows function arguments to be passed by reference
-_hullabaloo_load_profile 'required/upvars'
+#_hullabaloo_load_profile 'required/upvars'
 
 # Array convenience methods like push, pop, shift, and unshift
 _hullabaloo_load_profile 'required/arrays'
