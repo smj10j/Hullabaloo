@@ -46,6 +46,9 @@ if [ -z $(which brew) ]; then
 	echo "Installing keychain..."
 	brew install keychain
 	
+	echo "Copying bash/templates/usr/libexec/ssh-askpass to /usr/libexec/ssh-askpass..."
+	cp "$_HULLABALOO_INSTALL_DIR/bash/templates/usr/libexec/ssh-askpass" "/usr/libexec/ssh-askpass"
+	
 
 	######### Installing Development Brews ##########
 

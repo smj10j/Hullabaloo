@@ -1,32 +1,37 @@
 #!/bin/bash
 
+# SSH Agent
+# http://www.gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/
 SSH_HOME="$HOME/.ssh"
 SSH_ENV="$SSH_HOME/environment"
 
-# SSH Agent
-# http://www.gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/
-alias ssh='eval $($(brew --prefix)/bin/keychain --eval --agents ssh -Q --quiet find $SSH_HOME) && ssh'
-alias git='eval $($(brew --prefix)/bin/keychain --eval --agents ssh -Q --quiet find $SSH_HOME) && git'
 
 # Set the environment variables used by ssh-agent 
 function start_agent {
     echo "Initialising new SSH agent..."
     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
     chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
+    source "${SSH_ENV}"
+    echo "ssh-agent started with PID $SSH_AGENT_PID"
+    if [[ -n $(which brew) ]]; then
+        $(brew --prefix)/bin/keychain --agents ssh -Q --quiet
+    else
+        /usr/bin/ssh-add
+    fi
+    
+    echo "Adding ssh keys to ssh-agent..."
+    find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$' | xargs -L 1 ssh-add -A
+    echo "All ssh keys added"
 }
 
 # Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
+if [[ -f "${SSH_ENV}" ]]; then
+    source "${SSH_ENV}"
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || { 
+        start_agent 
     }
 else
-    start_agent;
+    start_agent
 fi
 
 
