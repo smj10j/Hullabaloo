@@ -54,7 +54,7 @@ _hullabaloo_load_profile "optional/path"
 _hullabaloo_load_profile "optional/file"
 
 # Tools for making work within the shell easier (cd enhancements, bash completion, etc.)
-# _hullabaloo_load_profile "optional/shell"
+_hullabaloo_load_profile "optional/shell"
 
 # SSH enhancements and shortcuts
 _hullabaloo_load_profile "optional/ssh"

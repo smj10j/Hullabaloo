@@ -40,34 +40,36 @@ fi
 _complete_ssh () {
 	COMPREPLY=()
 
-	local cur=`_get_cword`
-	local prev=${COMP_WORDS[COMP_CWORD-1]}
-    	
-	local user_host_list=""
-	local user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
+	cur=${COMP_WORDS[1]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+
+	user_host_list=""
+	user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
 
 	case "$prev" in
-		-@i)
-			local file_list=`find $SSH_HOME/`
+		-@(i))
+			local file_list=$(find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$')
 			COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
 			return 0
 			;;
 	esac
 
-	if [[ $cur == *@* ]]; then
-		local host_list=`{ 
-			for c in /etc/ssh_config /etc/ssh/ssh_config "$SSH_HOME/config"
-				do [ -r $c ] && sed -n -e 's/^Host[[:space:]]//p' -e 's/^[[:space:]]*HostName[[:space:]]//p' $c
-			done
+	if [[ "$cur" =~ @ ]]; then
+
+		host_list=$({ 
+#			for c in /etc/ssh_config /etc/ssh/ssh_config "$SSH_HOME/config"
+#				do [ -r $c ] && sed -n -e 's/^Host[[:space:]]//p' -e 's/^[[:space:]]*HostName[[:space:]]//p' $c
+#			done
 			for k in /etc/ssh_known_hosts /etc/ssh/ssh_known_hosts "$SSH_HOME/known_hosts"
 				do [ -r $k ] && egrep -v '^[#\[]' $k | cut -f 1 -d ' ' | sed -e 's/[,:].*//g'
 			done
-			sed -n -e 's/^[0-9][0-9\.]*//p' /etc/hosts; } | tr ' ' '\n' | egrep -v '\n' | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | tr ' ' '\n'`
+			sed -n -e 's/^[0-9][0-9\.]*//p' /etc/hosts; 
+		} | tr ' ' '\n' | egrep -v '\n' | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | tr ' ' '\n')
 	
 		IFS=$'\n'
-		local host_array=()
+		host_array=()
 		host_arr=( $host_list )
-
+		
 		for h in "${host_arr[@]}"; do 
 			for u in "${user_arr[@]}"; do 
 				user_host_list+="$u@$h"$'\n'
