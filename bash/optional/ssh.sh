@@ -1,11 +1,12 @@
 #!/bin/bash
 
-SSH_ENV="$HOME/.ssh/environment"
+SSH_HOME="$HOME/.ssh"
+SSH_ENV="$SSH_HOME/environment"
 
 # SSH Agent
 # http://www.gilluminate.com/2013/04/04/ubuntu-ssh-agent-and-you/
-alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet  ls ~/.ssh/* | awk "/(pem)|(rsa)/") && ssh'
-alias git='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet  ls ~/.ssh/* | awk "/(pem)|(rsa)/") && git'
+alias ssh='eval $($(brew --prefix)/bin/keychain --eval --agents ssh -Q --quiet find $SSH_HOME) && ssh'
+alias git='eval $($(brew --prefix)/bin/keychain --eval --agents ssh -Q --quiet find $SSH_HOME) && git'
 
 # Set the environment variables used by ssh-agent 
 function start_agent {
@@ -41,8 +42,8 @@ _complete_ssh () {
 	local user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
 
 	case "$prev" in
-		-@(i))
-			local file_list=`find ~/.ssh/`
+		-@i)
+			local file_list=`find $SSH_HOME/`
 			COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
 			return 0
 			;;
@@ -50,10 +51,10 @@ _complete_ssh () {
 
 	if [[ $cur == *@* ]]; then
 		local host_list=`{ 
-			for c in /etc/ssh_config /etc/ssh/ssh_config ~/.ssh/config
+			for c in /etc/ssh_config /etc/ssh/ssh_config "$SSH_HOME/config"
 				do [ -r $c ] && sed -n -e 's/^Host[[:space:]]//p' -e 's/^[[:space:]]*HostName[[:space:]]//p' $c
 			done
-			for k in /etc/ssh_known_hosts /etc/ssh/ssh_known_hosts ~/.ssh/known_hosts
+			for k in /etc/ssh_known_hosts /etc/ssh/ssh_known_hosts "$SSH_HOME/known_hosts"
 				do [ -r $k ] && egrep -v '^[#\[]' $k | cut -f 1 -d ' ' | sed -e 's/[,:].*//g'
 			done
 			sed -n -e 's/^[0-9][0-9\.]*//p' /etc/hosts; } | tr ' ' '\n' | egrep -v '\n' | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | tr ' ' '\n'`

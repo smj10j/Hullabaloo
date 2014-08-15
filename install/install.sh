@@ -21,7 +21,7 @@ banner
 echo ""
 
 function confirmCmdSuccess {
-	if [ ! $? -eq 0 ]; then
+	if [[ ! $? -eq 0 ]]; then
 		echo ""
 		echo "Aborting installation of Hullabaloo"
 		echo ""
@@ -29,7 +29,7 @@ function confirmCmdSuccess {
 	fi
 }
 
-if [ -e "$_HULLABALOO_INSTALL_DIR" ]; then
+if [[ -e "$_HULLABALOO_INSTALL_DIR" ]]; then
 	echo "It looks like you already have something in $_HULLABALOO_INSTALL_DIR"
 	echo "Attempting to do a git pull and continue"
 	cd "$_HULLABALOO_INSTALL_DIR"
@@ -44,6 +44,7 @@ else
 fi
 echo ""
 
+
 echo "Checking out submodules..."
 git submodule init
 confirmCmdSuccess
@@ -54,8 +55,8 @@ echo ""
 
 
 # OSX-Specific installs
-if [ $(uname) == 'Darwin' ]; then
-	if [ -z $(which brew) ]; then
+if [[ $(uname) == 'Darwin' ]]; then
+	if [[ -z $(which brew) ]]; then
 
 		echo ""
 		echo "#######################################################"
@@ -90,6 +91,16 @@ echo "Loading in our newly added profiles..."
 source "$_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -v
 echo ""
 
+
+if [[ -n "$SSH_HOME" ]]; then
+    if [[ $(grep -c "Hullabaloo" "$SSH_HOME/config") == "0" ]]; then
+        echo "Adding custom .ssh/config..."
+        cat "$_HULLABALOO_INSTALL_DIR/bash/templates/.ssh/config" >> "$SSH_HOME/config"
+    fi
+fi
+
+
+
 echo "Determining bash profile script..."
 BASHRC_FILE=$(_hullabaloo_bashrc_file)
 BASH_PROFILE_INCLUDE_START='############## Begin Hullabaloo Bash Profile ##############'
@@ -97,7 +108,7 @@ BASH_PROFILE_INCLUDE_END='############### End Hullabaloo Bash Profile ##########
 
 
 # Check if it's already installed...
-if [ $(grep "source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -c $BASHRC_FILE) -gt 0 ]; then
+if [[ $(grep "source $_HULLABALOO_INSTALL_DIR/bash/main.bashrc" -c $BASHRC_FILE) -gt 0 ]]; then
 	echo "It appears Hullabaloo is already installed"
 	echo "Not adding duplicate 'source' line to $BASHRC_FILE"
 	echo "You're all set!"
