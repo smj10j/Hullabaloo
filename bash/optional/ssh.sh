@@ -5,6 +5,11 @@
 SSH_HOME="$HOME/.ssh"
 SSH_ENV="$SSH_HOME/environment"
 
+# Setup needed ssh environment
+source "${SSH_ENV}"
+mkdir -p "$SSH_HOME/connections"
+chmod 700 "$SSH_HOME/connections"
+
 
 # Set the environment variables used by ssh-agent 
 function start_agent {
@@ -15,13 +20,14 @@ function start_agent {
     echo "ssh-agent started with PID $SSH_AGENT_PID"
     if [[ -n $(which brew) ]]; then
         $(brew --prefix)/bin/keychain --agents ssh -Q --quiet
-    else
-        /usr/bin/ssh-add
     fi
     
-    echo "Adding ssh keys to ssh-agent..."
-    find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$' | xargs -L 1 ssh-add -A
-    echo "All ssh keys added"
+    echo "Adding ssh keys to ssh-agent with passphrases from keychain..."
+    ssh-add -A 
+    
+    echo "Adding ssh keys with no passphrases..."
+    #find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$' | xargs -L 1 ssh-add -K 
+
 }
 
 # Source SSH settings, if applicable
@@ -36,6 +42,7 @@ fi
 
 
 
+
 # Autocomplete Hostnames for SSH etc.
 _complete_ssh () {
 	COMPREPLY=()
@@ -47,14 +54,14 @@ _complete_ssh () {
 	user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
 
 	case "$prev" in
-		-@(i))
-			local file_list=$(find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$')
-			COMPREPLY=( $( compgen -W '$file_list' -- "$cur" ) )
+		-i)
+			file_list=$(find -E "$SSH_HOME" -iregex '.*(pem|rsa|dsa)$')
+			COMPREPLY=( $( compgen -W "${file_list}" -- "${cur}" ) )
 			return 0
 			;;
 	esac
 
-	if [[ "$cur" =~ @ ]]; then
+#	if [[ "$cur" =~ @ ]]; then
 
 		host_list=$({ 
 #			for c in /etc/ssh_config /etc/ssh/ssh_config "$SSH_HOME/config"
@@ -71,16 +78,17 @@ _complete_ssh () {
 		host_arr=( $host_list )
 		
 		for h in "${host_arr[@]}"; do 
+			user_host_list+="$h"$'\n'
 			for u in "${user_arr[@]}"; do 
 				user_host_list+="$u@$h"$'\n'
 			done
 		done
 	
-	else
-		for u in "${user_arr[@]}"; do 
-			user_host_list+="$u@"$'\n'
-		done
-	fi
+# 	else
+# 		for u in "${user_arr[@]}"; do 
+# 			user_host_list+="$u@"$'\n'
+# 		done
+# 	fi
 
 	COMPREPLY=( $(compgen -W "${user_host_list}" -- "${cur}"))
 	return 0

@@ -21,6 +21,16 @@ shift $(($OPTIND - 1))
 
 VERBOSE=${VERBOSE:-''}
 
+IS_ZSH=$([[ -z $BASH ]] && echo 'yes')
+# Usage: IF_ZSH 'some zsh stuff' ELSE 'some non-zsh stuff'
+function IF_ZSH() {
+    if [[ -n "$IS_ZSH" ]]; then
+    	eval $1
+    elif [[ -n "$3" ]]; then
+    	eval $3
+    fi
+}   
+
 
 ##########################################
 ##### Required by this installation ######

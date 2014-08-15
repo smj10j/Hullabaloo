@@ -1,10 +1,7 @@
 #!/bin/bash
 
 # Enable Bash Completion support on zsh
-if [[ "$SHELL" =~ zsh$ ]]; then
-    autoload bashcompinit
-    bashcompinit
-fi
+IF_ZSH 'autoload bashcompinit; bashcompinit' 
 
 # Enable Bash Completion
 if [[ -z "$(which complete)" ]] && [[ $(uname) == 'Darwin' ]]; then
@@ -20,7 +17,7 @@ export HISTFILESIZE=10000
 # Ignore duplicate lines
 export HISTCONTROL=erasedups
 
-if [[ "$SHELL" =~ bash$ ]]; then
+if [[ "$0" =~ bash$ ]]; then
 
     # Ignore case when doing bash completion
     bind "set completion-ignore-case"
@@ -34,7 +31,7 @@ if [[ "$SHELL" =~ bash$ ]]; then
 
     # Auto correct simple misspellings
     shopt -s cdspell
-    shopt -s dirspell
+    #shopt -s dirspell
 
     # Complete hostname when typing
     shopt -s hostcomplete

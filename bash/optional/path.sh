@@ -8,7 +8,7 @@ pathadd() {
 }
 
 pathsadd() {
-	IFS=':' read -a array <<< "$1"
+    IF_ZSH "IFS=':' read -A array <<< '$1'" ELSE "IFS=':' read -a array <<< '$1'"
 	for element in "${array[@]}"; do
 		pathadd "$element"
 	done
