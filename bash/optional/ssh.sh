@@ -23,7 +23,7 @@ function start_agent {
     fi
     
     echo "Adding ssh keys to ssh-agent with passphrases from keychain..."
-    ssh-add -A 
+    #ssh-add -A 
     
     echo "Adding ssh keys with no passphrases..."
     #find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$' | xargs -L 1 ssh-add -K 
