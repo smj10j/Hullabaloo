@@ -74,7 +74,16 @@ function _hullabaloo_reload {
 	local BASH_PATH=$(which bash)
 	local TERMINAL_PROFILE_PATH="$_HULLABALOO_INSTALL_DIR/osx/hullabaloo.terminal"
 
-	read -e -p "Press enter to reload..." key
+    echo -e "?Press enter to reload..."
+#
+#     # This is how the 'read' command works with zsh
+#     # https://superuser.com/questions/555874/zsh-read-command-fails-within-bash-function-read1-p-no-coprocess
+#
+#     read "brave?Here be dragons. Continue?"
+#     if [[ "$brave" =~ ^[Yy]$ ]]; then
+#     
+#     fi
+#
 
 	if [ $(uname) == 'Darwin' ]; then
 		if [ -e "$TERMINAL_PROFILE_PATH" ]; then
