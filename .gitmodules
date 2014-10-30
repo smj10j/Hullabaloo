@@ -1,3 +1,0 @@
-[submodule "editors/vim/amix-vimrc"]
-	path = editors/vim/amix-vimrc
-	url = https://github.com/amix/vimrc.git
