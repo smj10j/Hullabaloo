@@ -6,7 +6,7 @@ confirmCmdSuccess
 
 echo "Adding common Brew taps..."
 brew tap homebrew/dupes
-brew tap josegonzalez/homebrew-php
+brew tap homebrew/php
 
 ######### Installing Global Brews ##########
 
@@ -60,8 +60,7 @@ brew reinstall memcached
 brew reinstall libmemcached
 
 echo "Installing PHP-FPM..."
-brew reinstall php55 --without-apache --with-intl --with-fpm --with-mysql
-
+brew reinstall --without-apache --with-fpm --with-mysql php55
 
 
 ######### Configuring brews ##########
