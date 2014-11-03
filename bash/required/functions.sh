@@ -7,7 +7,7 @@ function _hullabaloo_bashrc_file {
 	local BASHRC_FILE=~/.bashrc
 	local BASH_PROFILE_FILE=~/.bash_profile
 
-	if [ ! -e $BASH_PROFILE_FILE ]; then
+	if [[ ! -e $BASH_PROFILE_FILE ]]; then
 		cp "$_HULLABALOO_INSTALL_DIR/bash/templates/.bash_profile" $BASH_PROFILE_FILE
 	fi
 
@@ -41,14 +41,14 @@ function _hullabaloo_repair {
 	local GROUP=$(groups | awk {'print $1'})
 	DEFAULT_INSTALL_DIR=$(echo ~/.hullabaloo)
 
-	if [ -z "$_HULLABALOO_INSTALL_DIR" ]; then
+	if [[ -z "$_HULLABALOO_INSTALL_DIR" ]]; then
 		if [[ -e "$DEFAULT_INSTALL_DIR" ]]; then
 			echo ""
 			echo "Found Hullabaloo at $DEFAULT_INSTALL_DIR..."
 			echo ""
 			export _HULLABALOO_INSTALL_DIR="$DEFAULT_INSTALL_DIR"
 		else
-			if [ -z "$_HULLABALOO_INSTALL_DIR" ]; then
+			if [[ -z "$_HULLABALOO_INSTALL_DIR" ]]; then
 				local MSG=$'\nInstallation directory unknown... repair aborted!\n'
 				_hullabaloo_notify "$MSG"
 				return
@@ -70,7 +70,7 @@ function _hullabaloo_repair {
 
 function _hullabaloo_reload {
 
-	local BASHRC_FILE=$(_hullabaloo_bashrc_file)
+	local BASHRC_FILE=$(source _hullabaloo_bashrc_file)
 	local BASH_PATH=$(which bash)
 	local TERMINAL_PROFILE_PATH="$_HULLABALOO_INSTALL_DIR/osx/hullabaloo.terminal"
 
@@ -84,8 +84,8 @@ function _hullabaloo_reload {
 #     fi
 #
 
-	if [ $(uname) == 'Darwin' ]; then
-		if [ -e "$TERMINAL_PROFILE_PATH" ]; then
+	if [[ $(uname) == 'Darwin' ]]; then
+		if [[ -f "$TERMINAL_PROFILE_PATH" ]]; then
 			echo ""
 			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
 			echo ""
@@ -100,7 +100,7 @@ function _hullabaloo_reload {
 
 function _hullabaloo_uninstall {
 
-	if [ -z "$_HULLABALOO_INSTALL_DIR" ]; then
+	if [[ -z "$_HULLABALOO_INSTALL_DIR" ]]; then
 		local MSG=$'\nInstallation directory unknown... automatic uninstall aborted!\n'
 		MSG+="My best guess to the location of this installation is: $INSTALL_BASE_DIR"
 		
@@ -117,7 +117,7 @@ function _hullabaloo_uninstall {
 	rm -rf ~/.vim_runtime
 	echo ""
 	
-	local BASHRC_FILE=$(_hullabaloo_bashrc_file)
+	local BASHRC_FILE=$(source _hullabaloo_bashrc_file)
 	local BASHRC_INCLUDE_START='############## Begin Hullabaloo Bash Profile.*'
 	local BASHRC_INCLUDE_END='################ End Hullabaloo Bash Profile.*'
 
