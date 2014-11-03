@@ -37,6 +37,9 @@ if [[ "$0" =~ bash$ ]]; then
     shopt -s hostcomplete
 fi
 
+# Easier process search
+alias au='ps aux | grep '
+
 # Follow symlinks
 ff() {
 	LINK=$(readlink -f $(which $1))
