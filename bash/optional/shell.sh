@@ -48,21 +48,28 @@ ff() {
 }
 
 function _du() {
-    ${1?"_du dir [depth=1]"}
-    DEPTH=''
-    if [[ ! -z $2 ]]; then 
-        DEPTH=$(printf '/**%.0s' $(eval "echo {1.."$(($2))"}");)
-    fi
-    du -hs $1$DEPTH/* | sort -h
+    if [[ "$1" == "-h" ]]; then echo "Usage: _du [dir=.] [depth=1]"; return 1; fi
+    DIR=${1:-.}
+    DEPTH=${2:-1}
+    du -hd $DEPTH $DIR/ | sort -h
 }
 
 function _memtop() {
+    if [[ "$1" == "-h" ]]; then echo "Usage: _memtop [socket=/tmp/memcached.sock]"; return 1; fi
+    SOCK=${1:-/tmp/memcached.sock}
+    if [[ -S "$SOCK" ]]; then
+        MEMCACHED="nc -U $SOCK"
+    else
+        HOST=${2:-localhost}
+        PORT=${2:-11211}
+        MEMCACHED="nc $HOST $PORT"
+    fi
     watch '\
         exec bash -c "\
-            echo '\''stats'\'' | nc -U /tmp/memcached.sock | \
-            tee >(awk '\''/get/ {print \$3}'\'' | tac | \
-            sed -n '\''1p;\$p'\'' | cat -v | tr -d '\''\n'\'' | sed '\''s/\^M/\//g'\'' | \
-            xargs -IX echo '\''100*(1-(X1))'\'' | tee >/dev/null >(bc -l | cut -c1-5) | xargs echo '\''Cache Hit Rate (%):'\'') \
+            echo '\''stats'\'' | '$MEMCACHED' | \
+                awk '\''/get/ {print \$3}'\'' | tac | \
+                sed -n '\''1p;\$p'\'' | cat -v | tr -d '\''\n'\'' | sed '\''s/\^M/\//g'\'' | \
+                xargs -I X echo '\''100*(1-(X1))'\'' | tee >/dev/null >(bc -l | cut -c1-5) | xargs echo '\''Cache Hit Rate (%):'\'' \
         "\
     '
 }
