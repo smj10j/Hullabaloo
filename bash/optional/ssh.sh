@@ -26,7 +26,7 @@ function start_agent {
     #ssh-add -A 
     
     echo "Adding ssh keys with no passphrases..."
-    #find -E $SSH_HOME -iregex '.*(pem|rsa|dsa)$' | xargs -L 1 ssh-add -K 
+    #find $SSH_HOME -iregex '.*\(pem\|rsa\|dsa\)$' | xargs -L 1 ssh-add -K 
 
 }
 
@@ -55,7 +55,7 @@ _complete_ssh () {
 
 	case "$prev" in
 		-i)
-			file_list=$(find -E "$SSH_HOME" -iregex '.*(pem|rsa|dsa)$')
+			file_list=$(find "$SSH_HOME" -iregex '.*\(pem\|rsa\|dsa\)$')
 			COMPREPLY=( $( compgen -W "${file_list}" -- "${cur}" ) )
 			return 0
 			;;
