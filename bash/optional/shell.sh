@@ -47,6 +47,20 @@ ff() {
 	pushd $LINK_PWD
 }
 
+function flushdns() {
+    sudo bash -c '
+    echo "Before flushing the cache, here are the current cache statistics:" >&2
+    discoveryutil mdnscachestats
+    discoveryutil udnscachestats
+    echo ""
+    
+    discoveryutil mdnsflushcache
+    discoveryutil udnsflushcaches
+    killall -u _mdnsresponder
+    echo "DNS cache flushed!"
+    '
+}
+
 function _du() {
     if [[ "$1" == "-h" ]]; then echo "Usage: _du [dir=.] [depth=1]"; return 1; fi
     DIR=${1:-.}
