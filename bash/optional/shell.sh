@@ -94,4 +94,8 @@ _hullabaloo_history_ranked() {
 }
 
 
+# Useful sed string for replacing newlines in the input
+alias _SED_REGEX_REPLACE_NL=':a;N;$!ba;s/\n/ /g'
+
+
 
