@@ -69,6 +69,8 @@ rm -rf ~/.vim_runtime
 ln -s "$_HULLABALOO_INSTALL_DIR/editors/vim/amix-vimrc" ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 confirmCmdSuccess
+ln -s "$_HULLABALOO_INSTALL_DIR/editors/vim/my_configs.vim" ~/.vim_runtime/my_configs.vim
+confirmCmdSuccess
 echo ""
 
 echo "Creating user-editable versions of template files..."
