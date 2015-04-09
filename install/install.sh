@@ -35,23 +35,16 @@ if [[ -e "$_HULLABALOO_INSTALL_DIR" ]]; then
 	cd "$_HULLABALOO_INSTALL_DIR"
 	git pull
 	confirmCmdSuccess
+	git submodule update --init --recursive
+	confirmCmdSuccess
 else
 	echo "Cloning git@github.com:smj10j/Hullabaloo.git into $_HULLABALOO_INSTALL_DIR..."
 	mkdir -p "$_HULLABALOO_INSTALL_DIR"
-	git clone "git@github.com:$HULLABALOO_GITHUB_PATH.git" "$_HULLABALOO_INSTALL_DIR"
+	git clone --recursive "git@github.com:$HULLABALOO_GITHUB_PATH.git" "$_HULLABALOO_INSTALL_DIR"
 	confirmCmdSuccess
 	cd "$_HULLABALOO_INSTALL_DIR"
 fi
 echo ""
-
-
-echo "Checking out submodules..."
-git submodule init
-confirmCmdSuccess
-git submodule update
-confirmCmdSuccess
-echo ""
-
 
 
 # OSX-Specific installs
