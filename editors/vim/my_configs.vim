@@ -22,8 +22,8 @@ function! ResizeWindow()
     else " old school console goodness
       let s:selectedsize = 1
       set nonumber
-      set columns=110
-      set lines=45
+      set columns=170
+      set lines=50
     endif
   endif
 endfunction
