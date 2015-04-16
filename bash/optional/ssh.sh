@@ -18,16 +18,14 @@ function start_agent {
     chmod 600 "${SSH_ENV}"
     source "${SSH_ENV}"
     echo "ssh-agent started with PID $SSH_AGENT_PID"
+
     if [[ -n $(which brew) ]]; then
-        $(brew --prefix)/bin/keychain --agents ssh -Q --quiet
+        echo "Initialising keychain..."
+        $(brew --prefix)/bin/keychain --eval --agents ssh --inherit any _dsa _rsa
     fi
     
-    echo "Adding ssh keys to ssh-agent with passphrases from keychain..."
-    #ssh-add -A 
-    
     echo "Adding ssh keys with no passphrases..."
-    #find $SSH_HOME -iregex '.*\(pem\|rsa\|dsa\)$' | xargs -L 1 ssh-add -K 
-
+    find $SSH_HOME -iregex '.*\(pem\|rsa\|dsa\)$' | xargs -L 1 $(brew --prefix)/bin/ssh-add -k 
 }
 
 # Source SSH settings, if applicable
@@ -39,61 +37,3 @@ if [[ -f "${SSH_ENV}" ]]; then
 else
     start_agent
 fi
-
-
-
-
-# Autocomplete Hostnames for SSH etc.
-_complete_ssh () {
-	COMPREPLY=()
-
-	cur=${COMP_WORDS[1]}
-	prev=${COMP_WORDS[COMP_CWORD-1]}
-
-	user_host_list=""
-	user_arr=( 'admin' 'ec2-user' 'root' 'ubuntu' )
-
-	case "$prev" in
-		-i)
-			file_list=$(find "$SSH_HOME" -iregex '.*\(pem\|rsa\|dsa\)$')
-			COMPREPLY=( $( compgen -W "${file_list}" -- "${cur}" ) )
-			return 0
-			;;
-	esac
-
-#	if [[ "$cur" =~ @ ]]; then
-
-		host_list=$({ 
-#			for c in /etc/ssh_config /etc/ssh/ssh_config "$SSH_HOME/config"
-#				do [ -r $c ] && sed -n -e 's/^Host[[:space:]]//p' -e 's/^[[:space:]]*HostName[[:space:]]//p' $c
-#			done
-			for k in /etc/ssh_known_hosts /etc/ssh/ssh_known_hosts "$SSH_HOME/known_hosts"
-				do [ -r $k ] && egrep -v '^[#\[]' $k | cut -f 1 -d ' ' | sed -e 's/[,:].*//g'
-			done
-			sed -n -e 's/^[0-9][0-9\.]*//p' /etc/hosts; 
-		} | tr ' ' '\n' | egrep -v '\n' | tr '\n' ' ' | sed -E "s/[[:space:]]+/ /g" | tr ' ' '\n')
-	
-		IFS=$'\n'
-		host_array=()
-		host_arr=( $host_list )
-		
-		for h in "${host_arr[@]}"; do 
-			user_host_list+="$h"$'\n'
-			for u in "${user_arr[@]}"; do 
-				user_host_list+="$u@$h"$'\n'
-			done
-		done
-	
-# 	else
-# 		for u in "${user_arr[@]}"; do 
-# 			user_host_list+="$u@"$'\n'
-# 		done
-# 	fi
-
-	COMPREPLY=( $(compgen -W "${user_host_list}" -- "${cur}"))
-	return 0
-}
-complete -o nospace -F _complete_ssh mosh
-complete -o nospace -F _complete_ssh ssh
-
-
