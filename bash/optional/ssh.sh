@@ -11,6 +11,9 @@ mkdir -p "$SSH_HOME/connections"
 chmod 700 "$SSH_HOME/connections"
 
 
+# ssh-askpass
+export SSH_ASKPASS="/usr/local/bin/ssh-askpass"
+
 # Set the environment variables used by ssh-agent 
 function start_agent {
     echo "Initialising new SSH agent..."

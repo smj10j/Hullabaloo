@@ -40,8 +40,8 @@ brew reinstall git bash-completion
 echo "Installing keychain..."
 brew reinstall keychain
 
-echo "Copying bash/templates/usr/libexec/ssh-askpass to /usr/libexec/ssh-askpass..."
-cp "$_HULLABALOO_INSTALL_DIR/bash/templates/usr/libexec/ssh-askpass" "/usr/libexec/ssh-askpass"
+echo "Copying bash/templates/usr/local/bin/ssh-askpass to /usr/local/bin/ssh-askpass..."
+cp "$_HULLABALOO_INSTALL_DIR/bash/templates/usr/local/bin/ssh-askpass" "/usr/local/bin/ssh-askpass"
 
 
 ######### Installing Development Brews ##########
