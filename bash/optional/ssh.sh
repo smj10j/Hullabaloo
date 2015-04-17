@@ -24,11 +24,11 @@ function start_agent {
 
     if [[ -n $(which brew) ]]; then
         echo "Initialising keychain..."
-        $(brew --prefix)/bin/keychain --timeout 120 --eval --agents ssh --inherit any _dsa _rsa
+        $(brew --prefix)/bin/keychain --timeout 120 --quiet --eval --agents ssh --inherit any _dsa _rsa
     fi
     
-    echo "Adding ssh keys with no passphrases..."
-    find $SSH_HOME -iregex '.*\(pem\|rsa\|dsa\)$' | xargs -L 1 $(brew --prefix)/bin/ssh-add -k 
+    #echo "Adding ssh keys with no passphrases..."
+    #find $SSH_HOME -iregex '.*\(pem\|rsa\|dsa\)$' | xargs -L 1 $(brew --prefix)/bin/ssh-add -k 
 }
 
 # Source SSH settings, if applicable
