@@ -93,6 +93,9 @@ _hullabaloo_history_ranked() {
     history | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort | uniq -c | sort -r
 }
 
+# Helpful command for printing a filetree from the current directory
+alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'" 
+
 
 # Useful sed string for replacing newlines in the input
 _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
