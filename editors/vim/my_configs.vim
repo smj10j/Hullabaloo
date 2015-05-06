@@ -30,5 +30,7 @@ endfunction
 let s:selectedsize=1
 call ResizeWindow()
 
-
+" Override someone setting foldlevel too low
+set foldmethod=indent
+set foldlevel=20
 
