@@ -23,10 +23,10 @@ function setScreenshotDirectory {
 function setFinderToAlwaysShowHiddenFiles {
 	
 	FINDER_NAME='Finder'
-	if [ "`ps -e | grep $FINDER_NAME -c`" == "1" ]; then FINDER_NAME='finder'; fi
+	f [[ "$(ps -e | grep $FINDER_NAME -c)" == "1" ]]; then FINDER_NAME='finder'; fi 
 	# echo "Finder name is $FINDER_NAME"
 	
-	if [ `defaults read com.apple.$FINDER_NAME AppleShowAllFiles` == "FALSE" ]; then
+	if [[ $(defaults read com.apple.$FINDER_NAME AppleShowAllFiles) == "FALSE" ]]; then
 		echo "Enabling showing of hidden files everywhere..."
 		defaults write com.apple.$FINDER_NAME AppleShowAllFiles TRUE
 		sudo killall $FINDER_NAME
@@ -61,7 +61,7 @@ fi
 
 
 # Clear Bluetooth cache
-function _hullabaloo_clearBluetoothCache {
+function _hullabaloo_clear_bluetooth_cache {
     sudo rm /Library/Preferences/com.apple.Bluetooth.plist
     sudo rm /Library/Preferences/SystemConfiguration/com.apple.Bluetooth.plist
     sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.*.plist
