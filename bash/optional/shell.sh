@@ -49,14 +49,8 @@ ff() {
 
 function flushdns() {
     sudo bash -c '
-    echo "Before flushing the cache, here are the current cache statistics:" >&2
-    discoveryutil mdnscachestats
-    discoveryutil udnscachestats
-    echo ""
-    
-    discoveryutil mdnsflushcache
-    discoveryutil udnsflushcaches
-    killall -u _mdnsresponder
+        dscacheutil -flushcache
+        killall -HUP mDNSResponder
     echo "DNS cache flushed!"
     '
 }
