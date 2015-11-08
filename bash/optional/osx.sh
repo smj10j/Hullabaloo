@@ -59,6 +59,11 @@ fi
 # defaults read > 
 
 
+# Better top
+TOP_PATH=$(which top); 
+eval 'function top { \
+    '"$TOP_PATH"' -o cpu -O +rsize -S -i 1 -n 30 -stats command,user,pid,pstate,cpu,threads,mem,vsize,time,csw \
+}'
 
 # Clear Bluetooth cache
 function _hullabaloo_clear_bluetooth_cache {
