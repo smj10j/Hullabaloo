@@ -61,7 +61,7 @@ fi
 
 
 # Clear Bluetooth cache
-function __hullabaloo_clearBluetoothCache {
+function _hullabaloo_clearBluetoothCache {
     sudo rm /Library/Preferences/com.apple.Bluetooth.plist
     sudo rm /Library/Preferences/SystemConfiguration/com.apple.Bluetooth.plist
     sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.*.plist
