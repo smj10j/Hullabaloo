@@ -32,7 +32,7 @@ function setFinderToAlwaysShowHiddenFiles {
 		sudo killall $FINDER_NAME
 	fi
 }
-#setFinderToAlwaysShowHiddenFiles 
+setFinderToAlwaysShowHiddenFiles 
 
 # Alias to show registered URL schemes
 function listRegisteredURLSchemes {
@@ -58,6 +58,16 @@ fi
 #TODO: Periodically backup all configuration all settings
 # defaults read > 
 
+
+
+# Clear Bluetooth cache
+function __hullabaloo_clearBluetoothCache {
+    sudo rm /Library/Preferences/com.apple.Bluetooth.plist
+    sudo rm /Library/Preferences/SystemConfiguration/com.apple.Bluetooth.plist
+    sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.*.plist
+    sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.plist
+    $_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt
+}
 
 
 
