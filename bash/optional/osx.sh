@@ -62,10 +62,28 @@ fi
 
 # Clear Bluetooth cache
 function _hullabaloo_clear_bluetooth_cache {
-    sudo rm /Library/Preferences/com.apple.Bluetooth.plist
-    sudo rm /Library/Preferences/SystemConfiguration/com.apple.Bluetooth.plist
-    sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.*.plist
-    sudo rm ~/Library/Preferences/ByHost/com.apple.Bluetooth.plist
+    NEW_FOLDER=$_HULLABALOO_INSTALL_DIR/.backup/bluetooth
+    FILES=( '/Library/Preferences/com.apple.Bluetooth.plist'
+            '/Library/Preferences/SystemConfiguration/com.apple.Bluetooth.plist'
+            '~/Library/Preferences/ByHost/com.apple.Bluetooth.*.plist'
+            '~/Library/Preferences/ByHost/com.apple.Bluetooth.plist' )
+
+    echo "Turning Bluetooth off..."
+    $_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt
+    
+    echo "Removing Bluetooth plist files and storing them in $NEW_FOLDER..."
+    for file in ${FILES[@]}; do 
+        if [[ -f "$file" ]]; then 
+            NEW_FILE="${NEW_FOLDER}${file}"
+            mkdir -p $(dirname "$NEW_FILE") 2>&1 >/dev/null
+            sudo mv -f "$file" "$NEW_FILE"
+        fi
+    done
+    
+    echo "Pausing 3 seconds..."
+    sleep 3
+    
+    echo "Turning Bluetooth back on..."
     $_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt
 }
 
