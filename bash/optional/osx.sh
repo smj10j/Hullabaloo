@@ -23,7 +23,7 @@ function setScreenshotDirectory {
 function setFinderToAlwaysShowHiddenFiles {
 	
 	FINDER_NAME='Finder'
-	f [[ "$(ps -e | grep $FINDER_NAME -c)" == "1" ]]; then FINDER_NAME='finder'; fi 
+	if [[ "$(ps -e | grep $FINDER_NAME -c)" == "1" ]]; then FINDER_NAME='finder'; fi 
 	# echo "Finder name is $FINDER_NAME"
 	
 	if [[ $(defaults read com.apple.$FINDER_NAME AppleShowAllFiles) == "FALSE" ]]; then
