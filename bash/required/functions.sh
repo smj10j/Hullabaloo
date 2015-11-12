@@ -91,6 +91,9 @@ function _hullabaloo_reload {
 			echo ""
 			/usr/libexec/PlistBuddy -c "Delete ':Window Settings':hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist  
 			open "$TERMINAL_PROFILE_PATH" && exit 0
+			/usr/libexec/PlistBuddy -c "Set 'Default Window Settings' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 
+			/usr/libexec/PlistBuddy -c "Set 'Startup Window Settings' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 
+			/usr/libexec/PlistBuddy -c "Set 'CopyAttributesProfile' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 			
 		else
 			$BASH_PATH -l && exit 0
 		fi
