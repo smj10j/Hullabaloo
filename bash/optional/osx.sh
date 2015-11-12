@@ -60,9 +60,10 @@ fi
 
 
 # Better top
+unset -f top
 TOP_PATH=$(which top); 
 eval 'function top { \
-    '"$TOP_PATH"' -o cpu -O +rsize -S -i 1 -n 30 -stats command,user,pid,pstate,cpu,threads,mem,vsize,time,csw \
+    '"$TOP_PATH"' -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw \
 }'
 
 # Clear Bluetooth cache
