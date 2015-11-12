@@ -89,11 +89,10 @@ function _hullabaloo_reload {
 			echo ""
 			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
 			echo ""
-			killall -3 Terminal
 			open "$TERMINAL_PROFILE_PATH"
 			osascript -e 'tell application "Terminal"
                 tell first window
-                    set ProfileSettings to (current settings of tab 1)
+                    set ProfileSettings to (current settings of front tab )
                 end tell
                 set default settings to ProfileSettings
                 set startup settings to ProfileSettings
