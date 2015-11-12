@@ -60,7 +60,7 @@ fi
 
 
 # Better top
-unset -f top
+unset -f top &>/dev/null   
 TOP_PATH=$(which top); 
 eval 'function top { \
     '"$TOP_PATH"' -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw \
