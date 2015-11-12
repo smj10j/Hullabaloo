@@ -89,12 +89,15 @@ function _hullabaloo_reload {
 			echo ""
 			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
 			echo ""
-			/usr/libexec/PlistBuddy -c "Delete ':Window Settings':hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist
-			/usr/libexec/PlistBuddy -c "Set 'Default Window Settings' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 
-			/usr/libexec/PlistBuddy -c "Set 'Startup Window Settings' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 
-			/usr/libexec/PlistBuddy -c "Set 'CopyAttributesProfile' hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist 
 			killall -3 Terminal
-			open "$TERMINAL_PROFILE_PATH" && exit 0
+			open "$TERMINAL_PROFILE_PATH"
+			osascript -e 'tell application "Terminal"
+                tell first window
+                    set ProfileSettings to (current settings of tab 1)
+                end tell
+                set default settings to ProfileSettings
+                set startup settings to ProfileSettings
+            end tell'
 		else
 			$BASH_PATH -l && exit 0
 		fi
