@@ -89,6 +89,7 @@ function _hullabaloo_reload {
 			echo ""
 			echo "Installing new Terminal profile and opening a new shell so the changes take effect immediately..."
 			echo ""
+			/usr/libexec/PlistBuddy -c "Delete ':Window Settings':hullabaloo" ~/Library/Preferences/com.apple.Terminal.plist  
 			open "$TERMINAL_PROFILE_PATH" && exit 0
 		else
 			$BASH_PATH -l && exit 0
