@@ -70,7 +70,7 @@ function _hullabaloo_repair {
 
 function _hullabaloo_reload {
 
-	local BASHRC_FILE=$(source _hullabaloo_bashrc_file)
+	local BASHRC_FILE=$(source $(_hullabaloo_bashrc_file))
 	local BASH_PATH=$(which bash)
 	local TERMINAL_PROFILE_PATH="$_HULLABALOO_INSTALL_DIR/osx/hullabaloo.terminal"
 
