@@ -24,7 +24,7 @@ function start_agent {
 
     if [[ -n $(which brew) ]]; then
         echo "Initialising keychain..."
-        $(brew --prefix)/bin/keychain --timeout 120 --quiet --eval --agents ssh --inherit any _dsa _rsa
+        $(brew --prefix)/bin/keychain --timeout 120 --quiet --eval --agents gpg,ssh --inherit any-once
     fi
     
     #echo "Adding ssh keys with no passphrases..."
