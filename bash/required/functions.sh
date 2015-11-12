@@ -97,6 +97,7 @@ function _hullabaloo_reload {
                 set default settings to ProfileSettings
                 set startup settings to ProfileSettings
             end tell'
+            exit 0
 		else
 			$BASH_PATH -l && exit 0
 		fi
