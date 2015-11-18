@@ -20,16 +20,16 @@ Seal() {
 
     echo "Resealing $SECURITY_ZIP_FILE..."
     pushd "$TMP_SECURITY_DIR"
-    zip -P "$PASSWORD" --filesync "$SECURITY_ZIP_FILE" *
+    zip -r -P "$PASSWORD" --filesync "$SECURITY_ZIP_FILE" *
     if [[ $? != 0 ]]; then popd && exit 2; fi
     popd
     
     echo "Removing temporary files..."
-    rm -r "$TMP_SECURITY_DIR"
+    srm -r --medium --zero "$TMP_SECURITY_DIR"
     echo "Done!"
     echo ""
 }
-trap Seal EXIT
+trap Seal SIGHUP SIGINT SIGTERM EXIT
 
 # Decrypt
 read -s -p "Password:" PASSWORD
