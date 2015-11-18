@@ -94,6 +94,10 @@ function _hullabaloo_clear_bluetooth_cache {
 }
 
 
+# Give us more breathing room
+ulimit -n 65536
+ulimit -u 2048
+
 
 # Airport on the command line
 # eg. airport -s
