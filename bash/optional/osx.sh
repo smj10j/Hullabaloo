@@ -7,7 +7,7 @@ fi
 
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # Change the screenshot directory
 function setScreenshotDirectory {
