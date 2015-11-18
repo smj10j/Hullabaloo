@@ -7,6 +7,7 @@ fi
 
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
 # Change the screenshot directory
 function setScreenshotDirectory {
@@ -45,7 +46,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
 
 ##### Coreutils with Homebrew #####
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 if [[ "$0" =~ bash$ ]]; then
     # Short of learning how to actually configure OSX, here's a hacky way to use
     # GNU manpages for programs that are GNU ones, and fallback to OSX manpages otherwise

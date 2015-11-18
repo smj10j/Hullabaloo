@@ -80,8 +80,9 @@ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
 launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
 launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
 launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
-launchctl unload ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist
-launchctl load -w ~/Library/LaunchAgents/homebrew-php.josegonzalez.php55.plist
+launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.php55=.plist
+launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php55.plist
+
 mysql.server stop
 mysql.server start
 
