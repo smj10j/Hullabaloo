@@ -7,7 +7,12 @@ fi
 
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+# homebrew core utils at front of path
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+# homebrew sqlite3 at front of path
+PATH="$(brew --prefix sqlite)/bin:$PATH"
 
 # Change the screenshot directory
 function setScreenshotDirectory {
@@ -71,7 +76,7 @@ if [[ ! $(which sqlite3) =~ 'not found' ]]; then
     unset -f sqlite3 &>/dev/null   
     SQLITE_PATH=$(which sqlite3); 
     eval 'function sqlite3 { \
-        '"$SQLITE_PATH"' -cmd "'".load $(dirname $(dirname $(which sqlite3)))/lib/libsqlitefunctions.dylib"'" \
+        '"$SQLITE_PATH"' -cmd ".load '$(dirname $(dirname $SQLITE_PATH))/lib/libsqlitefunctions'" \
     }'
 fi
 
