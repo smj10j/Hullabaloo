@@ -66,6 +66,15 @@ eval 'function top { \
     '"$TOP_PATH"' -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw \
 }'
 
+# Sqlite with extensions
+if [[ ! $(which sqlite3) =~ 'not found' ]]; then 
+    unset -f sqlite3 &>/dev/null   
+    SQLITE_PATH=$(which sqlite3); 
+    eval 'function sqlite3 { \
+        '"$SQLITE_PATH"' -cmd "'".load $(dirname $(dirname $(which sqlite3)))/lib/libsqlitefunctions.dylib"'" \
+    }'
+fi
+
 # Clear Bluetooth cache
 function _hullabaloo_clear_bluetooth_cache {
     NEW_FOLDER=$_HULLABALOO_INSTALL_DIR/.backup/bluetooth
