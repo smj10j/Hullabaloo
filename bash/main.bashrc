@@ -25,11 +25,11 @@ IS_ZSH=$([[ -z $BASH ]] && echo 'yes')
 # Usage: IF_ZSH 'some zsh stuff' ELSE 'some non-zsh stuff'
 function IF_ZSH() {
     if [[ -n "$IS_ZSH" ]]; then
-    	eval $1
+    	eval $1    	
     elif [[ -n "$3" ]]; then
     	eval $3
     fi
-}   
+}
 
 
 ##########################################
@@ -89,7 +89,7 @@ _hullabaloo_load_profile "optional/osx"
 ##########################################
 
 # Do any final maintenance tasks
-_hullabaloo_load_profile 'required/cleanup'
+#_hullabaloo_load_profile 'required/cleanup'
 
 
 

@@ -8,11 +8,15 @@ fi
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+# homebrew at front of path (just in case)
+pathsadd "$(brew --prefix)/bin:$(brew --prefix)/sbin"
+
 # homebrew core utils at front of path
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+pathsadd "$(brew --prefix coreutils)/libexec/gnubin"
+manpathsadd "$(brew --prefix)/opt/coreutils/libexec/gnuman"
 
 # homebrew sqlite3 at front of path
-PATH="$(brew --prefix sqlite)/bin:$PATH"
+pathsadd "$(brew --prefix sqlite)/bin"
 
 # Change the screenshot directory
 function setScreenshotDirectory {
@@ -66,18 +70,18 @@ fi
 
 # Better top
 unset -f top &>/dev/null   
-TOP_PATH=$(which top); 
-eval 'function top { \
-    '"$TOP_PATH"' -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw \
-}'
+TOP_PATH=$(which top)
+eval "function top { 
+    $TOP_PATH -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw 
+}"
 
 # Sqlite with extensions
-if [[ ! $(which sqlite3) =~ 'not found' ]]; then 
+if [[ $(which sqlite3 >/dev/null && echo $?) == 0 ]]; then
     unset -f sqlite3 &>/dev/null   
-    SQLITE_PATH=$(which sqlite3); 
-    eval 'function sqlite3 { \
-        '"$SQLITE_PATH"' -cmd ".load '$(dirname $(dirname $SQLITE_PATH))/lib/libsqlitefunctions'" \
-    }'
+    SQLITE_PATH=$(which sqlite3);
+    eval "function sqlite3 { 
+        $SQLITE_PATH -cmd '.load $(dirname $(dirname $SQLITE_PATH))/lib/libsqlitefunctions'
+    }"
 fi
 
 # Clear Bluetooth cache

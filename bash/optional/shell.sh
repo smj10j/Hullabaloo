@@ -4,7 +4,7 @@
 IF_ZSH 'autoload bashcompinit; bashcompinit' 
 
 # Enable Bash Completion
-if [[ -z "$(which complete)" ]] && [[ $(uname) == 'Darwin' ]]; then
+if [[ -z "$(which complete 2>/dev/null)" ]] && [[ $(uname) == 'Darwin' ]]; then
 	# Bash Completion
 	if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
 		bash $(brew --prefix)/etc/bash_completion
@@ -20,7 +20,7 @@ export HISTCONTROL=erasedups
 if [[ "$0" =~ bash$ ]]; then
 
     # Ignore case when doing bash completion
-    bind "set completion-ignore-case"
+    #bind "set completion-ignore-case"
 
     # Auto-append the history on shell exit
     shopt -s histappend

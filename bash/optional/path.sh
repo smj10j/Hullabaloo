@@ -3,7 +3,7 @@
 # Utilities for adding to the PATH variable
 pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$1"
+        PATH="$1:${PATH:+"$PATH"}"
     fi
 }
 
@@ -14,6 +14,25 @@ pathsadd() {
 	done
 }
 
-# Enhance the path (mostly for MacPorts)
+# Utilities for adding to the MANPATH variable
+manpathadd() {
+    if [ -d "$1" ] && [[ ":$MANPATH:" != *":$1:"* ]]; then
+        MANPATH="$1:${MANPATH:+"$MANPATH"}"
+    fi
+}
+
+manpathsadd() {
+    IF_ZSH "IFS=':' read -A array <<< '$1'" ELSE "IFS=':' read -a array <<< '$1'"
+	for element in "${array[@]}"; do
+		manpathadd "$element"
+	done
+}
+
+# Pretty-up the PATH
+if [ -x /usr/libexec/path_helper ]; then
+    eval `/usr/libexec/path_helper -s`
+fi
+
+# Enhance the path
 pathsadd $PATH_ADDITION
 

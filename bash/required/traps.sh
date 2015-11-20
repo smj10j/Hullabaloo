@@ -46,13 +46,13 @@ function _hullabaloo_get_stack_trace () {
 # Catches errors within bash and outputs them
 function _hullabaloo_trap_error_handler {
 	
-	local MYSELF="$0"					# equals to my script name when in a file
+	local MYSELF="$0"				# equals to my script name when in a file
 	local SCRIPT_NAME="$1"			# argument 1: script name
 	local LASTLINE="$2"				# argument 2: last line of error occurrence
 	local LASTERR="$3"				# argument 3: error code of last command
 	
-	local HEADER=`_hullabaloo_bold "#################### ERROR $MYSELF ####################"`
-	local FOOTER=`for i in $(seq 1 ${#HEADER}); do echo -n "#"; done`
+	local HEADER=$(_hullabaloo_bold "#################### ERROR $MYSELF ####################")
+	local FOOTER=$(for i in $(seq 1 ${#HEADER}); do echo -n "#"; done)
 	
 	echo ""
 	echo $HEADER
@@ -71,7 +71,7 @@ function _hullabaloo_trap_error_handler {
 	echo "${SCRIPT_NAME} [line ${LASTLINE}]: exit status of last command: ${LASTERR}"
 	
 	echo ""
-	echo `_hullabaloo_bold "$FOOTER"`
+	echo $(_hullabaloo_bold "$FOOTER")
 	echo ""
 }
 
@@ -84,7 +84,7 @@ function _hullabaloo_add_on_exit_handler {
     _hullabaloo_on_exit_handlers[$n]="$*"
 	# If we were able to grab an index - set the trap
     if [[ $n -eq 0 ]]; then
-        trap _hullabaloo_on_exit_handler_executor EXIT
+        trap _hullabaloo_on_exit_handler_executor SIGHUP SIGINT SIGTERM EXIT
     fi
 }
 
