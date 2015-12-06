@@ -10,6 +10,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 # homebrew at front of path (just in case)
 pathsadd "$(brew --prefix)/bin:$(brew --prefix)/sbin"
+manpathsadd "$(brew --prefix)/share/man"
 
 # homebrew core utils at front of path
 pathsadd "$(brew --prefix coreutils)/libexec/gnubin"
@@ -53,6 +54,8 @@ function listRegisteredURLSchemes {
 # Disable writing .DS_Store to network drives (http://support.apple.com/kb/HT1629)
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
+# Enable text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
 ##### Coreutils with Homebrew #####
 if [[ "$0" =~ bash$ ]]; then

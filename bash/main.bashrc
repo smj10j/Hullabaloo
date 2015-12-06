@@ -97,8 +97,4 @@ _hullabaloo_load_profile "optional/osx"
 ############### Execution! ###############
 ##########################################
 
-# Load in our optional and user profiles
-# _hullabaloo_load_profiles
-
-
 

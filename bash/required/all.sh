@@ -9,6 +9,19 @@
 
 
 
+##########################################
+############## Other Cleanup #############
+##########################################
+
+# Pretty-up the PATH
+if [ -x /usr/libexec/path_helper ]; then
+    export MANPATH
+    export PATH
+    eval `/usr/libexec/path_helper -s`
+fi
+
+
+
 
 ##########################################
 ################ Bootstrap ###############
