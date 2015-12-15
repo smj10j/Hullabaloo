@@ -71,6 +71,12 @@ fi
 # defaults read > 
 
 
+# If available, use the OSX trash when removing files
+# brew install trash
+if [[ $(which trash >/dev/null && echo $?) == 0 ]]; then
+    alias rm='trash'
+fi
+
 # Better top
 unset -f top &>/dev/null   
 TOP_PATH=$(which top)
