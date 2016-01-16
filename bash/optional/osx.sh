@@ -19,6 +19,9 @@ manpathsadd "$(brew --prefix)/opt/coreutils/libexec/gnuman"
 # homebrew sqlite3 at front of path
 pathsadd "$(brew --prefix sqlite)/bin"
 
+# homebrew perl at front of path
+# pathsadd "$(brew --prefix perl)/bin"
+
 # Change the screenshot directory
 function setScreenshotDirectory {
 	if [ `defaults read com.apple.screencapture location` != "$1" ]; then

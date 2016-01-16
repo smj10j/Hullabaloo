@@ -1,3 +1,6 @@
 [submodule "editors/vim/amix-vimrc"]
 	path = editors/vim/amix-vimrc
 	url = git@github.com:amix/vimrc.git
+[submodule "editors/vim/vim-wakatime"]
+	path = editors/vim/vim-wakatime
+	url = git@github.com:wakatime/vim-wakatime.git

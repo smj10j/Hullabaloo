@@ -34,3 +34,5 @@ call ResizeWindow()
 set foldmethod=indent
 set foldlevel=20
 
+" Wakatime
+source ~/.hullabaloo/editors/vim/vim-wakatime/plugin/wakatime.vim
