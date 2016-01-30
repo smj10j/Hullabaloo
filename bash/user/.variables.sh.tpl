@@ -20,7 +20,7 @@ if [ `uname` == 'Darwin' ]; then
 fi
 
 # Screenshots will be placed in this directory instead of the Desktop
-SCREENSHOT_DIR=~/Screenshots
+SCREENSHOT_DIR=~/Dropbox/Screenshots
 
 #TODO: sensible defaults
 # Any periodic backups will be written here
