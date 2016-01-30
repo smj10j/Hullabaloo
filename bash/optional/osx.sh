@@ -31,7 +31,7 @@ function setScreenshotDirectory {
 		sudo killall SystemUIServer
 	fi
 }
-#setScreenshotDirectory $SCREENSHOT_DIR
+setScreenshotDirectory $SCREENSHOT_DIR
 
 # Always show hidden files in Finder
 function setFinderToAlwaysShowHiddenFiles {
