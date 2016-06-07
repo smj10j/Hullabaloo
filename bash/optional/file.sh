@@ -11,5 +11,5 @@ function edit {
     if [ ! -e $1 ]; then 
         touch $1
     fi
-    eval "$TEXT_EDITOR_CMD $1"
+    eval "$TEXT_EDITOR_CMD '$1'"
 }
