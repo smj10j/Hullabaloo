@@ -125,8 +125,12 @@ function _hullabaloo_clear_bluetooth_cache {
 
 
 # Give us more breathing room
+sudo launchctl limit maxfiles 65536 65536
+sudo launchctl limit maxproc 2048 2048
 ulimit -n 65536
-ulimit -u 2048
+ulimit -u 2047
+
+
 
 
 # Airport on the command line
