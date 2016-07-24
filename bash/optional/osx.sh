@@ -13,40 +13,15 @@ pathsadd "$(brew --prefix)/bin:$(brew --prefix)/sbin"
 manpathsadd "$(brew --prefix)/share/man"
 
 # homebrew core utils at front of path
-pathsadd "$(brew --prefix coreutils)/libexec/gnubin"
+pathsadd "$(brew --prefix)/opt/coreutils/libexec/gnubin"
 manpathsadd "$(brew --prefix)/opt/coreutils/libexec/gnuman"
 
 # homebrew sqlite3 at front of path
-pathsadd "$(brew --prefix sqlite)/bin"
+pathsadd "$(brew --prefix)/opt/sqlite/bin"
 
 # homebrew perl at front of path
 # pathsadd "$(brew --prefix perl)/bin"
 
-# Change the screenshot directory
-function setScreenshotDirectory {
-	if [ `defaults read com.apple.screencapture location` != "$1" ]; then
-		echo "Changing the screenshot directory from `defaults read com.apple.screencapture location` to $1..."
-		mkdir -p $1
-		defaults write com.apple.screencapture location $1
-		sudo killall SystemUIServer
-	fi
-}
-setScreenshotDirectory $SCREENSHOT_DIR
-
-# Always show hidden files in Finder
-function setFinderToAlwaysShowHiddenFiles {
-	
-	FINDER_NAME='Finder'
-	if [[ "$(ps -e | grep $FINDER_NAME -c)" == "1" ]]; then FINDER_NAME='finder'; fi 
-	# echo "Finder name is $FINDER_NAME"
-	
-	if [[ $(defaults read com.apple.$FINDER_NAME AppleShowAllFiles) == "FALSE" ]]; then
-		echo "Enabling showing of hidden files everywhere..."
-		defaults write com.apple.$FINDER_NAME AppleShowAllFiles TRUE
-		sudo killall $FINDER_NAME
-	fi
-}
-setFinderToAlwaysShowHiddenFiles 
 
 # Alias to show registered URL schemes
 function listRegisteredURLSchemes {
@@ -54,11 +29,6 @@ function listRegisteredURLSchemes {
 	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
 }
 
-# Disable writing .DS_Store to network drives (http://support.apple.com/kb/HT1629)
-defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-
-# Enable text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
 ##### Coreutils with Homebrew #####
 if [[ "$0" =~ bash$ ]]; then

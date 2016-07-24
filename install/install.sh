@@ -51,6 +51,28 @@ echo ""
 if [[ $(uname) == 'Darwin' ]]; then
 	if [[ -z $(which brew) ]]; then
 
+        # Disable writing .DS_Store to network drives (http://support.apple.com/kb/HT1629)
+        [[ "$(defaults read com.apple.desktopservices DSDontWriteNetworkStores)" == "0" ]] && \
+        defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
+        # Enable text selection in Quick Look
+        [[ "$(defaults read com.apple.finder QLEnableTextSelection)" == "0" ]] && \
+        defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+    
+        # Change the screenshot directory
+        if [ `defaults read com.apple.screencapture location` != "$1" ]; then
+            mkdir -p $1
+            defaults write com.apple.screencapture location $1
+            sudo killall SystemUIServer
+        fi
+
+        # Always show hidden files in Finder    
+        if [[ $(defaults read com.apple.Finder AppleShowAllFiles) == "0" ]]; then
+            defaults write com.apple.Finder AppleShowAllFiles -bool TRUE
+            sudo killall Finder
+        fi
+
+
 		echo ""
 		echo "#######################################################"
 		echo "Installing Homebrew"
