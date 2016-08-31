@@ -12,7 +12,7 @@ if [[ -z "$(which complete 2>/dev/null)" ]] && [[ $(uname) == 'Darwin' ]]; then
 fi
 
 # Store much more bash history (default is 500)
-export HISTFILESIZE=10000
+export HISTFILESIZE=40000
 
 # Ignore duplicate lines
 export HISTCONTROL=erasedups
@@ -37,6 +37,10 @@ if [[ "$0" =~ bash$ ]]; then
     shopt -s hostcomplete
 fi
 
+# More easily view logs with less
+#export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?|\" \")/\n/g' '%s'"
+export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?)/\n/g' '%s' | sed 's/\" \"//g'"
+
 # Easier process search
 alias au='ps aux | grep '
 
@@ -49,10 +53,12 @@ ff() {
 
 function flushdns() {
     sudo bash -c '
+        set -x
         dscacheutil -flushcache
         killall -HUP mDNSResponder
-    echo "DNS cache flushed!"
-    '
+        set +x
+    ' >&2 \
+    && echo "DNS cache flushed\!"
 }
 
 function _du() {
