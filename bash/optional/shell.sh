@@ -42,7 +42,7 @@ fi
 export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?)/\n/g' '%s' | sed 's/\" \"//g'"
 
 # Easier process search
-alias au='ps aux | grep '
+alias au='ps -A | grep '
 
 # Follow symlinks
 ff() {
@@ -101,4 +101,14 @@ alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
 
 
+# More helpful whois
+alias gwhois "whois -h geektools.com"
 
+# Use html instead of pdf for manp viewing
+function manp() {
+    MANP_DIR=~/Dropbox/Public/manp
+    mkdir -p ${MANP_DIR}
+    groffer --man --www --www-viewer="bash -c 'mv -t ${MANP_DIR} \${1} && dropbox_uploader.sh share ${MANP_DIR##*Dropbox/}/\$(basename \${1}); open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "ls" &
+    echo "Generating HTML-formatted manpage in the background..."
+    echo "Google Chrome will open with the generated document when finished."
+}
