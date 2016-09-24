@@ -5,6 +5,10 @@
 SSH_HOME="$HOME/.ssh"
 SSH_ENV="$SSH_HOME/environment"
 
+# For viewing SSL traffic with packet sniffers
+# https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/
+export SSLKEYLOGFILE=/usr/local/var/log/sslkeylog
+
 # Setup needed ssh environment
 source "${SSH_ENV}"
 mkdir -p "$SSH_HOME/connections"
