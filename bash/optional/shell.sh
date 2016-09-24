@@ -106,9 +106,10 @@ alias gwhois "whois -h geektools.com"
 
 # Use html instead of pdf for manp viewing
 function manp() {
-    MANP_DIR=~/Dropbox/Public/manp
+    MANP_DIR=~/Dropbox/Backups/Software/'Foxit\ MobilePDF'
     mkdir -p ${MANP_DIR}
-    groffer --man --www --www-viewer="bash -c 'mv -t ${MANP_DIR} \${1} && dropbox_uploader.sh share ${MANP_DIR##*Dropbox/}/\$(basename \${1}); open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "ls" &
+    groffer --man --www --www-viewer="bash -c 'mv -f -t ${MANP_DIR} \${1} && open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "$1" &
     echo "Generating HTML-formatted manpage in the background..."
+    echo "It will be saved to ${MANP_DIR}"
     echo "Google Chrome will open with the generated document when finished."
 }
