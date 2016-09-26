@@ -12,7 +12,7 @@ if [[ -z "$(which complete 2>/dev/null)" ]] && [[ $(uname) == 'Darwin' ]]; then
 fi
 
 # Store much more bash history (default is 500)
-export HISTFILESIZE=10000
+export HISTFILESIZE=40000
 
 # Ignore duplicate lines
 export HISTCONTROL=erasedups
@@ -37,8 +37,12 @@ if [[ "$0" =~ bash$ ]]; then
     shopt -s hostcomplete
 fi
 
+# More easily view logs with less
+#export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?|\" \")/\n/g' '%s'"
+export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?)/\n/g' '%s' | sed 's/\" \"//g'"
+
 # Easier process search
-alias au='ps aux | grep '
+alias au='ps -A | grep '
 
 # Follow symlinks
 ff() {
@@ -49,10 +53,12 @@ ff() {
 
 function flushdns() {
     sudo bash -c '
+        set -x
         dscacheutil -flushcache
         killall -HUP mDNSResponder
-    echo "DNS cache flushed!"
-    '
+        set +x
+    ' >&2 \
+    && echo "DNS cache flushed\!"
 }
 
 function _du() {
@@ -95,4 +101,15 @@ alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
 
 
+# More helpful whois
+alias gwhois="whois -h geektools.com"
 
+# Use html instead of pdf for manp viewing
+function manp() {
+    MANP_DIR=~/Dropbox/Backups/Software/'Foxit\ MobilePDF'
+    mkdir -p ${MANP_DIR}
+    groffer --man --www --www-viewer="bash -c 'mv -f -t ${MANP_DIR} \${1} && open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "$1" &
+    echo "Generating HTML-formatted manpage in the background..."
+    echo "It will be saved to ${MANP_DIR}"
+    echo "Google Chrome will open with the generated document when finished."
+}

@@ -8,6 +8,9 @@ alias smj='cd /Code/smj10j/'
 alias bfol='stdbuf -o10K tail -f'
 
 
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+
 # Security Group Management
 # aws-sg-ls() {
 #     aws --profile=extrabux ec2 describe-security-groups --query='*[].[GroupName,GroupId,IpPermissions]'

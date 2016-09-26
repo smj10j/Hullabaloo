@@ -5,6 +5,10 @@
 SSH_HOME="$HOME/.ssh"
 SSH_ENV="$SSH_HOME/environment"
 
+# For viewing SSL traffic with packet sniffers
+# https://jimshaver.net/2015/02/11/decrypting-tls-browser-traffic-with-wireshark-the-easy-way/
+export SSLKEYLOGFILE=/usr/local/var/log/ssh/sslkeylog.log
+
 # Setup needed ssh environment
 source "${SSH_ENV}"
 mkdir -p "$SSH_HOME/connections"
@@ -18,7 +22,12 @@ export SSH_ASKPASS="/usr/local/bin/ssh-askpass"
 function start_agent {
     if [[ -n $(which brew) ]]; then
         echo "Initialising ssh-agent and gpg-agent via keychain..."
-        $(brew --prefix)/bin/keychain --timeout 120 --quick --eval --agents gpg,ssh --inherit local-once  > "${SSH_ENV}"
+        $(brew --prefix)/bin/keychain --quiet \
+            --timeout 720 --eval --agents ssh --inherit local-once \
+            steve@inora.01j.me \
+            steve@huggableharry.smj10j.net \
+            aws-norcal-1.pem \
+            ovh-statstrasbourg > "${SSH_ENV}"
         chmod 600 "${SSH_ENV}"
         source "${SSH_ENV}"
         echo "ssh-agent started with PID $SSH_AGENT_PID"
@@ -31,7 +40,7 @@ function start_agent {
 # Source SSH settings, if applicable
 if [[ -f "${SSH_ENV}" ]]; then
     source "${SSH_ENV}"
-    kill -0 ${SSH_AGENT_PID} || start_agent 
+    kill -9 ${SSH_AGENT_PID} 2>/dev/null || start_agent 
 else
     start_agent
 fi

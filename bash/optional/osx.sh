@@ -50,6 +50,13 @@ if [[ $(which trash >/dev/null && echo $?) == 0 ]]; then
     alias rm='trash'
 fi
 
+# Recommended way to use which from which manual
+# Commented-out after reading https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-then
+# which () {
+#     (alias; declare -f; which whence) | /usr/local/bin --tty-only --read-alias --read-functions --show-tilde --show-dot $@
+# }
+# export -f which
+
 # Better top
 unset -f top &>/dev/null   
 TOP_PATH=$(which top)
