@@ -102,7 +102,7 @@ _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
 
 
 # More helpful whois
-alias gwhois "whois -h geektools.com"
+alias gwhois="whois -h geektools.com"
 
 # Use html instead of pdf for manp viewing
 function manp() {
