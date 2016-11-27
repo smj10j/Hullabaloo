@@ -113,3 +113,23 @@ function manp() {
     echo "It will be saved to ${MANP_DIR}"
     echo "Google Chrome will open with the generated document when finished."
 }
+
+# transfer.sh - simple uploading from the shell
+transfer() {
+    if [ $# -eq 0 ]; then
+        printf "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+        return 1
+    fi
+
+    INFILE=$1
+    local basefile
+
+    if tty -s; then
+        basefile=$(basename "$INFILE" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+        curl --progress-bar --upload-file "$INFILE" "https://transfer.sh/$basefile" | pbcopy
+    else
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$INFILE" | pbcopy
+    fi
+    pbpaste
+}
+
