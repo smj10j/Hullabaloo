@@ -8,17 +8,22 @@ fi
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+#
+# NOTE: The below paths are now properly added by using
+# configuration files placed in
+# /etc/manpaths.d/ and /etc/paths.d/
+#
 # homebrew at front of path (just in case)
-pathsadd "$(brew --prefix)/bin:$(brew --prefix)/sbin"
-manpathsadd "$(brew --prefix)/share/man"
-
-# homebrew core utils at front of path
-pathsadd "$(brew --prefix)/opt/coreutils/libexec/gnubin"
-manpathsadd "$(brew --prefix)/opt/coreutils/libexec/gnuman"
-
+# pathsadd "$(brew --prefix)/bin:$(brew --prefix)/sbin"
+# manpathsadd "$(brew --prefix)/share/man"
+#
+# # homebrew core utils at front of path
+# pathsadd "$(brew --prefix)/opt/coreutils/libexec/gnubin"
+# manpathsadd "$(brew --prefix)/opt/coreutils/libexec/gnuman"
+#
 # homebrew sqlite3 at front of path
-pathsadd "$(brew --prefix)/opt/sqlite/bin"
-
+# pathsadd "$(brew --prefix)/opt/sqlite/bin"
+#
 # homebrew perl at front of path
 # pathsadd "$(brew --prefix perl)/bin"
 
@@ -41,7 +46,7 @@ fi
 
 
 #TODO: Periodically backup all configuration all settings
-# defaults read > 
+# defaults read >
 
 
 # If available, use the OSX trash when removing files
@@ -58,17 +63,17 @@ fi
 # export -f which
 
 # Better top
-unset -f top &>/dev/null   
+unset -f top &>/dev/null
 TOP_PATH=$(which top)
-eval "function top { 
-    $TOP_PATH -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw 
+eval "function top {
+    $TOP_PATH -o time -O cpu -S -f -r -i 1 -n 30 -stats command,user,pid,pstate,time,cpu,threads,mem,vprvt,csw
 }"
 
 # Sqlite with extensions
 if [[ $(which sqlite3 >/dev/null && echo $?) == 0 ]]; then
-    unset -f sqlite3 &>/dev/null   
+    unset -f sqlite3 &>/dev/null
     SQLITE_PATH=$(which sqlite3);
-    eval "function sqlite3 { 
+    eval "function sqlite3 {
         $SQLITE_PATH -cmd '.load $(dirname $(dirname $SQLITE_PATH))/lib/libsqlitefunctions'
     }"
 fi
@@ -83,19 +88,19 @@ function _hullabaloo_clear_bluetooth_cache {
 
     echo "Turning Bluetooth off..."
     $_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt
-    
+
     echo "Removing Bluetooth plist files and storing them in $NEW_FOLDER..."
-    for file in ${FILES[@]}; do 
-        if [[ -f "$file" ]]; then 
+    for file in ${FILES[@]}; do
+        if [[ -f "$file" ]]; then
             NEW_FILE="${NEW_FOLDER}${file}"
             mkdir -p $(dirname "$NEW_FILE") 2>&1 >/dev/null
             sudo mv -f "$file" "$NEW_FILE"
         fi
     done
-    
+
     echo "Pausing 3 seconds..."
     sleep 3
-    
+
     echo "Turning Bluetooth back on..."
     $_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt
 }
@@ -105,19 +110,3 @@ function _hullabaloo_clear_bluetooth_cache {
 # Airport on the command line
 # eg. airport -s
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

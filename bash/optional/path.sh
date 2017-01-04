@@ -30,4 +30,3 @@ manpathsadd() {
 
 # Enhance the path
 pathsadd $PATH_ADDITION
-

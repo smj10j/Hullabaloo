@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Enable Bash Completion support on zsh
-IF_ZSH 'autoload bashcompinit; bashcompinit' 
+IF_ZSH 'autoload bashcompinit; bashcompinit'
 
 # Enable Bash Completion
 if [[ -z "$(which complete 2>/dev/null)" ]] && [[ $(uname) == 'Darwin' ]]; then
@@ -55,7 +55,8 @@ function flushdns() {
     sudo bash -c '
         set -x
         dscacheutil -flushcache
-        killall -HUP mDNSResponder
+        #killall -HUP mDNSResponder
+        launchctl kickstart -kp system/com.apple.mDNSResponder.reloaded
         set +x
     ' >&2 \
     && echo "DNS cache flushed\!"
@@ -94,7 +95,7 @@ _hullabaloo_history_ranked() {
 }
 
 # Helpful command for printing a filetree from the current directory
-alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'" 
+alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 
 
 # Useful sed string for replacing newlines in the input
@@ -132,4 +133,3 @@ transfer() {
     fi
     pbpaste
 }
-

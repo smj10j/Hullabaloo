@@ -11,8 +11,10 @@ PATH_ADDITION=""
 # This is the editor that will be launched by 'edit'
 #TODO: install a better default text editor if BBEdit not available
 TEXT_EDITOR_CMD='vi'
-if [ `uname` == 'Darwin' ]; then
-	if [ -n "`ls -la /Applications/ | grep 'BBEdit'`" ]; then
+if [[ $(uname) == 'Darwin' ]]; then
+	if [[ -e /Applications/Atom.app ]]; then
+		TEXT_EDITOR_CMD='open -a Atom'
+	elif [[ -e /Applications/BBEdit.app ]]; then
 		TEXT_EDITOR_CMD='open -a BBEdit'
 	else
 		TEXT_EDITOR_CMD='open -a TextEdit'
