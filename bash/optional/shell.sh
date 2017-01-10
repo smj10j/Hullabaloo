@@ -6,8 +6,8 @@ IF_ZSH 'autoload bashcompinit; bashcompinit'
 # Enable Bash Completion
 if [[ -z "$(which complete 2>/dev/null)" ]] && [[ $(uname) == 'Darwin' ]]; then
 	# Bash Completion
-	if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
-		bash $(brew --prefix)/etc/bash_completion
+	if [[ -f "$(brew --prefix)/etc/bash_completion" ]]; then
+		bash "$(brew --prefix)/etc/bash_completion"
 	fi
 fi
 
@@ -45,10 +45,10 @@ export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?)/\n/g' '%s' | sed 's/\" \"//g'"
 alias au='ps -A | grep '
 
 # Follow symlinks
-ff() {
-	LINK=$(readlink -f $(which $1))
-	LINK_PWD=$(dirname $LINK)
-	pushd $LINK_PWD
+function ff() {
+	LINK=$(readlink -f "$(which "$1")")
+	LINK_PWD=$(dirname "$LINK")
+	pushd "$LINK_PWD"
 }
 
 function flushdns() {
@@ -63,14 +63,56 @@ function flushdns() {
 }
 
 function _du() {
-    if [[ "$1" == "-h" ]]; then echo "Usage: _du [dir=.] [depth=1]"; return 1; fi
-    DIR=${1:-.}
-    DEPTH=${2:-1}
-    du -hd $DEPTH $DIR/ | sort -h
+	DEPTH=1
+	DIR=.
+	while getopts ':d:h' opt; do
+		case $opt in
+			d)
+			    DEPTH=$OPTARG
+			    ;;
+			h)
+				echo "Usage: $0 [-d maxdepth] [dir=.]" >&2
+				return 1
+		      ;;
+		    \?)
+		      echo "Invalid option: -$OPTARG" >&2
+		      ;;
+		  esac
+	done
+	shift "$((OPTIND-1))"
+	DIR="${*:-.}"
+
+    du -hd "$DEPTH" "$DIR"/ | sort -h
 }
 
-function _memtop() {
-    if [[ "$1" == "-h" ]]; then echo "Usage: _memtop [socket=/tmp/memcached.sock]"; return 1; fi
+function lscount {
+	MAXDEPTH=0
+	DIR=.
+	while getopts ':d:h' opt; do
+		case $opt in
+			d)
+			    MAXDEPTH=$OPTARG
+			    ;;
+			h)
+		      echo "Usage: $0 [-d maxdepth] [dir=.]" >&2
+			  return 1
+		      ;;
+		    \?)
+		      echo "Invalid option: -$OPTARG" >&2
+		      ;;
+		  esac
+	done
+	shift "$((OPTIND-1))"
+	DIR="${*:-.}"
+
+	find "$DIR" -maxdepth "$MAXDEPTH" -type d -print0 | while read -d '' -r dir; do
+		num=$(find "$dir" -ls | wc -l);
+		printf "%5d files in directory %s\n" "$num" "$dir";
+	done
+}
+
+function memcachetop() {
+    if [[ "$1" == "-h" ]]; then echo "Usage: $0 [socket=/tmp/memcached.sock]"; return 1; fi
     SOCK=${1:-/tmp/memcached.sock}
     if [[ -S "$SOCK" ]]; then
         MEMCACHED="nc -U $SOCK"
@@ -79,19 +121,19 @@ function _memtop() {
         PORT=${2:-11211}
         MEMCACHED="nc $HOST $PORT"
     fi
-    watch '\
-        exec bash -c "\
-            echo '\''stats'\'' | '$MEMCACHED' | \
-                awk '\''/get/ {print \$3}'\'' | tac | \
-                sed -n '\''1p;\$p'\'' | cat -v | tr -d '\''\n'\'' | sed '\''s/\^M/\//g'\'' | \
-                xargs -I X echo '\''100*(1-(X1))'\'' | tee >/dev/null >(bc -l | cut -c1-5) | xargs echo '\''Cache Hit Rate (%):'\'' \
-        "\
+    watch '
+        exec bash -c "
+            echo '\''stats'\'' | '$MEMCACHED' |
+                awk '\''/get/ {print \$3}'\'' | tac |
+                sed -n '\''1p;\$p'\'' | cat -v | tr -d '\''\n'\'' | sed '\''s/\^M/\//g'\'' |
+                xargs -I% echo '\''100*(1-(%1))'\'' | tee >/dev/null >(bc -l | cut -c1-5) | xargs echo '\''Cache Hit Rate (%):'\''
+        "
     '
 }
 
 # Show the commands you use most (http://lifehacker.com/202712/review-your-most-oft-used-unix-commands)
-_hullabaloo_history_ranked() {
-    history | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort | uniq -c | sort -r
+function history_ranked() {
+    history 0 | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort | uniq -c | sort -r
 }
 
 # Helpful command for printing a filetree from the current directory
@@ -116,7 +158,7 @@ function manp() {
 }
 
 # transfer.sh - simple uploading from the shell
-transfer() {
+function transfer() {
     if [ $# -eq 0 ]; then
         printf "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
         return 1
