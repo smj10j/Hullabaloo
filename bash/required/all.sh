@@ -17,7 +17,7 @@
 if [ -x /usr/libexec/path_helper ]; then
     export MANPATH
     export PATH
-    eval `/usr/libexec/path_helper -s`
+    eval "$(/usr/libexec/path_helper -s)"
 fi
 
 
@@ -28,12 +28,15 @@ fi
 ##########################################
 
 # Catches script errors and outputs them
+# shellcheck source=/dev/null
 source "$_HULLABALOO_INSTALL_DIR/bash/required/traps.sh"
 
 # Bash profile loading functions
+# shellcheck source=/dev/null
 source "$_HULLABALOO_INSTALL_DIR/bash/required/profiles.sh"
 
 # Logging functions
+# shellcheck source=/dev/null
 source "$_HULLABALOO_INSTALL_DIR/bash/required/logging.sh"
 
 
@@ -44,7 +47,7 @@ source "$_HULLABALOO_INSTALL_DIR/bash/required/logging.sh"
 ##########################################
 
 # Allows function arguments to be passed by reference
-#_hullabaloo_load_profile 'required/upvars'
+# _hullabaloo_load_profile 'required/upvars'
 
 # Array convenience methods like push, pop, shift, and unshift
 _hullabaloo_load_profile 'required/arrays'

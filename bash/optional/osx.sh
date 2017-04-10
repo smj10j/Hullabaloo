@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Stop if we're not on OSX
-if [ `uname` != 'Darwin' ]; then
+if [ "$(uname)" != 'Darwin' ]; then
 	return
 fi
 
 # Set JAVA_HOME
-export JAVA_HOME=$(/usr/libexec/java_home)
+JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME
 
 #
 # NOTE: The below paths are now properly added by using
@@ -31,7 +32,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Alias to show registered URL schemes
 function listRegisteredURLSchemes {
 	LS_REGISTER_CMD='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister'
-	$LS_REGISTER_CMD -dump | grep -B6 bindings:.*:
+	$LS_REGISTER_CMD -dump | grep -B6 "bindings:.*:"
 }
 
 
@@ -41,7 +42,7 @@ function listRegisteredURLSchemes {
 
 # If available, use the OSX trash when removing files
 # brew install trash
-which trash && alias rm=trash
+(which trash && alias rm=trash) &>/dev/null
 
 # Recommended way to use which from which manual
 # Commented-out after reading https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-then
@@ -62,7 +63,7 @@ if [[ $(which sqlite3 >/dev/null && echo $?) == 0 ]]; then
     unset -f sqlite3 &>/dev/null
     SQLITE_PATH=$(which sqlite3);
     eval "function sqlite3 {
-        $SQLITE_PATH -cmd '.load $(dirname $(dirname "$SQLITE_PATH"))/lib/libsqlitefunctions'
+        $SQLITE_PATH -cmd '.load $(dirname "$(dirname "$SQLITE_PATH")")/lib/libsqlitefunctions'
     }"
 fi
 
@@ -84,7 +85,7 @@ function hullabaloo_clear_bluetooth_cache {
     for file in "${FILES[@]}"; do
         if [[ -f "$file" ]]; then
             NEW_FILE="${NEW_FOLDER}${file}"
-            mkdir -p '$(dirname "$NEW_FILE)' >/dev/null 2>&1
+            mkdir -p "$(dirname "$NEW_FILE")" >/dev/null 2>&1
             sudo mv -f "$file" "$NEW_FILE"
         fi
     done
@@ -96,6 +97,29 @@ function hullabaloo_clear_bluetooth_cache {
     "$_HULLABALOO_INSTALL_DIR/osx/toggleBluetooth.scpt"
 }
 
+
+flushdns() {
+	sudo bash -c '
+		set -x
+
+        ifconfig en0 down
+        sleep 0.25
+
+        route -n flush
+        sleep 0.25
+        route -n flush
+        sleep 0.25
+
+        ifconfig en0 up
+        sleep 0.50
+        route -n flush
+
+        dscacheutil -flushcache
+        launchctl kickstart -kp system/com.apple.mDNSResponder.reloaded
+
+		set +x
+	' >&2 && echo "DNS cache flushed\!"
+}
 
 
 # Airport on the command line

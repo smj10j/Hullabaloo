@@ -41,9 +41,6 @@ fi
 #export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?|\" \")/\n/g' '%s'"
 export LESSOPEN="|sed -r 's/(---|\\\r\\\n\"?)/\n/g' '%s' | sed 's/\" \"//g'"
 
-# Easier process search
-alias au='ps -A | grep '
-
 # Follow symlinks
 function ff() {
 	LINK=$(readlink -f "$(which "$1")")
@@ -51,15 +48,17 @@ function ff() {
 	pushd "$LINK_PWD"
 }
 
-function flushdns() {
-    sudo bash -c '
-        set -x
-        dscacheutil -flushcache
-        #killall -HUP mDNSResponder
-        launchctl kickstart -kp system/com.apple.mDNSResponder.reloaded
-        set +x
-    ' >&2 \
-    && echo "DNS cache flushed\!"
+
+# Easier process search
+function au() {
+	cmd="sudo ps Awl"
+	if [ "${1}" -eq "${1}" ] 2>/dev/null; then
+		cmd="${cmd} ${1}"
+	else
+		cmd="${cmd} | head -n1 &&
+			 ${cmd} | grep --ignore-case --color=auto ${1} | head -n-1"
+	fi
+	eval "${cmd}"
 }
 
 function _du() {
@@ -141,7 +140,7 @@ alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 
 
 # Useful sed string for replacing newlines in the input
-_hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
+alias _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
 
 
 # More helpful whois
@@ -150,7 +149,7 @@ alias gwhois="whois -h geektools.com"
 # Use html instead of pdf for manp viewing
 function manp() {
     MANP_DIR=~/Dropbox/Backups/Software/'Foxit\ MobilePDF'
-    mkdir -p ${MANP_DIR}
+    mkdir -p "${MANP_DIR}"
     groffer --man --www --www-viewer="bash -c 'mv -f -t ${MANP_DIR} \${1} && open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "$1" &
     echo "Generating HTML-formatted manpage in the background..."
     echo "It will be saved to ${MANP_DIR}"
