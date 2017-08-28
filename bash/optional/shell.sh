@@ -120,14 +120,13 @@ function memcachetop() {
         PORT=${2:-11211}
         MEMCACHED="nc $HOST $PORT"
     fi
-    watch '
-        exec bash -c "
-            echo '\''stats'\'' | '$MEMCACHED' |
-                awk '\''/get/ {print \$3}'\'' | tac |
-                sed -n '\''1p;\$p'\'' | cat -v | tr -d '\''\n'\'' | sed '\''s/\^M/\//g'\'' |
-                xargs -I% echo '\''100*(1-(%1))'\'' | tee >/dev/null >(bc -l | cut -c1-5) | xargs echo '\''Cache Hit Rate (%):'\''
-        "
-    '
+    watch "$(<<EOF
+		echo 'stats' | $MEMCACHED |
+		awk '/cmd_get|get_misses/ {print \$3}' | sed -E 's@[\r\s\n ]+@/@g' | xargs -n2 |
+		sed -E 's@(/\$)|[ ]+@@g' | sed -E 's@^(.*?)/@(1-\1)/@' |
+		bc -l | cut -c1-5 | xargs echo 'Cache Hit Rate (%):'
+EOF
+	)"
 }
 
 # Show the commands you use most (http://lifehacker.com/202712/review-your-most-oft-used-unix-commands)
