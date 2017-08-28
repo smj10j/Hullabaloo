@@ -51,7 +51,7 @@ function ff() {
 
 # Easier process search
 function au() {
-	cmd="sudo ps Awl"
+	cmd="sudo ps Awwl"
 	if [ "${1}" -eq "${1}" ] 2>/dev/null; then
 		cmd="${cmd} ${1}"
 	else
@@ -140,7 +140,7 @@ alias filetree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 
 
 
 # Useful sed string for replacing newlines in the input
-alias _hullabaloo_sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
+alias sed_regex_replace_nl=':a;N;$!ba;s/\n/ /g'
 
 
 # More helpful whois
