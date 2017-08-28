@@ -149,7 +149,7 @@ alias gwhois="whois -h geektools.com"
 function manp() {
     MANP_DIR=~/Library/Mobile\ Documents/iCloud~com~pspdfkit~viewer/Documents
     mkdir -p "${MANP_DIR}"
-    groffer --man --www --www-viewer="bash -c 'mv -f -t ${MANP_DIR} \${1} && open -a Google\ Chrome ${MANP_DIR}/\$(basename \${1})' bash" "$1" &
+    groffer --man --www --www-viewer="bash -c 'mv -f -t \"${MANP_DIR}\" \${1} && open -a Google\ Chrome \"${MANP_DIR}/\$(basename \${1})\"' bash" "$1" &
     echo "Generating HTML-formatted manpage in the background..."
     echo "It will be saved to ${MANP_DIR}"
     echo "Google Chrome will open with the generated document when finished."
