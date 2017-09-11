@@ -15,10 +15,10 @@ function _hullabaloo_bashrc_file {
 }
 
 function _hullabaloo_update {
-	
+
 	echo ""
 	echo "Updating Hullabaloo..."
-	cd "$_HULLABALOO_INSTALL_DIR"
+	cd "$_HULLABALOO_INSTALL_DIR" || exit 1
 	git pull --rebase
 	git submodule update
 	echo ""
@@ -38,7 +38,7 @@ function _hullabaloo_repair {
 	echo ""
 
 	local USER=$(whoami)
-	local GROUP=$(groups | awk {'print $1'})
+	local GROUP=$(groups | awk '{print $1}')
 	DEFAULT_INSTALL_DIR=$(echo ~/.hullabaloo)
 
 	if [[ -z "$_HULLABALOO_INSTALL_DIR" ]]; then
@@ -58,9 +58,9 @@ function _hullabaloo_repair {
 
 	echo ""
 	echo "Setting owner of $_HULLABALOO_INSTALL_DIR to $USER:$GROUP..."
-	sudo chown -R $USER:$GROUP $_HULLABALOO_INSTALL_DIR
+	sudo chown -R "$USER":"$GROUP" "$_HULLABALOO_INSTALL_DIR"
 
-	
+
 	echo ""
 	echo "Repair complete!"
 	echo ""
@@ -80,7 +80,7 @@ function _hullabaloo_reload {
 #
 #     read "brave?Here be dragons. Continue?"
 #     if [[ "$brave" =~ ^[Yy]$ ]]; then
-#     
+#
 #     fi
 #
 
@@ -111,34 +111,34 @@ function _hullabaloo_uninstall {
 	if [[ -z "$_HULLABALOO_INSTALL_DIR" ]]; then
 		local MSG=$'\nInstallation directory unknown... automatic uninstall aborted!\n'
 		MSG+="My best guess to the location of this installation is: $INSTALL_BASE_DIR"
-		
+
 		_hullabaloo_notify "$MSG"
 		return
 	fi
 
 	echo ""
 	echo "Removing $_HULLABALOO_INSTALL_DIR..."
-	rm -rf $_HULLABALOO_INSTALL_DIR
+	rm -rf "$_HULLABALOO_INSTALL_DIR"
 	echo ""
-	
+
 	echo "Removing ~/.vim_runtime symlink"
 	rm -rf ~/.vim_runtime
 	echo ""
-	
+
 	local BASHRC_FILE=$(source _hullabaloo_bashrc_file)
 	local BASHRC_INCLUDE_START='############## Begin Hullabaloo Bash Profile.*'
 	local BASHRC_INCLUDE_END='################ End Hullabaloo Bash Profile.*'
 
-	if [ -n "$BASHRC_FILE" ]; then 
+	if [ -n "$BASHRC_FILE" ]; then
 		echo "Removing entry from $BASHRC_FILE..."
-	
-		if [ $(uname) == 'Darwin' ]; then
-			sed -i '' "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" $BASHRC_FILE
+
+		if [ "$(uname)" == 'Darwin' ]; then
+			sed -i '' "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" "$BASHRC_FILE"
 		else
-			sed -i "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" $BASHRC_FILE
+			sed -i "/$BASHRC_INCLUDE_START/,/$BASHRC_INCLUDE_END/d" "$BASHRC_FILE"
 		fi
 	else
-		echo "Unable to location your bash profile - not modifying"	
+		echo "Unable to location your bash profile - not modifying"
 	fi
 	echo ""
 
@@ -147,4 +147,3 @@ function _hullabaloo_uninstall {
 
 	_hullabaloo_reload
 }
-
